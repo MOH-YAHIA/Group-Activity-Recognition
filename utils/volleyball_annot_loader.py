@@ -1,0 +1,151 @@
+import os
+import cv2
+from boxinfo import BoxInfo
+
+
+def load_tracking_annot(path):
+    with open(path, 'r') as file:
+        player_boxes = {idx:[] for idx in range(12)} #12 players
+        frame_boxes_dct = {}
+
+        for idx, line in enumerate(file):
+            box_info = BoxInfo(line)
+            if box_info.player_ID > 11:
+                continue
+            player_boxes[box_info.player_ID].append(box_info)
+
+        # let's create view from frame to boxes
+        for player_ID, boxes_info in player_boxes.items():
+            # each player has 20 frames sorted according to frame_ID
+            # let's keep the middle 9 frames only (enough for this task empirically)
+            
+            boxes_info = boxes_info[5:]
+            boxes_info = boxes_info[:-6]
+
+            for box_info in boxes_info:
+                if box_info.frame_ID not in frame_boxes_dct:
+                    frame_boxes_dct[box_info.frame_ID] = []
+
+                frame_boxes_dct[box_info.frame_ID].append(box_info)
+
+        #dic contains boxes info for players in each frame
+        #9 frames, each contains boxes info for 12 players
+        return frame_boxes_dct
+    
+
+def vis_clip(annot_path, video_dir):
+    frame_boxes_dct = load_tracking_annot(annot_path)
+    font = cv2.FONT_HERSHEY_SIMPLEX # text font 
+
+    for frame_id, boxes_info in frame_boxes_dct.items():
+        img_path = os.path.join(video_dir, f'{frame_id}.jpg')
+        image = cv2.imread(img_path)
+
+        for box_info in boxes_info:
+            x1, y1, x2, y2 = box_info.box
+            #                                         colur     thickness
+            cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            cv2.putText(image, box_info.category, (x1, y1 - 10), font, 0.5, (0, 255, 0), 2)
+
+        cv2.imshow('Image', image)
+        cv2.waitKey(180)
+    cv2.destroyAllWindows()
+
+
+def load_video_annot(video_annot):
+    with open(video_annot, 'r') as file:
+        clip_category_dct = {}
+        for line in file:
+            # line looks like: "12345.jpg r_set" (filename and action_id)
+            items = line.strip().split(' ')[:2]
+            
+            # Removes '.jpg' to get just the clip folder name (e.g., "12345")
+            clip_dir = items[0].replace('.jpg', '')
+            
+            # Maps the directory name to its action category
+            clip_category_dct[clip_dir] = items[1]
+
+        return clip_category_dct
+
+
+def load_volleyball_dataset(videos_root, annot_root):
+    videos_dirs = os.listdir(videos_root) #get folders and files names '0','1','2','readme.txt'
+    videos_dirs.sort()
+
+    videos_annot = {}
+
+    # Iterate on each video and for each video iterate on each clip
+    for idx, video_dir in enumerate(videos_dirs):
+        video_dir_path = os.path.join(videos_root, video_dir)
+
+        if not os.path.isdir(video_dir_path): #in case there is file not folder as 'readmed.txt'
+            continue
+
+        print(f'{idx}/{len(videos_dirs)} - Processing Dir {video_dir_path}')
+
+        video_annot = os.path.join(video_dir_path, 'annotations.txt')
+        clip_category_dct = load_video_annot(video_annot)
+
+        clips_dir = os.listdir(video_dir_path) #clibs id's
+        clips_dir.sort()
+
+        clip_annot = {}
+
+        for clip_dir in clips_dir:
+            clip_dir_path = os.path.join(video_dir_path, clip_dir)
+
+            if not os.path.isdir(clip_dir_path):
+                continue
+
+            #print(f'\t{clip_dir_path}')
+            assert clip_dir in clip_category_dct
+
+            annot_file = os.path.join(annot_root, video_dir, clip_dir, f'{clip_dir}.txt')
+            frame_boxes_dct = load_tracking_annot(annot_file)
+            #vis_clip(annot_file, clip_dir_path)
+
+            clip_annot[clip_dir] = {
+                'category': clip_category_dct[clip_dir],
+                'frame_boxes_dct': frame_boxes_dct #9 frames 
+            }
+
+        videos_annot[video_dir] = clip_annot
+
+    return videos_annot
+
+'''
+videos_annot look like
+{
+  "0": {                  # Video ID
+    "13456": {            # Clip ID
+      "category": "r_set",    # Action Label
+      "frame_boxes_dct": {
+         13454: [BoxInfo, BoxInfo, ...], #frame_ID: 12 Players
+         13455: [BoxInfo, BoxInfo, ...],
+         ... # 9 frames total
+      }
+    }
+  }
+}
+'''
+
+
+
+
+
+# annot_root=r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\sample data\volleyball_tracking_annotation"
+# videos_root=r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\videos_g10"
+
+# annot_file_path_sample = r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\sample data\volleyball_tracking_annotation\7\38025\38025.txt"
+# clip_dir_path_sample = os.path.dirname(annot_file_path_sample).replace('volleyball_tracking_annotation', 'videos_sample') #get the folder path -> replace 
+
+#vis_clip(annot_file_path_sample,clip_dir_path_sample)
+""" videos_annot=load_volleyball_dataset(videos_root,annot_root)
+
+for video_id,clips in videos_annot.items():
+    print(video_id)
+    for clip_id,clip in clips.items():
+        print("--",clip_id)
+        print('--',clip['category'])
+        for frame_id,players_boxs in clip['frame_boxes_dct'].items():
+            print('------',frame_id, len(players_boxs)) """
