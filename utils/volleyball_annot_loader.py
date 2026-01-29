@@ -1,6 +1,6 @@
 import os
 import cv2
-from boxinfo import BoxInfo
+from utils.boxinfo import BoxInfo
 
 
 def load_tracking_annot(path):
@@ -140,12 +140,12 @@ videos_annot look like
 # clip_dir_path_sample = os.path.dirname(annot_file_path_sample).replace('volleyball_tracking_annotation', 'videos_sample') #get the folder path -> replace 
 
 #vis_clip(annot_file_path_sample,clip_dir_path_sample)
-""" videos_annot=load_volleyball_dataset(videos_root,annot_root)
+# videos_annot=load_volleyball_dataset(videos_root,annot_root)
 
-for video_id,clips in videos_annot.items():
-    print(video_id)
-    for clip_id,clip in clips.items():
-        print("--",clip_id)
-        print('--',clip['category'])
-        for frame_id,players_boxs in clip['frame_boxes_dct'].items():
-            print('------',frame_id, len(players_boxs)) """
+# for video_id,clips in videos_annot.items():
+#     print(video_id)
+#     for clip_id,clip in clips.items():
+#         print("--",clip_id)
+#         print('--',clip['category'])
+#         for frame_id,players_boxs in clip['frame_boxes_dct'].items():
+#             print('------',frame_id, len(players_boxs)) 

@@ -4,10 +4,10 @@ import os
 from PIL import Image
 import torchvision.transforms as transforms
 
-from volleyball_annot_loader import load_volleyball_dataset
+from utils.volleyball_annot_loader import load_volleyball_dataset
 
 class VolleyballPersonDataset(Dataset):
-    def __init__(self,videos_root,annot_root):
+    def __init__(self,videos_root,annot_root,allowed_ids):
         self.videos_root=videos_root
         self.preprocess = transforms.Compose([
             #we will clip each frame, no need for center clip
@@ -30,6 +30,8 @@ class VolleyballPersonDataset(Dataset):
         self.samples=[]
 
         for video_id,clips in self.annotations_dict.items():
+            if video_id not in allowed_ids:
+                continue
             for clip_id,clip in clips.items():
                 self.samples.append(
                     {
@@ -53,7 +55,7 @@ class VolleyballPersonDataset(Dataset):
         frames=[]
         categories=[]
         for frame_id,frame_boxes in item['frame_boxes_dct'].items():
-            img_path = os.path.join(videos_root,item['video_id'],item['clip_id'],f'{str(frame_id)}.jpg')
+            img_path = os.path.join(self.videos_root,item['video_id'],item['clip_id'],f'{str(frame_id)}.jpg')
             img = Image.open(img_path).convert('RGB')
             cropped_boxes=[] 
             players_category=[]
@@ -78,13 +80,13 @@ class VolleyballPersonDataset(Dataset):
 
 
     
-annot_root=r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\sample data\volleyball_tracking_annotation"
-videos_root=r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\videos_g10"
+# annot_root=r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\sample data\volleyball_tracking_annotation"
+# videos_root=r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\videos_g10"
 
-img_da=VolleyballPersonDataset(videos_root,annot_root)
+# img_da=VolleyballPersonDataset(videos_root,annot_root)
 
-print(img_da.__len__())
-frames, categories, label=img_da.__getitem__(10)
-print(frames.shape)
-print(categories.shape)
-print(label.shape)
+# print(img_da.__len__())
+# frames, categories, label=img_da.__getitem__(10)
+# print(frames.shape)
+# print(categories.shape)
+# print(label.shape) 
