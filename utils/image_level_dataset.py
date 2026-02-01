@@ -24,7 +24,6 @@ class VolleyballImageDataset(Dataset):
         }
         # get the annotation for the whole dataset in dictionary
         self.annotations_dict=load_volleyball_dataset(videos_root,annot_root)
-
         # convert the dict to list of clips
         self.samples=[]
         for video_id,clips in self.annotations_dict.items():

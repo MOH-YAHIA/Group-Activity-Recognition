@@ -1,7 +1,7 @@
 import os
 import cv2
 from utils.boxinfo import BoxInfo
-
+import torch
 
 def load_tracking_annot(path):
     with open(path, 'r') as file:
@@ -69,6 +69,12 @@ def load_video_annot(video_annot):
 
 
 def load_volleyball_dataset(videos_root, annot_root):
+    annot_path=os.path.join('data','video_annot.pth')
+    if os.path.exists(annot_path):
+        print(f"Loading cached annotations from {annot_path}...")
+        videos_annot=torch.load(annot_path,weights_only=False)
+        return videos_annot
+    
     videos_dirs = os.listdir(videos_root) #get folders and files names '0','1','2','readme.txt'
     videos_dirs.sort()
 
@@ -83,8 +89,8 @@ def load_volleyball_dataset(videos_root, annot_root):
 
         print(f'{idx}/{len(videos_dirs)} - Processing Dir {video_dir_path}')
 
-        video_annot = os.path.join(video_dir_path, 'annotations.txt')
-        clip_category_dct = load_video_annot(video_annot)
+        video_annot_path = os.path.join(video_dir_path, 'annotations.txt')
+        clip_category_dct = load_video_annot(video_annot_path)
 
         clips_dir = os.listdir(video_dir_path) #clibs id's
         clips_dir.sort()
@@ -110,7 +116,10 @@ def load_volleyball_dataset(videos_root, annot_root):
             }
 
         videos_annot[video_dir] = clip_annot
-
+    if not os.path.exists('data'):
+        os.mkdir('data')
+    print(f"Saving processed annotations to {annot_path}...")
+    torch.save(videos_annot,annot_path)
     return videos_annot
 
 '''
