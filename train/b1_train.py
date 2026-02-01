@@ -6,6 +6,7 @@ from utils.image_level_dataset import VolleyballImageDataset
 from models.b1 import B1
 from scripts.train import train
 from scripts.eval import evaluate
+from scripts.final_report import Final_Report
 
 with open('config/b1.yaml','r') as file:
     conf_dict = yaml.safe_load(file)
@@ -56,15 +57,20 @@ if torch.cuda.device_count() > 1:
 
 
 # Train
-train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device)
+train('b1',model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device)
 
 
 
 # Test
 print(f"\n--- Test Results ---")
-accurecy_test,loss_avg_test,f1Score_test = evaluate(model,criterion,test_loader,device)
+accurecy_test,loss_avg_test,f1Score_test,all_labels,all_pred = evaluate(model,criterion,test_loader,device,True)
 print('==========================================')
 print(f'accurecy ->{accurecy_test}')
 print(f'loss_avg ->{loss_avg_test}')
 print(f'f1-score ->{f1Score_test}\n')
         
+final_report = Final_Report('b1',all_labels,all_pred)
+print("Create Report in 'outputs/B1'")
+final_report.creat_report()
+print("Create confusion_matrix in 'outputs/B1'")
+final_report.create_confusion_matrix()

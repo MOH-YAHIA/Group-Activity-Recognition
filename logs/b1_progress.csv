@@ -1,0 +1,3 @@
+epoch,accurecy_train,loss_avg_train,f1Score_train,accurecy_val,loss_avg_val,f1Score_val
+1,10.00,2.09,0.06,14.62,2.07,0.08
+2,64.29,1.83,0.64,17.69,2.07,0.09

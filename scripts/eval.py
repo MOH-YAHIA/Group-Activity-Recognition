@@ -2,7 +2,7 @@ import numpy as np
 import torch 
 from sklearn.metrics import f1_score
 
-def evaluate(model,criterion,loader,device):
+def evaluate(model,criterion,loader,device,pred_need):
     all_pred=[]
     all_labels=[]
     loss_sum=0
@@ -21,8 +21,11 @@ def evaluate(model,criterion,loader,device):
     all_pred = np.array(all_pred)
     all_labels = np.array(all_labels)
 
+    
     accurecy = np.mean(all_pred==all_labels) *100
     loss_avg = loss_sum / len(loader)
     f1Score =  f1_score(all_labels,all_pred,average='weighted')
 
-    return accurecy,loss_avg,f1Score
+    if not pred_need:
+        return accurecy,loss_avg,f1Score
+    return accurecy,loss_avg,f1Score,all_labels,all_pred

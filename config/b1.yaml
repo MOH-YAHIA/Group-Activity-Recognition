@@ -14,7 +14,7 @@ model:
 training:
   num_workers : 0
   pin_memory : False
-  n_epoch: 30
+  n_epoch: 2
   lr: 0.0001 # 1e-4
   batch_size: 16
   optimizer: "AdamW"

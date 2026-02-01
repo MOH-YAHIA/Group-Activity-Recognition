@@ -1,8 +1,22 @@
 import numpy as np
+import pandas as pd
+import torch
 from sklearn.metrics import f1_score
 from scripts.eval import evaluate
 
-def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device):    
+def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device):    
+    logs=[]
+    checkpoint={}
+    best_loss=1
+    def update_checkpint(epoch):
+        nonlocal checkpoint
+        checkpoint = {
+        'model_state_dict': model.module.state_dict() if isinstance(model, torch.nn.DataParallel) else model.state_dict(),
+        'optimizer_state_dict': optimizer.state_dict(),
+        'scheduler_state_dict': scheduler.state_dict(),
+        'epoch': epoch,
+        'best_loss': best_loss
+        }
     for epoch in range(n_epoch):
         loss_sum_train=0
         all_pred=[]
@@ -29,10 +43,14 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         f1Score_train =  f1_score(all_labels,all_pred,average='weighted')
 
         
-        accurecy_val,loss_avg_val,f1Score_val = evaluate(model,criterion,val_loader,device)
+        accurecy_val,loss_avg_val,f1Score_val = evaluate(model,criterion,val_loader,device,False)
         
         scheduler.step(loss_avg_val)
-        
+        logs.append([epoch+1,accurecy_train,loss_avg_train,f1Score_train,accurecy_val,loss_avg_val,f1Score_val])
+        if loss_avg_val < best_loss:
+            update_checkpint(epoch)
+            best_loss = loss_avg_val
+
         print(f"epoch {epoch+1}/{n_epoch}")
         print("Train Resault")
         print(f'accurecy ->{accurecy_train}')
@@ -43,6 +61,8 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         print(f'accurecy ->{accurecy_val}')
         print(f'loss_avg ->{loss_avg_val}')
         print(f'f1-score ->{f1Score_val}\n')
-        
+    df=pd.DataFrame(logs,columns=['epoch','accurecy_train','loss_avg_train','f1Score_train','accurecy_val','loss_avg_val','f1Score_val'])
+    df.to_csv(f'logs/{baseline}_progress.csv',index=False,float_format='%.2f')    
 
+    torch.save(checkpoint,f'outputs/{baseline.upper()}/best_model_checkpoint.pth')
 
