@@ -1,6 +1,6 @@
 paths:
-  annot_root: "data/volleyball_tracking_annotation"
-  videos_root: "data/videos_g10"
+  annot_root: "/kaggle/input/volleyball/volleyball_tracking_annotation/volleyball_tracking_annotation"
+  videos_root: "/kaggle/input/volleyball/volleyball_/videos"
 
 system:
   seed : 42
@@ -15,9 +15,9 @@ model:
   num_group_actions: 8
 
 training:
-  num_workers : 0
-  pin_memory : False
-  n_epoch: 2
+  num_workers : 4
+  pin_memory : True
+  n_epoch: 30
   lr: 0.0001 # 1e-4
   batch_size: 16
   optimizer: "AdamW"
