@@ -3,6 +3,9 @@ import torch
 from sklearn.metrics import f1_score
 
 def evaluate(model,criterion,loader,device,pred_need):
+    '''
+    pred_need (bool): return labels and pred
+    '''
     all_pred=[]
     all_labels=[]
     loss_sum=0

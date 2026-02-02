@@ -5,8 +5,8 @@ from sklearn.metrics import f1_score
 from scripts.eval import evaluate
 
 def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device):    
-    logs=[]
-    checkpoint={}
+    logs=[] # metrics resualt for every epoch 
+    checkpoint={} # best checkpoint
     best_loss=1
     def update_checkpint(epoch):
         nonlocal checkpoint
@@ -42,10 +42,10 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
         loss_avg_train = loss_sum_train/len(train_loader)
         f1Score_train =  f1_score(all_labels,all_pred,average='weighted')
 
-        
+        # set pred_need to false to not return labels ,pred
         accurecy_val,loss_avg_val,f1Score_val = evaluate(model,criterion,val_loader,device,False)
         
-        scheduler.step(loss_avg_val)
+        scheduler.step(loss_avg_val) # step based on avg loss in valdiation data
         logs.append([epoch+1,accurecy_train,loss_avg_train,f1Score_train,accurecy_val,loss_avg_val,f1Score_val])
         if loss_avg_val < best_loss:
             update_checkpint(epoch)
