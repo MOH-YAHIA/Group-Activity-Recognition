@@ -48,7 +48,7 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
         scheduler.step(loss_avg_val) # step based on avg loss in valdiation data
         logs.append([epoch+1,accurecy_train,loss_avg_train,f1Score_train,accurecy_val,loss_avg_val,f1Score_val])
         if loss_avg_val < best_loss:
-            update_checkpint(epoch)
+            update_checkpint(epoch+1)
             best_loss = loss_avg_val
             print(f"New Best Model found at epoch {epoch+1}")
 
