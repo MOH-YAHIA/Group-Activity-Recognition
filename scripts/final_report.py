@@ -36,7 +36,7 @@ class Final_Report:
 
     def create_confusion_matrix(self):
         # pass labels to make sure that every class appear in the matrix even if not exits in the labels and pred
-        conv_word = confusion_matrix(self.all_labels, self.all_pred, normalize='all',labels=self.sorted_keys)
+        conv_word = confusion_matrix(self.all_labels, self.all_pred, normalize='true',labels=self.sorted_keys)
         # Plot the heatmap
         plt.figure(figsize=(10, 8)) 
         heatmap(

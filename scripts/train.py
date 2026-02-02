@@ -7,7 +7,7 @@ from scripts.eval import evaluate
 def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device):    
     logs=[] # metrics resualt for every epoch 
     checkpoint={} # best checkpoint
-    best_loss=1
+    best_loss=float('inf') 
     def update_checkpint(epoch):
         nonlocal checkpoint
         checkpoint = {
@@ -50,6 +50,7 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
         if loss_avg_val < best_loss:
             update_checkpint(epoch)
             best_loss = loss_avg_val
+            print(f"New Best Model found at epoch {epoch+1}")
 
         print(f"epoch {epoch+1}/{n_epoch}")
         print("Train Resault")
@@ -61,6 +62,13 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
         print(f'accurecy ->{accurecy_val}')
         print(f'loss_avg ->{loss_avg_val}')
         print(f'f1-score ->{f1Score_val}\n')
+
+    print(f"Loading the best model from epoch {checkpoint['epoch']+1}")
+    if isinstance(model, torch.nn.DataParallel):
+        model.module.load_state_dict(checkpoint['model_state_dict']) 
+    else:
+        model.load_state_dict(checkpoint['model_state_dict'])
+
     df=pd.DataFrame(logs,columns=['epoch','accurecy_train','loss_avg_train','f1Score_train','accurecy_val','loss_avg_val','f1Score_val'])
     df.to_csv(f'logs/{baseline}_progress.csv',index=False,float_format='%.2f')    
 
