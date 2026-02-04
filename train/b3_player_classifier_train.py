@@ -72,10 +72,10 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
         all_pred=[]
         all_categories=[]
         model.train()
-        for imgs,categories,labels in train_loader:
+        for ind,(imgs,categories,labels) in enumerate(train_loader):
             imgs,categories,labels=imgs.to(device),categories.to(device),labels.to(device)
-            #b*9*12*3*224*224,  b*9*12*1,  b*9*1
-            output=model(imgs) #b,9,12,c
+            #b*12*3*224*224,  b*12*1,  b*1
+            output=model(imgs) #b,12,c
             output=output.reshape(-1,n_classes) #-,c
             categories=categories.reshape(-1)
             loss=criterion(output,categories)
@@ -88,7 +88,7 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
 
             all_pred.extend(index.cpu().numpy())
             all_categories.extend(categories.cpu().numpy())
-
+            print(f'in step {ind/len(train_loader)}')
         all_pred = np.array(all_pred)
         all_categories = np.array(all_categories)
         accurecy_train = np.mean(all_pred==all_categories) *100
@@ -116,7 +116,7 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
         print(f'loss_avg ->{loss_avg_val}')
         print(f'f1-score ->{f1Score_val}\n')
 
-    print(f"Loading the best model from epoch {checkpoint['epoch']+1}")
+    print(f"Loading the best model from epoch {checkpoint['epoch']}")
     if isinstance(model, torch.nn.DataParallel):
         model.module.load_state_dict(checkpoint['model_state_dict']) 
     else:
@@ -154,13 +154,13 @@ num_player_actions = conf_dict['model']['num_player_actions']
 
 # DataLoaders
 #num_workers=4,pin_memory=True
-train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids)
+train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids,one_frame=True)
 train_loader=DataLoader(train_dataset,batch_size=batch_size,shuffle=True,num_workers=num_workers,pin_memory=pin_memory)
 
-val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids)
+val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids,one_frame=True)
 val_loader=DataLoader(val_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
-test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids)
+test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids,one_frame=True)
 test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
 # Setup

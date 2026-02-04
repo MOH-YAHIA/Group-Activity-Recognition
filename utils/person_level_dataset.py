@@ -25,7 +25,7 @@ class VolleyballPersonDataset(Dataset):
         self.player_action_dct = {
             'waiting': 0, 'setting': 1, 'digging': 2, 
             'falling': 3,'spiking': 4, 'blocking': 5,
-            'fumping': 6, 'moving': 7, 'standing': 8
+            'jumping': 6, 'moving': 7, 'standing': 8
         }
         self.annotations_dict=load_volleyball_dataset(videos_root,annot_root)
         self.samples=[]
