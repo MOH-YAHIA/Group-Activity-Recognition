@@ -72,5 +72,5 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
     df=pd.DataFrame(logs,columns=['epoch','accurecy_train','loss_avg_train','f1Score_train','accurecy_val','loss_avg_val','f1Score_val'])
     df.to_csv(f'logs/{baseline}_progress.csv',index=False,float_format='%.2f')    
 
-    torch.save(checkpoint,f'outputs/{baseline.upper()}/best_model_checkpoint.pth')
+    torch.save(checkpoint,f'checkpoints/{baseline}_best_model_checkpoint.pth')
 
