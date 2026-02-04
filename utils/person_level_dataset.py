@@ -67,6 +67,14 @@ class VolleyballPersonDataset(Dataset):
                 crop=self.preprocess(crop) #3*224*224
                 cropped_boxes.append(crop)
                 players_category.append(self.player_action_dct[box.category])
+            
+            # not every player appears in the clip 
+            # after that , each frame can contain less than 12 player 
+            # fix this by adding zeroes players
+            # with standing label
+            while len(cropped_boxes)<12:
+                cropped_boxes.append(torch.zeros_like(cropped_boxes[0]))
+                players_category.append(self.player_action_dct['standing'])
 
             #cropped_boxes 12*3*224*224
             #players_category 12

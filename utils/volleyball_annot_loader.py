@@ -7,13 +7,11 @@ def load_tracking_annot(path):
     with open(path, 'r') as file:
         player_boxes = {idx:[] for idx in range(12)} #12 players
         frame_boxes_dct = {}
-
         for idx, line in enumerate(file):
             box_info = BoxInfo(line)
             if box_info.player_ID > 11:
                 continue
             player_boxes[box_info.player_ID].append(box_info)
-
         # let's create view from frame to boxes
         for player_ID, boxes_info in player_boxes.items():
             # each player has 20 frames sorted according to frame_ID
@@ -29,7 +27,7 @@ def load_tracking_annot(path):
                 frame_boxes_dct[box_info.frame_ID].append(box_info)
 
         #dic contains boxes info for players in each frame
-        #9 frames, each contains boxes info for 12 players
+        #9 frames, each contains boxes info for 12 players 
         return frame_boxes_dct
     
 
@@ -137,7 +135,6 @@ videos_annot look like
   }
 }
 '''
-
 
 
 

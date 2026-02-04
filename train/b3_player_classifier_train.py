@@ -88,7 +88,7 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
 
             all_pred.extend(index.cpu().numpy())
             all_categories.extend(categories.cpu().numpy())
-            print(f'in step {ind/len(train_loader)}')
+        #    print(f'in step {ind}/{len(train_loader)}')
         all_pred = np.array(all_pred)
         all_categories = np.array(all_categories)
         accurecy_train = np.mean(all_pred==all_categories) *100
