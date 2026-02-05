@@ -87,6 +87,7 @@ class VolleyballPersonDataset(Dataset):
         # if one frame needed , take the middel frame index = 4
         if self.one_frame:
             frames, categories = frames[4] , categories[4]
+            frames, categories = frames.view(1,12,3,224,224), categories.view(1,12)
         return frames, categories, label
 
 

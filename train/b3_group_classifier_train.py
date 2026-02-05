@@ -9,7 +9,7 @@ from sklearn.metrics import f1_score
 import pandas as pd
 from utils.person_level_dataset import VolleyballPersonDataset
 from models.b3_player_classifier import B3_Player_Classifier
-
+from models.b3_group_classifier import B3_Group_Classifier
 
 def seed_everything(seed):
     random.seed(seed)
@@ -25,34 +25,32 @@ def evaluate(model,criterion,loader,device,pred_need,n_classes):
     pred_need (bool): return labels and pred
     '''
     all_pred=[]
-    all_categories=[]
+    all_labels=[]
     loss_sum=0
     model.eval()
     with torch.no_grad():
         for imgs,categories,labels in loader:
             imgs,categories,labels=imgs.to(device),categories.to(device),labels.to(device)
             output=model(imgs)
-            output=output.reshape(-1,n_classes)
-            categories=categories.reshape(-1)
-            loss=criterion(output,categories)
+            loss=criterion(output,labels)
             loss_sum+=loss.item()
             _,index=output.max(dim=1)
 
             all_pred.extend(index.cpu().numpy())
-            all_categories.extend(categories.cpu().numpy())
+            all_labels.extend(labels.cpu().numpy())
 
     all_pred = np.array(all_pred)
-    all_categories = np.array(all_categories)
+    all_labels = np.array(all_labels)
 
     
-    accurecy = np.mean(all_pred==all_categories) *100
+    accurecy = np.mean(all_pred==all_labels) *100
     loss_avg = loss_sum / len(loader)
-    f1Score =  f1_score(all_categories,all_pred,average='weighted')
+    f1Score =  f1_score(all_labels,all_pred,average='weighted')
 
     if not pred_need:
         return accurecy,loss_avg,f1Score
     
-    return accurecy,loss_avg,f1Score,all_categories,all_pred
+    return accurecy,loss_avg,f1Score,all_labels,all_pred
 
 def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,n_classes):    
     logs=[] # metrics resualt for every epoch 
@@ -70,15 +68,13 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
     for epoch in range(n_epoch):
         loss_sum_train=0
         all_pred=[]
-        all_categories=[]
+        all_labels=[]
         model.train()
         for ind,(imgs,categories,labels) in enumerate(train_loader):
             imgs,categories,labels=imgs.to(device),categories.to(device),labels.to(device)
-            #b*12*3*224*224,  b*12*1,  b*1
-            output=model(imgs) #b,12,c
-            output=output.reshape(-1,n_classes) #-,c
-            categories=categories.reshape(-1)
-            loss=criterion(output,categories)
+            #b*1*12*3*224*224,  b*1*12*1,  b*1
+            output=model(imgs) #b,8
+            loss=criterion(output,labels)
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
@@ -87,14 +83,14 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
             _,index=output.max(dim=1)
 
             all_pred.extend(index.cpu().numpy())
-            all_categories.extend(categories.cpu().numpy())
+            all_labels.extend(labels.cpu().numpy())
             if ind%10==0:
                 print(f'in step {ind}/{len(train_loader)}, loss: {loss.item()}')
         all_pred = np.array(all_pred)
-        all_categories = np.array(all_categories)
-        accurecy_train = np.mean(all_pred==all_categories) *100
+        all_labels = np.array(all_labels)
+        accurecy_train = np.mean(all_pred==all_labels) *100
         loss_avg_train = loss_sum_train/len(train_loader)
-        f1Score_train =  f1_score(all_categories,all_pred,average='weighted')
+        f1Score_train =  f1_score(all_labels,all_pred,average='weighted')
 
         # set pred_need to false to not return labels ,pred
         accurecy_val,loss_avg_val,f1Score_val = evaluate(model,criterion,val_loader,device,False,n_classes)
@@ -126,10 +122,10 @@ def train(baseline,model,criterion,optimizer,scheduler,train_loader,val_loader,n
     df=pd.DataFrame(logs,columns=['epoch','accurecy_train','loss_avg_train','f1Score_train','accurecy_val','loss_avg_val','f1Score_val'])
     df.to_csv(f'logs/{baseline}_progress.csv',index=False,float_format='%.2f')    
 
-   # torch.save(checkpoint,f'checkpoints/{baseline}_best_model_checkpoint.pth')
+    torch.save(checkpoint,f'checkpoints/{baseline}_best_model_checkpoint.pth')
 
 
-with open('config/b3_player_classifier.yaml','r') as file:
+with open('config/b3_group_classifier.yaml','r') as file:
     conf_dict = yaml.safe_load(file)
 
 # Seed
@@ -152,24 +148,28 @@ n_epoch = conf_dict['training']['n_epoch']
 lr = conf_dict['training']['lr']
 batch_size = conf_dict['training']['batch_size']
 num_player_actions = conf_dict['model']['num_player_actions']
+num_group_actions = conf_dict['model']['num_group_actions']
 
 # DataLoaders
 #num_workers=4,pin_memory=True
-train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids,one_frame=False)
+train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids,one_frame=True)
 train_loader=DataLoader(train_dataset,batch_size=batch_size,shuffle=True,num_workers=num_workers,pin_memory=pin_memory)
 
-val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids,one_frame=False)
+val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids,one_frame=True)
 val_loader=DataLoader(val_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
-test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids,one_frame=False)
+test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids,one_frame=True)
 test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model=B3_Player_Classifier(num_player_actions)
+backbone=B3_Player_Classifier(num_player_actions)
+backbone.load_state_dict(torch.load('checkpoints/b3_player_classifier_best_model_checkpoint.pth',weights_only=True)['model_state_dict'])
+model=B3_Group_Classifier(backbone,num_player_actions,num_group_actions)
+
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
+optimizer = torch.optim.AdamW(model.classifier.parameters(), lr=lr)
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
 
 #  Kaggle use 2 GPU   
@@ -180,14 +180,14 @@ if torch.cuda.device_count() > 1:
 
 
 # Train
-train('b3_player_classifier',model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,num_player_actions)
+train('b3_group_classifier',model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,num_group_actions)
 
 
 
 # Test
 print(f"\n--- Test Results ---")
 # set pred_need = true to get labels,pred
-accurecy_test,loss_avg_test,f1Score_test,all_labels,all_pred = evaluate(model,criterion,test_loader,device,True,num_player_actions)
+accurecy_test,loss_avg_test,f1Score_test,all_labels,all_pred = evaluate(model,criterion,test_loader,device,True,num_group_actions)
 print('==========================================')
 print(f'accurecy ->{accurecy_test}')
 print(f'loss_avg ->{loss_avg_test}')
