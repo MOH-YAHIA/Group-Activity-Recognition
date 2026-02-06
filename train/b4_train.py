@@ -1,4 +1,3 @@
-
 import numpy as np
 import os
 import torch
@@ -7,9 +6,9 @@ from torch.utils.data import DataLoader
 import yaml
 from sklearn.metrics import f1_score
 import pandas as pd
-from utils.person_level_dataset import VolleyballPersonDataset
-from models.b3_group_classifier import B3_Group_Classifier
-from models.b3_player_classifier import B3_Player_Classifier
+from utils.image_level_dataset import VolleyballImageDataset
+from models.b4 import B4
+from models.b1 import B1
 
 def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
     '''
@@ -20,8 +19,8 @@ def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
     loss_sum=0
     model.eval()
     with torch.no_grad():
-        for imgs,categories,labels in loader:
-            imgs,categories,labels=imgs.to(device),categories.to(device),labels.to(device)
+        for imgs,labels in loader:
+            imgs,labels=imgs.to(device),labels.to(device)
             output=model(imgs)
             loss=criterion(output,labels)
             loss_sum+=loss.item()
@@ -45,7 +44,7 @@ def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
 
    
 
-with open('config/b3_group_classifier.yaml','r') as file:
+with open('config/b4.yaml','r') as file:
     conf_dict = yaml.safe_load(file)
 
 
@@ -64,28 +63,27 @@ pin_memory = conf_dict['training']['pin_memory']
 n_epoch = conf_dict['training']['n_epoch']
 lr = conf_dict['training']['lr']
 batch_size = conf_dict['training']['batch_size']
-num_player_actions = conf_dict['model']['num_player_actions']
 num_group_actions = conf_dict['model']['num_group_actions']
 
 # DataLoaders
 #num_workers=4,pin_memory=True
-train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids,one_frame=True)
+train_dataset=VolleyballImageDataset(videos_root,annot_root,train_ids,one_frame=False)
 train_loader=DataLoader(train_dataset,batch_size=batch_size,shuffle=True,num_workers=num_workers,pin_memory=pin_memory)
 
-val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids,one_frame=True)
+val_dataset=VolleyballImageDataset(videos_root,annot_root,val_ids,one_frame=False)
 val_loader=DataLoader(val_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
-test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids,one_frame=True)
+test_dataset=VolleyballImageDataset(videos_root,annot_root,test_ids,one_frame=False)
 test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-backbone=B3_Player_Classifier(num_player_actions)
-backbone.load_state_dict(torch.load('checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
-model=B3_Group_Classifier(backbone,num_player_actions,num_group_actions)
+backbone=B1(num_group_actions)
+backbone.load_state_dict(torch.load('checkpoints/B1_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+model=B4(backbone,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.AdamW(model.classifier.parameters(), lr=lr)
+optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
 
 #  Kaggle use 2 GPU   
@@ -113,10 +111,10 @@ for epoch in range(n_epoch):
     all_labels=[]
     model.train()
     model.backbone.eval()
-    for ind,(imgs,categories,labels) in enumerate(train_loader):
-        imgs,categories,labels=imgs.to(device),categories.to(device),labels.to(device)
-        #b*F*12*3*224*224,  b*F*12*1,  b*1
-        output=model(imgs) #B*F,8
+    for ind,(imgs,labels) in enumerate(train_loader):
+        imgs,labels=imgs.to(device),labels.to(device)
+        #b*9*3*224*224,  b*1
+        output=model(imgs) #B,8
         loss=criterion(output,labels)
         optimizer.zero_grad()
         loss.backward()
@@ -129,6 +127,7 @@ for epoch in range(n_epoch):
         all_labels.extend(labels.cpu().numpy())
         if ind%10==0:
             print(f'in step {ind}/{len(train_loader)}, loss: {loss.item()}')
+
     all_pred = np.array(all_pred)
     all_labels = np.array(all_labels)
     accurecy_train = np.mean(all_pred==all_labels) *100
@@ -162,7 +161,7 @@ if isinstance(model, torch.nn.DataParallel):
 else:
     model.load_state_dict(checkpoint['model_state_dict'])
 os.makedirs('checkpoints',exist_ok=True)
-torch.save(checkpoint,f'checkpoints/b3_group_classifier_best_model_checkpoint.pth')
+#torch.save(checkpoint,f'checkpoints/b4_best_model_checkpoint.pth')
 
 
 # Test

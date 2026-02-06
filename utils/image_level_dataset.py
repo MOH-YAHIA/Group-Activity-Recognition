@@ -7,8 +7,9 @@ import torchvision.transforms as transforms
 from utils.volleyball_annot_loader import load_volleyball_dataset
 
 class VolleyballImageDataset(Dataset):
-    def __init__(self,videos_root,annot_root,allowed_ids):
+    def __init__(self,videos_root,annot_root,allowed_ids,one_frame):
         self.videos_root=videos_root
+        self.one_frame=one_frame
         # we will use resnet50 witch trained on data with these statstics 
         self.preprocess = transforms.Compose([
             transforms.Resize((256, 256)),
@@ -45,17 +46,27 @@ class VolleyballImageDataset(Dataset):
     # we work in image level, for each clip we need middle frame with clip label 
     def __getitem__(self, index):
         item=self.samples[index]
-        middle_frame_key=list(item['frame_boxes_dct'].keys())[4] # 9 frames -> middle = index 4
-        middle_frame_path=os.path.join(self.videos_root,item['video_id'],item['clip_id'],f'{middle_frame_key}.jpg')
-        
-        # JPEG files are not all created equal. depending on how they were saved, .jpg can be: RGB, grayscale
-        # By calling .convert('RGB'), we enforce a shape invariant. it ensures that every single tensor that enters your model has exactly 3 channels
-        img=Image.open(middle_frame_path).convert('RGB')
-        img=self.preprocess(img) #return tensor 
+        frames=[]
+        def get_frame(video_id,clip_id,frame_id):
+            frame_path=os.path.join(self.videos_root,video_id,clip_id,f'{frame_id}.jpg')
+            # JPEG files are not all created equal. depending on how they were saved, .jpg can be: RGB, grayscale
+            # By calling .convert('RGB'), we enforce a shape invariant. it ensures that every single tensor that enters your model has exactly 3 channels
+            frame=Image.open(frame_path).convert('RGB')
+            frame=self.preprocess(frame) #return tensor 
 
+            frames.append(frame)
+
+        if self.one_frame:
+            middle_frame_id=list(item['frame_boxes_dct'].keys())[4] # 9 frames -> middle = index 4
+            get_frame(item['video_id'],item['clip_id'],middle_frame_id)
+        else:
+            for frame_id,_ in item['frame_boxes_dct'].items():
+                get_frame(item['video_id'],item['clip_id'],frame_id)
+
+        frames=torch.stack(frames)        
         label=torch.tensor(self.team_action_dct[item['category']])
 
-        return img,label
+        return frames,label
     
  
 # annot_root=r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\sample data\volleyball_tracking_annotation"
