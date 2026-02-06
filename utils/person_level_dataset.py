@@ -52,11 +52,11 @@ class VolleyballPersonDataset(Dataset):
     # category for group in the whole clip  1
     def __getitem__(self, index):
         item=self.samples[index]
-        
         frames=[]
         categories=[]
-        for frame_id,frame_boxes in item['frame_boxes_dct'].items():
-            img_path = os.path.join(self.videos_root,item['video_id'],item['clip_id'],f'{str(frame_id)}.jpg')
+
+        def crop_fun(video_id,clip_id,frame_id,frame_boxes):
+            img_path = os.path.join(self.videos_root,video_id,clip_id,f'{str(frame_id)}.jpg')
             img = Image.open(img_path).convert('RGB')
             cropped_boxes=[] 
             players_category=[]
@@ -81,13 +81,16 @@ class VolleyballPersonDataset(Dataset):
             frames.append(torch.stack(cropped_boxes)) 
             categories.append(torch.tensor(players_category))
         
+        if self.one_frame:
+            crop_fun(item['video_id'],item['clip_id'],list(item['frame_boxes_dct'].keys())[4],list(item['frame_boxes_dct'].values())[4])
+        else:
+            for frame_id,frame_boxes in item['frame_boxes_dct'].items():
+                crop_fun(item['video_id'],item['clip_id'],frame_id,frame_boxes)
+
         frames = torch.stack(frames) # 9*12*3*224*224
         categories = torch.stack(categories) # 9*12
         label = torch.tensor(self.team_action_dct[item['category']]) 
-        # if one frame needed , take the middel frame index = 4
-        if self.one_frame:
-            frames, categories = frames[4] , categories[4]
-            frames, categories = frames.view(1,12,3,224,224), categories.view(1,12)
+
         return frames, categories, label
 
 

@@ -5,15 +5,24 @@ import torchvision.models as models
 class B3_Group_Classifier(nn.Module):
     def __init__(self,backbone,num_player_actions,num_group_actions):
         super(B3_Group_Classifier,self).__init__()
-        self.backbone=backbone
+        self.backbone=nn.Sequential(*list(backbone.resnet.children())[:-1])
         for param in self.backbone.parameters():
             param.requires_grad = False
-        self.classifier=nn.Linear(num_player_actions,num_group_actions)
+        self.classifier=nn.Sequential(
+            nn.Linear(2048,512),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(512,num_group_actions)
+        )
+
     def forward(self,X):
         # X -> B,1,12,3,224,224
         B,F,P,C,W,H=X.shape
-        X=self.backbone(X) #B,F,P,9
-        X=X.view(B*F,P,9) 
-        X,_=X.max(dim=1) #B,9
+        X=X.view(B*F*P,C,W,H)
+        X=self.backbone(X) #B*F*P,2048,1,1
+        X=torch.flatten(X,1) #B*F*P,2048
+        X=X.view(B*F,P,-1)
+        X,_=X.max(dim=1) #B*F,2048
 
-        return self.classifier(X) #B,8
+        return self.classifier(X) #B*F,8
+    
