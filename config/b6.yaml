@@ -10,7 +10,7 @@ splits:
   test_ids: ['4','5','9','11','14','20','21','25','29','34','35','37','43','44','45','47']
 
 model:
-  arch: "Resnet50 +  LSTM over players  + pool over the players + classifier"  
+  arch: "Resnet50 + Pool over players + LSTM over frames  + classifier"  
   num_group_actions: 8
   num_player_actions: 9
 

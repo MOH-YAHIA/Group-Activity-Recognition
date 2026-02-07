@@ -7,7 +7,7 @@ import yaml
 from sklearn.metrics import f1_score
 import pandas as pd
 from utils.person_level_dataset import VolleyballPersonDataset
-from models.b5 import B5
+from models.b6 import B6
 from models.b3_player_classifier import B3_Player_Classifier
 
 def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
@@ -44,7 +44,7 @@ def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
 
    
 
-with open('config/b5.yaml','r') as file:
+with open('config/b6.yaml','r') as file:
     conf_dict = yaml.safe_load(file)
 
 
@@ -80,7 +80,7 @@ test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_work
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 backbone=B3_Player_Classifier(num_player_actions)
 backbone.load_state_dict(torch.load('checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
-model=B5(backbone,num_group_actions)
+model=B6(backbone,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
@@ -104,8 +104,7 @@ def update_checkpint(epoch):
     'epoch': epoch,
     'best_loss': best_loss
     }
-    #torch.save(checkpoint,f'checkpoints/b5_best_model_checkpoint.pth')
-
+    #torch.save(checkpoint,f'checkpoints/b6_best_model_checkpoint.pth')
 # Train
 for epoch in range(n_epoch):
     loss_sum_train=0
