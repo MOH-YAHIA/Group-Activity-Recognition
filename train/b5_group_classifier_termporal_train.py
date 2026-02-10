@@ -8,6 +8,8 @@ from sklearn.metrics import f1_score
 import pandas as pd
 from utils.person_level_dataset import VolleyballPersonDataset
 from models.b5_player_classifier_temporal import B5_Player_Classifier_Temporal
+from models.b5_group_classifier_temporal import B5_Group_Classifier_Temporal
+
 from models.b3_player_classifier import B3_Player_Classifier
 
 def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
@@ -21,8 +23,7 @@ def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
     with torch.no_grad():
         for imgs,categories,labels in loader:
             imgs,categories,labels=imgs.to(device),categories.to(device),labels.to(device)
-            output=model(imgs).view(-1,9) #B*12,9
-            labels=categories[:,0,:].view(-1) #B*12
+            output=model(imgs)
             loss=criterion(output,labels)
             loss_sum+=loss.item()
             _,index=output.max(dim=1)
@@ -45,7 +46,7 @@ def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
 
    
 
-with open('config/b5_player_classifier_temporal.yaml','r') as file:
+with open('config/b5_group_classifier_temporal.yaml','r') as file:
     conf_dict = yaml.safe_load(file)
 
 
@@ -79,9 +80,14 @@ test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_work
 
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-backbone=B3_Player_Classifier(num_player_actions)
-backbone.load_state_dict(torch.load('checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
-model=B5_Player_Classifier_Temporal(backbone,num_player_actions)
+
+backbone_inner=B3_Player_Classifier(num_player_actions)
+backbone_inner.load_state_dict(torch.load('checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+
+backbone_outer=B5_Player_Classifier_Temporal(backbone_inner,num_player_actions)
+backbone_outer.load_state_dict(torch.load('checkpoints/b5_player_classifier_temporal_best_model_checkpoint_sample_test.pth',map_location=device,weights_only=True)['model_state_dict'])
+
+model=B5_Group_Classifier_Temporal(backbone_outer,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
@@ -105,7 +111,7 @@ def update_checkpint(epoch):
     'epoch': epoch,
     'best_loss': best_loss
     }
-    torch.save(checkpoint,f'checkpoints/b5_player_classifier_temporal_best_model_checkpoint_sample_test.pth')
+    #torch.save(checkpoint,f'checkpoints/b5_group_classifier_temporal_best_model_checkpoint_sample_test.pth')
 
 # Train
 for epoch in range(n_epoch):
@@ -114,11 +120,11 @@ for epoch in range(n_epoch):
     all_labels=[]
     model.train()
     model.backbone.eval()
+    model.lstm.eval()
     for ind,(imgs,categories,labels) in enumerate(train_loader):
         imgs,categories,labels=imgs.to(device),categories.to(device),labels.to(device)
         #b,f,12,3,224,224, b,f,12, b*1
-        output=model(imgs).view(-1,9) #B*12,9
-        labels=categories[:,0,:].view(-1) #B*12
+        output=model(imgs) #b,8
         loss=criterion(output,labels)
         optimizer.zero_grad()
         loss.backward()

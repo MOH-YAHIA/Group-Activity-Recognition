@@ -7,7 +7,7 @@ class B5_Player_Classifier_Temporal(nn.Module):
         super(B5_Player_Classifier_Temporal,self).__init__()
         self.backbone=nn.Sequential(*list(backbone.resnet.children())[:-1])
         for parm in self.backbone.parameters():
-            parm.require_grad = False
+            parm.requires_grad = False
         self.lstm=nn.LSTM(input_size=2048,hidden_size=512,num_layers=1,batch_first=True)
         self.classifier=nn.Linear(512,n_player_actions)
 
