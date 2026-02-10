@@ -82,7 +82,6 @@ test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_work
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 backbone_inner=B3_Player_Classifier(num_player_actions)
-backbone_inner.load_state_dict(torch.load('checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 
 backbone_outer=B5_Player_Classifier_Temporal(backbone_inner,num_player_actions)
 backbone_outer.load_state_dict(torch.load('checkpoints/b5_player_classifier_temporal_best_model_checkpoint_sample_test.pth',map_location=device,weights_only=True)['model_state_dict'])
