@@ -100,6 +100,7 @@ if torch.cuda.device_count() > 1:
 os.makedirs('checkpoints',exist_ok=True)
 checkpoint={} # best checkpoint
 best_loss=float('inf') 
+no_update=0
 def update_checkpint(epoch):
     global checkpoint
     checkpoint = {
@@ -134,7 +135,7 @@ for epoch in range(n_epoch):
         all_pred.extend(index.cpu().numpy())
         all_labels.extend(labels.cpu().numpy())
         if ind%10==0:
-            print(f'for epoch {epoch} in step {ind}/{len(train_loader)}, loss: {loss.item()}')
+            print(f'for epoch {epoch+1} in step {ind}/{len(train_loader)}, loss: {loss.item()}')
 
     all_pred = np.array(all_pred)
     all_labels = np.array(all_labels)
@@ -161,7 +162,14 @@ for epoch in range(n_epoch):
     if loss_avg_val < best_loss:
         update_checkpint(epoch+1)
         best_loss = loss_avg_val
+        no_update = 0
         print(f"New Best Model found at epoch {epoch+1}\n")
+    else:
+        no_update+=1
+    
+    if no_update>2:
+        print(f"Early stopping triggered at epoch {epoch+1}")
+        break
 
 print(f"The best model at epoch {checkpoint['epoch']}")
 
