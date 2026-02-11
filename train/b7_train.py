@@ -7,10 +7,9 @@ import yaml
 from sklearn.metrics import f1_score
 import pandas as pd
 from utils.person_level_dataset import VolleyballPersonDataset
-from models.b5_player_classifier_temporal import B5_Player_Classifier_Temporal
-from models.b5_group_classifier_temporal import B5_Group_Classifier_Temporal
-
 from models.b3_player_classifier import B3_Player_Classifier
+from models.b5_player_classifier_temporal import B5_Player_Classifier_Temporal
+from models.b7 import B7
 
 def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
     '''
@@ -46,7 +45,7 @@ def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
 
    
 
-with open('config/b5_group_classifier_temporal.yaml','r') as file:
+with open('config/b7.yaml','r') as file:
     conf_dict = yaml.safe_load(file)
 
 
@@ -86,7 +85,7 @@ backbone_inner=B3_Player_Classifier(num_player_actions)
 backbone_outer=B5_Player_Classifier_Temporal(backbone_inner,num_player_actions)
 backbone_outer.load_state_dict(torch.load('checkpoints/b5_player_classifier_temporal_best_model_checkpoint_sample_test.pth',map_location=device,weights_only=True)['model_state_dict'])
 
-model=B5_Group_Classifier_Temporal(backbone_outer,num_group_actions)
+model=B7(backbone_outer,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
@@ -110,7 +109,7 @@ def update_checkpint(epoch):
     'epoch': epoch,
     'best_loss': best_loss
     }
-    #torch.save(checkpoint,f'checkpoints/b5_group_classifier_temporal_best_model_checkpoint_sample_test.pth')
+    #torch.save(checkpoint,f'checkpoints/b7_best_model_checkpoint_sample_test.pth')
 
 # Train
 for epoch in range(n_epoch):
