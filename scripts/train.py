@@ -47,7 +47,7 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
             all_labels.extend(labels.cpu().numpy())
 
             if ind%ind_step==0:
-                logger.info(f'for epoch {epoch+1} in step {ind+1}/{len(train_loader)}, loss: {loss.item()}')
+                logger.info(f'Epoch [{epoch+1}/{n_epoch}] | Step [{ind+1}/{len(train_loader)}] | Loss: {loss.item():0.4f}')
 
         all_pred = np.array(all_pred)
         all_labels = np.array(all_labels)
@@ -55,22 +55,20 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         accurecy_train = np.mean(all_pred==all_labels) *100
         f1Score_train =  f1_score(all_labels,all_pred,average='weighted') *100
 
-        logger.info(f"epoch {epoch+1}/{n_epoch}")
-        logger.info("Train Resault")
-        logger.info(f'loss_avg ->{loss_avg_train}')
-        logger.info(f'accurecy ->{accurecy_train}')
-        logger.info(f'f1-score ->{f1Score_train}')
-        logger.info('==========================================')
-        logger.info("Validation Resault")
-
+        logger.info("Train")
+        logger.info(f'Loss  : {loss_avg_train:.4f}')
+        logger.info(f'ACC % : {accurecy_train:.4f}')
+        logger.info(f'F1 %  : {f1Score_train:.4f}')
+ 
+        logger.info("Validation")
         # set pred_need to false to not return labels,pred
         accurecy_val,loss_avg_val,f1Score_val = evaluate(model,criterion,val_loader,device,False)
         scheduler.step(loss_avg_val) # step based on avg loss in valdiation data
 
 
-        logger.info(f'loss_avg ->{loss_avg_val}')
-        logger.info(f'accurecy ->{accurecy_val}')
-        logger.info(f'f1-score ->{f1Score_val}\n')
+        logger.info(f'Loss  : {loss_avg_val:.4f}')
+        logger.info(f'ACC % : {accurecy_val:.4f}')
+        logger.info(f'F1 %  : {f1Score_val:.4f}\n')
 
         if loss_avg_val < best_loss:
             update_checkpint(epoch+1)
@@ -81,7 +79,7 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
             no_update+=1
         
         if no_update>2:
-            logger.warning(f"Early stopping triggered at epoch {epoch+1}")
+            logger.warning(f"Early stopping triggered at epoch {epoch+1}\n")
             break
 
 

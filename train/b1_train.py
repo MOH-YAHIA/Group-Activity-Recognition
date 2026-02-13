@@ -65,13 +65,12 @@ train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device
 
 
 # Test
-logger.info(f"--- Test Results ---")
+logger.info(f"Test")
 # set pred_need = true to get labels,pred
 accurecy_test,loss_avg_test,f1Score_test,all_labels,all_pred = evaluate(model,criterion,test_loader,device,True)
-logger.info('==========================================')
-logger.info(f'loss_avg ->{loss_avg_test}')
-logger.info(f'accurecy ->{accurecy_test}')
-logger.info(f'f1-score ->{f1Score_test}\n')
+logger.info(f'Loss  : {loss_avg_test:.4f}')
+logger.info(f'ACC % : {accurecy_test:.4f}')
+logger.info(f'F1 %  : {f1Score_test:.4f}\n')
         
 os.makedirs('outputs/B1',exist_ok=True)
 output_path='outputs/B1'

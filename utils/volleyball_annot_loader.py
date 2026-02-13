@@ -84,7 +84,7 @@ def load_volleyball_dataset(videos_root, annot_root):
     # check for preloaded annotations
     annot_path=os.path.join('data','video_annot.pth')
     if os.path.exists(annot_path):
-        logger.info(f"Loading cached annotations from {annot_path}...")
+        logger.info(f"Loading cached annotations from {annot_path}")
         videos_annot=torch.load(annot_path,weights_only=False)
         return videos_annot
     
@@ -132,7 +132,7 @@ def load_volleyball_dataset(videos_root, annot_root):
         videos_annot[video_dir] = clip_annot
     if not os.path.exists('data'):
         os.mkdir('data')
-    logger.info(f"Saving processed annotations to {annot_path}...")
+    logger.info(f"Saving processed annotations to {annot_path}")
     torch.save(videos_annot,annot_path)
     return videos_annot
 

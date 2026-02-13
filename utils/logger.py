@@ -14,6 +14,6 @@ def setup_logger(output_path):
     root.addHandler(console)
 
     # File Output
-    file_log = logging.FileHandler(output_path)
+    file_log = logging.FileHandler(output_path,mode='w')
     file_log.setFormatter(log_format)
     root.addHandler(file_log)
