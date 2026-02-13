@@ -22,7 +22,9 @@ training:
   batch_size: 1
   optimizer: "AdamW"
   criterion: "CrossEntropyLoss"
-
+  player_labels_weight: {'jumping': 17.83, 'falling': 5.15, 'setting': 4.83, 
+                         'spiking': 4.82, 'digging': 2.69, 'blocking': 2.12, 
+                         'waiting': 1.76, 'moving': 1.24, 'standing': 0.16}
 scheduler:
   type: "ReduceLROnPlateau"
   mode: "min"

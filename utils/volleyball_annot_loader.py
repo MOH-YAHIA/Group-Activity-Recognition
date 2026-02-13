@@ -4,11 +4,16 @@ from utils.boxinfo import BoxInfo
 import torch
 
 def load_tracking_annot(path):
+    '''
+        get the annotation for the players in all frames in this clip
+        path: clip annotaion path
+    '''
     with open(path, 'r') as file:
         player_boxes = {idx:[] for idx in range(12)} #12 players
         frame_boxes_dct = {}
         for idx, line in enumerate(file):
             box_info = BoxInfo(line)
+            # may be more than 12 player in the clip -> ignore
             if box_info.player_ID > 11:
                 continue
             player_boxes[box_info.player_ID].append(box_info)
@@ -51,6 +56,9 @@ def vis_clip(annot_path, video_dir):
 
 
 def load_video_annot(video_annot):
+    '''
+        get the category for each clip in video dir
+    '''
     with open(video_annot, 'r') as file:
         clip_category_dct = {}
         for line in file:
@@ -67,6 +75,10 @@ def load_video_annot(video_annot):
 
 
 def load_volleyball_dataset(videos_root, annot_root):
+    # videos_root -> videos
+    # annot_root -> volleyball_tracking_annotation
+
+    # check for preloaded annotations
     annot_path=os.path.join('data','video_annot.pth')
     if os.path.exists(annot_path):
         print(f"Loading cached annotations from {annot_path}...")
@@ -82,7 +94,7 @@ def load_volleyball_dataset(videos_root, annot_root):
     for idx, video_dir in enumerate(videos_dirs):
         video_dir_path = os.path.join(videos_root, video_dir)
 
-        if not os.path.isdir(video_dir_path): #in case there is file not folder as 'readmed.txt'
+        if not os.path.isdir(video_dir_path): #in case there is file not folder as 'readme.txt'
             continue
 
         print(f'{idx}/{len(videos_dirs)} - Processing Dir {video_dir_path}')
@@ -137,16 +149,6 @@ videos_annot look like
 '''
 
 
-
-
-# annot_root=r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\sample data\volleyball_tracking_annotation"
-# videos_root=r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\videos_g10"
-
-# annot_file_path_sample = r"D:\track\Deep learning\cskill\slides\05 Volleyball Project\sample data\volleyball_tracking_annotation\7\38025\38025.txt"
-# clip_dir_path_sample = os.path.dirname(annot_file_path_sample).replace('volleyball_tracking_annotation', 'videos_sample') #get the folder path -> replace 
-
-#vis_clip(annot_file_path_sample,clip_dir_path_sample)
-# videos_annot=load_volleyball_dataset(videos_root,annot_root)
 
 # for video_id,clips in videos_annot.items():
 #     print(video_id)

@@ -4,13 +4,17 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import yaml
+import logging
 from sklearn.metrics import f1_score
 import pandas as pd
 from utils.person_level_dataset import VolleyballPersonDataset
+from utils.logger import setup_logger
 from models.b3_player_classifier import B3_Player_Classifier
 from models.b5_player_classifier_temporal import B5_Player_Classifier_Temporal
 from models.b7 import B7
 
+setup_logger()
+logger = logging.getLogger(__name__)
 def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
     '''
     pred_need (bool): return labels and pred
@@ -93,7 +97,7 @@ scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict
 
 #  Kaggle use 2 GPU   
 if torch.cuda.device_count() > 1:
-    print(f"🚀 Using {torch.cuda.device_count()} GPUs!")
+    logger.info("🚀 Using %d GPUs!",torch.cuda.device_count())
     # This is the "Magic" line for T4 x2
     model = nn.DataParallel(model)
 
@@ -118,8 +122,8 @@ for epoch in range(n_epoch):
     all_pred=[]
     all_labels=[]
     model.train()
-    #model.backbone.eval()
-    #model.lstm.eval()
+    model.backbone.eval()
+    model.lstm1.eval()
     for ind,(imgs,categories,labels) in enumerate(train_loader):
         imgs,categories,labels=imgs.to(device),categories.to(device),labels.to(device)
         #b,f,12,3,224,224, b,f,12, b*1
@@ -135,7 +139,7 @@ for epoch in range(n_epoch):
         all_pred.extend(index.cpu().numpy())
         all_labels.extend(labels.cpu().numpy())
         if ind%10==0:
-            print(f'for epoch {epoch+1} in step {ind}/{len(train_loader)}, loss: {loss.item()}')
+            logger.info(f'for epoch {epoch+1} in step {ind}/{len(train_loader)}, loss: {loss.item()}')
 
     all_pred = np.array(all_pred)
     all_labels = np.array(all_labels)
@@ -148,41 +152,41 @@ for epoch in range(n_epoch):
     
     scheduler.step(loss_avg_val) # step based on avg loss in valdiation data
 
-    print(f"\nepoch {epoch+1}/{n_epoch}")
-    print("Train Resault")
-    print(f'accurecy ->{accurecy_train}')
-    print(f'loss_avg ->{loss_avg_train}')
-    print(f'f1-score ->{f1Score_train}')
-    print('==========================================')
-    print("Validation Resault")
-    print(f'accurecy ->{accurecy_val}')
-    print(f'loss_avg ->{loss_avg_val}')
-    print(f'f1-score ->{f1Score_val}\n')
+    logger.info(f"\nepoch {epoch+1}/{n_epoch}")
+    logger.info("Train Resault")
+    logger.info(f'accurecy ->{accurecy_train}')
+    logger.info(f'loss_avg ->{loss_avg_train}')
+    logger.info(f'f1-score ->{f1Score_train}')
+    logger.info('==========================================')
+    logger.info("Validation Resault")
+    logger.info(f'accurecy ->{accurecy_val}')
+    logger.info(f'loss_avg ->{loss_avg_val}')
+    logger.info(f'f1-score ->{f1Score_val}\n')
 
     if loss_avg_val < best_loss:
         update_checkpint(epoch+1)
         best_loss = loss_avg_val
         no_update = 0
-        print(f"New Best Model found at epoch {epoch+1}\n")
+        logger.info(f"New Best Model found at epoch {epoch+1}\n")
     else:
         no_update+=1
     
     if no_update>2:
-        print(f"Early stopping triggered at epoch {epoch+1}")
+        logger.info(f"Early stopping triggered at epoch {epoch+1}")
         break
 
-print(f"The best model at epoch {checkpoint['epoch']}")
+logger.info(f"The best model at epoch {checkpoint['epoch']}")
 
 
 
 
 
 # Test
-print(f"\n--- Test Results ---")
+logger.info(f"\n--- Test Results ---")
 # set pred_need = true to get labels,pred
 accurecy_test,loss_avg_test,f1Score_test,all_labels,all_pred = evaluate(model,criterion,test_loader,device,True)
-print('==========================================')
-print(f'accurecy ->{accurecy_test}')
-print(f'loss_avg ->{loss_avg_test}')
-print(f'f1-score ->{f1Score_test}\n')
+logger.info('==========================================')
+logger.info(f'accurecy ->{accurecy_test}')
+logger.info(f'loss_avg ->{loss_avg_test}')
+logger.info(f'f1-score ->{f1Score_test}\n')
         
