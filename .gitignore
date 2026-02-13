@@ -1,6 +1,6 @@
 data/
 __pycache__/
-test.py
+test*
 outputs/**/*.pth
 checkpoints/
 .vscode/

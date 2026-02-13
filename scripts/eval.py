@@ -27,7 +27,7 @@ def evaluate(model,criterion,loader,device,pred_need):
     
     accurecy = np.mean(all_pred==all_labels) *100
     loss_avg = loss_sum / len(loader)
-    f1Score =  f1_score(all_labels,all_pred,average='weighted')
+    f1Score =  f1_score(all_labels,all_pred,average='weighted') *100
 
     if not pred_need:
         return accurecy,loss_avg,f1Score

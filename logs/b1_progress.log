@@ -1,0 +1,71 @@
+16:53:44 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth...
+16:53:44 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth...
+16:53:45 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth...
+16:53:48 | [train.py] | INFO: for epoch 1 in step 1/70, loss: 2.109466552734375
+16:53:49 | [train.py] | INFO: for epoch 1 in step 11/70, loss: 1.9175901412963867
+16:53:50 | [train.py] | INFO: for epoch 1 in step 21/70, loss: 2.1130690574645996
+16:53:51 | [train.py] | INFO: for epoch 1 in step 31/70, loss: 1.641879677772522
+16:53:52 | [train.py] | INFO: for epoch 1 in step 41/70, loss: 2.0535941123962402
+16:53:53 | [train.py] | INFO: for epoch 1 in step 51/70, loss: 2.087249755859375
+16:53:54 | [train.py] | INFO: for epoch 1 in step 61/70, loss: 2.001593828201294
+16:53:54 | [train.py] | INFO: epoch 1/3
+16:53:54 | [train.py] | INFO: Train Resault
+16:53:54 | [train.py] | INFO: loss_avg ->2.0703541023390635
+16:53:54 | [train.py] | INFO: accurecy ->15.714285714285714
+16:53:54 | [train.py] | INFO: f1-score ->8.027210884353742
+16:53:54 | [train.py] | INFO: ==========================================
+16:53:54 | [train.py] | INFO: Validation Resault
+16:54:00 | [train.py] | INFO: loss_avg ->2.0585380801787743
+16:54:00 | [train.py] | INFO: accurecy ->17.692307692307693
+16:54:00 | [train.py] | INFO: f1-score ->5.319255907491201
+
+16:54:00 | [train.py] | INFO: New Best Model found at epoch 1
+
+16:54:00 | [train.py] | INFO: for epoch 2 in step 1/70, loss: 2.0835018157958984
+16:54:01 | [train.py] | INFO: for epoch 2 in step 11/70, loss: 2.1178247928619385
+16:54:02 | [train.py] | INFO: for epoch 2 in step 21/70, loss: 1.683232307434082
+16:54:03 | [train.py] | INFO: for epoch 2 in step 31/70, loss: 2.222182035446167
+16:54:04 | [train.py] | INFO: for epoch 2 in step 41/70, loss: 2.532078742980957
+16:54:05 | [train.py] | INFO: for epoch 2 in step 51/70, loss: 1.7760117053985596
+16:54:06 | [train.py] | INFO: for epoch 2 in step 61/70, loss: 2.273360252380371
+16:54:07 | [train.py] | INFO: epoch 2/3
+16:54:07 | [train.py] | INFO: Train Resault
+16:54:07 | [train.py] | INFO: loss_avg ->2.050520203794752
+16:54:07 | [train.py] | INFO: accurecy ->21.428571428571427
+16:54:07 | [train.py] | INFO: f1-score ->9.499698613622662
+16:54:07 | [train.py] | INFO: ==========================================
+16:54:07 | [train.py] | INFO: Validation Resault
+16:54:12 | [train.py] | INFO: loss_avg ->2.050819904070634
+16:54:12 | [train.py] | INFO: accurecy ->19.230769230769234
+16:54:12 | [train.py] | INFO: f1-score ->10.072166639330819
+
+16:54:13 | [train.py] | INFO: New Best Model found at epoch 2
+
+16:54:13 | [train.py] | INFO: for epoch 3 in step 1/70, loss: 2.23203444480896
+16:54:14 | [train.py] | INFO: for epoch 3 in step 11/70, loss: 2.422395706176758
+16:54:15 | [train.py] | INFO: for epoch 3 in step 21/70, loss: 2.1400623321533203
+16:54:16 | [train.py] | INFO: for epoch 3 in step 31/70, loss: 2.2318990230560303
+16:54:17 | [train.py] | INFO: for epoch 3 in step 41/70, loss: 2.3223657608032227
+16:54:18 | [train.py] | INFO: for epoch 3 in step 51/70, loss: 1.9035204648971558
+16:54:18 | [train.py] | INFO: for epoch 3 in step 61/70, loss: 1.7228467464447021
+16:54:19 | [train.py] | INFO: epoch 3/3
+16:54:19 | [train.py] | INFO: Train Resault
+16:54:19 | [train.py] | INFO: loss_avg ->2.0296812636511667
+16:54:19 | [train.py] | INFO: accurecy ->15.714285714285714
+16:54:19 | [train.py] | INFO: f1-score ->8.702090592334494
+16:54:19 | [train.py] | INFO: ==========================================
+16:54:19 | [train.py] | INFO: Validation Resault
+16:54:24 | [train.py] | INFO: loss_avg ->2.0406483870286207
+16:54:24 | [train.py] | INFO: accurecy ->16.923076923076923
+16:54:24 | [train.py] | INFO: f1-score ->6.269055145767473
+
+16:54:25 | [train.py] | INFO: New Best Model found at epoch 3
+
+16:54:25 | [b1_train.py] | INFO: --- Test Results ---
+16:54:32 | [b1_train.py] | INFO: ==========================================
+16:54:32 | [b1_train.py] | INFO: loss_avg ->2.051885691739745
+16:54:32 | [b1_train.py] | INFO: accurecy ->18.64406779661017
+16:54:32 | [b1_train.py] | INFO: f1-score ->9.162682891496452
+
+16:54:32 | [b1_train.py] | INFO: Create Report in outputs/B1
+16:54:32 | [b1_train.py] | INFO: Create confusion_matrix in outputs/B1

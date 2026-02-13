@@ -6,9 +6,9 @@ import torchvision.transforms as transforms
 from utils.base_dataset import BaseDataset
 
 class VolleyballPersonDataset(BaseDataset):
-    def __init__(self,videos_root,annot_root,allowed_ids,one_frame=False):
+    def __init__(self,videos_root,annot_root,allowed_ids,one_frame,player_label):
         super().__init__(videos_root,annot_root,allowed_ids,one_frame)
-
+        self.player_label=player_label
         self.preprocess = transforms.Compose([
             #we will clip each frame, no need for center clip
             transforms.Resize((224, 224)),
@@ -68,6 +68,8 @@ class VolleyballPersonDataset(BaseDataset):
         categories = torch.stack(categories) # 9*12
         label = torch.tensor(self.team_action_dct[item['category']]) 
 
+        if not self.player_label:
+            return frames,label
         return frames, categories, label
 
 

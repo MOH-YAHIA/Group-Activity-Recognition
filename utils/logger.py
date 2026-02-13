@@ -1,6 +1,6 @@
 import logging
 
-def setup_logger(output_path=''):
+def setup_logger(output_path):
     
     # Configure Root Logger
     log_format = logging.Formatter('%(asctime)s | [%(filename)s] | %(levelname)s: %(message)s', '%H:%M:%S')
@@ -14,6 +14,6 @@ def setup_logger(output_path=''):
     root.addHandler(console)
 
     # File Output
-  #  file_log = logging.FileHandler(output_path)
-   # file_log.setFormatter(log_format)
-   # root.addHandler(file_log)
+    file_log = logging.FileHandler(output_path)
+    file_log.setFormatter(log_format)
+    root.addHandler(file_log)

@@ -2,6 +2,9 @@ import os
 import cv2
 from utils.boxinfo import BoxInfo
 import torch
+import logging
+
+logger = logging.getLogger(__name__)
 
 def load_tracking_annot(path):
     '''
@@ -81,7 +84,7 @@ def load_volleyball_dataset(videos_root, annot_root):
     # check for preloaded annotations
     annot_path=os.path.join('data','video_annot.pth')
     if os.path.exists(annot_path):
-        print(f"Loading cached annotations from {annot_path}...")
+        logger.info(f"Loading cached annotations from {annot_path}...")
         videos_annot=torch.load(annot_path,weights_only=False)
         return videos_annot
     
@@ -95,9 +98,10 @@ def load_volleyball_dataset(videos_root, annot_root):
         video_dir_path = os.path.join(videos_root, video_dir)
 
         if not os.path.isdir(video_dir_path): #in case there is file not folder as 'readme.txt'
+            logger.debug("Skipping non-dir: %s", video_dir) # Low-level noise
             continue
 
-        print(f'{idx}/{len(videos_dirs)} - Processing Dir {video_dir_path}')
+        logger.info(f'{idx}/{len(videos_dirs)} - Processing Dir {video_dir_path}')
 
         video_annot_path = os.path.join(video_dir_path, 'annotations.txt')
         clip_category_dct = load_video_annot(video_annot_path)
@@ -113,7 +117,7 @@ def load_volleyball_dataset(videos_root, annot_root):
             if not os.path.isdir(clip_dir_path):
                 continue
 
-            #print(f'\t{clip_dir_path}')
+            #logger.info(f'\t{clip_dir_path}')
             assert clip_dir in clip_category_dct
 
             annot_file = os.path.join(annot_root, video_dir, clip_dir, f'{clip_dir}.txt')
@@ -128,7 +132,7 @@ def load_volleyball_dataset(videos_root, annot_root):
         videos_annot[video_dir] = clip_annot
     if not os.path.exists('data'):
         os.mkdir('data')
-    print(f"Saving processed annotations to {annot_path}...")
+    logger.info(f"Saving processed annotations to {annot_path}...")
     torch.save(videos_annot,annot_path)
     return videos_annot
 
@@ -151,9 +155,9 @@ videos_annot look like
 
 
 # for video_id,clips in videos_annot.items():
-#     print(video_id)
+#     logger.info(video_id)
 #     for clip_id,clip in clips.items():
-#         print("--",clip_id)
-#         print('--',clip['category'])
+#         logger.info("--",clip_id)
+#         logger.info('--',clip['category'])
 #         for frame_id,players_boxs in clip['frame_boxes_dct'].items():
-#             print('------',frame_id, len(players_boxs)) 
+#             logger.info('------',frame_id, len(players_boxs)) 
