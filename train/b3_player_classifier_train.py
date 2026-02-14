@@ -149,7 +149,7 @@ for epoch in range(n_epoch):
         all_pred.extend(index.cpu().numpy())
         all_labels.extend(labels.cpu().numpy())
 
-        if ind%100==0:
+        if ind%10==0:
             logger.info(f'Epoch [{epoch+1}/{n_epoch}] | Step [{ind+1}/{len(train_loader)}] | Loss: {loss.item():0.4f}')
 
     all_pred = np.array(all_pred)
