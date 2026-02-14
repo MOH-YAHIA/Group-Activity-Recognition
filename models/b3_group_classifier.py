@@ -1,9 +1,8 @@
-import torch,torchvision
+import torch
 import torch.nn as nn
-import torchvision.models as models
 
 class B3_Group_Classifier(nn.Module):
-    def __init__(self,backbone,num_player_actions,num_group_actions):
+    def __init__(self,backbone,num_group_actions):
         super(B3_Group_Classifier,self).__init__()
         self.backbone=nn.Sequential(*list(backbone.resnet.children())[:-1])
         for param in self.backbone.parameters():

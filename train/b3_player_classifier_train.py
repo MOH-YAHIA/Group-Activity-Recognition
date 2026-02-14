@@ -203,5 +203,5 @@ output_path='outputs/B3_Player_Classifier'
 final_report = Final_Report(output_path,all_labels,all_pred,for_group=False)
 logger.info(f"Create Report in {output_path}")
 final_report.creat_report()
-logger.info(f"Create confusion_matrix in {output_path}")
+logger.info(f"Create Confusion Matrix in {output_path}")
 final_report.create_confusion_matrix()
