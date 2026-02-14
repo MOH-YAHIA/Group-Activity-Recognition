@@ -7,7 +7,12 @@ class B3_Player_Classifier(nn.Module):
         super(B3_Player_Classifier,self).__init__()
         self.resnet=models.resnet50(weights=torchvision.models.ResNet50_Weights.DEFAULT)
         in_fc=self.resnet.fc.in_features
-        self.resnet.fc=nn.Linear(in_fc,num_player_actions)
+        self.resnet.fc=nn.Sequential(
+            nn.Linear(in_fc,512),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(512,num_player_actions)
+        )
 
     def forward(self,X):
         # X -> B,F,12,3,224,224

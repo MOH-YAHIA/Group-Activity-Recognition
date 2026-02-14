@@ -68,14 +68,14 @@ train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device
 logger.info(f"Test")
 # set pred_need = true to get labels,pred
 accurecy_test,loss_avg_test,f1Score_test,all_labels,all_pred = evaluate(model,criterion,test_loader,device,True)
-logger.info(f'Loss  : {loss_avg_test:.4f}')
-logger.info(f'ACC % : {accurecy_test:.4f}')
-logger.info(f'F1 %  : {f1Score_test:.4f}\n')
+logger.info(f'Loss : {loss_avg_test:.4f}')
+logger.info(f'ACC  : {accurecy_test:.2f} %')
+logger.info(f'F1   : {f1Score_test:.2f} %\n')
         
 os.makedirs('outputs/B1',exist_ok=True)
 output_path='outputs/B1'
-final_report = Final_Report(output_path,all_labels,all_pred)
+final_report = Final_Report(output_path,all_labels,all_pred,for_group=True)
 logger.info(f"Create Report in {output_path}")
 final_report.creat_report()
-logger.info(f"Create confusion_matrix in {output_path}")
+logger.info(f"Create Confusion Matrix in {output_path}")
 final_report.create_confusion_matrix()

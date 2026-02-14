@@ -2,7 +2,7 @@ import torch
 import os
 from PIL import Image
 import torchvision.transforms as transforms
-
+import random
 from utils.base_dataset import BaseDataset
 
 class VolleyballImageDataset(BaseDataset):
@@ -37,6 +37,9 @@ class VolleyballImageDataset(BaseDataset):
     def __getitem__(self, index):
         item=self.samples[index]
         frames=[]
+        seed = random.randint(0,2**16)
+        random.seed(seed)
+        torch.manual_seed(seed)
         def get_frame(video_id,clip_id,frame_id):
             frame_path=os.path.join(self.videos_root,video_id,clip_id,f'{frame_id}.jpg')
             # JPEG files are not all created equal. depending on how they were saved, .jpg can be: RGB, grayscale
@@ -49,11 +52,13 @@ class VolleyballImageDataset(BaseDataset):
 
             frames.append(frame)
 
+        # make sure that we process the frames in order
+        sorted_frames_id=sorted(item['frame_boxes_dct'].keys(),key=lambda x : int(x))
         if self.one_frame:
-            middle_frame_id=list(item['frame_boxes_dct'].keys())[4] # 9 frames -> middle = index 4
+            middle_frame_id=sorted_frames_id[4] # 9 frames -> middle = index 4
             get_frame(item['video_id'],item['clip_id'],middle_frame_id)
         else:
-            for frame_id,_ in item['frame_boxes_dct'].items():
+            for frame_id in sorted_frames_id:
                 get_frame(item['video_id'],item['clip_id'],frame_id)
 
         frames=torch.stack(frames)        
