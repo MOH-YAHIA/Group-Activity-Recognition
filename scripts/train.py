@@ -8,7 +8,7 @@ import torch.nn as nn
 
 logger=logging.getLogger(__name__)
 
-def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step):
+def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step,early_stop):
     #  Kaggle use 2 GPU   
     if torch.cuda.device_count() > 1:
         logger.debug("Using %d GPUs!",torch.cuda.device_count())
@@ -80,7 +80,7 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         else:
             no_update+=1
         
-        if no_update>2:
+        if no_update>early_stop:
             logger.warning(f"Early stopping triggered at epoch {epoch+1}\n")
             break
     logger.info(f"Best Model found at epoch {choosen_epoch}\n")
