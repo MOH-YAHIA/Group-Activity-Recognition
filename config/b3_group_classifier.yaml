@@ -8,7 +8,7 @@ splits:
   test_ids: ['4','5','9','11','14','20','21','25','29','34','35','37','43','44','45','47']
 
 model:
-  arch: "Resnet50 for player + classifier for group "  
+  arch: "b3_player_classifier + classifier for group "  
   num_player_actions: 9
   num_group_actions: 8
 
@@ -17,7 +17,7 @@ training:
   pin_memory : False
   n_epoch: 3
   lr: 0.0001 # 1e-4
-  batch_size: 8
+  batch_size: 1
   optimizer: "AdamW"
   criterion: "CrossEntropyLoss"
 

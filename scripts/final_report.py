@@ -38,9 +38,9 @@ class Final_Report:
             f.write('\n\n'+'-'*100+'\n')
 
             f.write("                         --- Global Metrics ---   \n")
-            f.write(f'Accuracy:{accuracy_score(self.all_labels,self.all_pred)*100:.2f}')
+            f.write(f'Accuracy:{accuracy_score(self.all_labels,self.all_pred)*100:.2f} %')
             f.write('\n')
-            f.write(f'F1_Score:{f1_score(self.all_labels,self.all_pred,average='weighted')*100:.2f}')
+            f.write(f'F1_Score:{f1_score(self.all_labels,self.all_pred,average='weighted')*100:.2f} %')
 
     def create_confusion_matrix(self):
         # pass labels to make sure that every class appear in the matrix even if not exits in the labels and pred

@@ -8,7 +8,7 @@ splits:
   test_ids: ['4','5','9','11','14','20','21','25','29','34','35','37','43','44','45','47']
 
 model:
-  arch: "Resnet50"  
+  arch: "Resnet50 as classifier for player crop"  
   num_player_actions: 9
 
 training:

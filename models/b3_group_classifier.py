@@ -4,6 +4,7 @@ import torch.nn as nn
 class B3_Group_Classifier(nn.Module):
     def __init__(self,backbone,num_group_actions):
         super(B3_Group_Classifier,self).__init__()
+        # remove .fc 
         self.backbone=nn.Sequential(*list(backbone.resnet.children())[:-1])
         for param in self.backbone.parameters():
             param.requires_grad = False
@@ -18,10 +19,11 @@ class B3_Group_Classifier(nn.Module):
         # X -> B,1,12,3,224,224
         B,F,P,C,W,H=X.shape
         X=X.view(B*F*P,C,W,H)
-        X=self.backbone(X) #B*F*P,2048,1,1
+        with torch.no_grad():
+            X=self.backbone(X) #B*F*P,2048,1,1
         X=torch.flatten(X,1) #B*F*P,2048
         X=X.view(B*F,P,-1)
         X,_=X.max(dim=1) #B*F,2048
 
-        return self.classifier(X) #B*F,8
-    
+        out=self.classifier(X) #B*F,8  F=1
+        return out
