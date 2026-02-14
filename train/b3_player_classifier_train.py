@@ -113,7 +113,7 @@ def evaluate(model,criterion,loader,device,pred_need):
 
 
 os.makedirs('checkpoints',exist_ok=True)
-checkpoint_path='checkpoints/b3_player_classifier_best_mode_checkpoint.pth'
+checkpoint_path='checkpoints/b3_player_classifier_best_model_checkpoint.pth'
 best_loss=float('inf') 
 no_update=0
 choosen_epoch=0
@@ -125,7 +125,7 @@ def update_checkpint(epoch):
     'epoch': epoch,
     'best_loss': best_loss
     }
-   # torch.save(checkpoint,checkpoint_path)
+    torch.save(checkpoint,checkpoint_path)
 
 for epoch in range(n_epoch):
     loss_sum_train=0

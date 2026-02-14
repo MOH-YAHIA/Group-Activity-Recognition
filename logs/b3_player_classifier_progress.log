@@ -1,48 +1,48 @@
-16:48:12 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-16:48:12 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-16:48:13 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-16:48:16 | [b3_player_classifier_train.py] | INFO: Epoch [1/3] | Step [1/70] | Loss: 2.1897
-16:48:36 | [b3_player_classifier_train.py] | INFO: Train
-16:48:36 | [b3_player_classifier_train.py] | INFO: Loss : 2.0926
-16:48:36 | [b3_player_classifier_train.py] | INFO: ACC  : 68.45 %
-16:48:36 | [b3_player_classifier_train.py] | INFO: F1   : 56.97 %
-16:48:36 | [b3_player_classifier_train.py] | INFO: Validation
-16:48:51 | [b3_player_classifier_train.py] | INFO: Loss : 2.0694
-16:48:51 | [b3_player_classifier_train.py] | INFO: ACC  : 66.15 %
-16:48:51 | [b3_player_classifier_train.py] | INFO: F1   : 52.68 %
+20:59:26 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+20:59:27 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+20:59:28 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+20:59:35 | [b3_player_classifier_train.py] | INFO: Epoch [1/3] | Step [1/70] | Loss: 2.2537
+21:00:02 | [b3_player_classifier_train.py] | INFO: Train
+21:00:02 | [b3_player_classifier_train.py] | INFO: Loss : 2.0791
+21:00:02 | [b3_player_classifier_train.py] | INFO: ACC  : 68.21 %
+21:00:02 | [b3_player_classifier_train.py] | INFO: F1   : 57.21 %
+21:00:02 | [b3_player_classifier_train.py] | INFO: Validation
+21:00:28 | [b3_player_classifier_train.py] | INFO: Loss : 2.0310
+21:00:28 | [b3_player_classifier_train.py] | INFO: ACC  : 66.15 %
+21:00:28 | [b3_player_classifier_train.py] | INFO: F1   : 52.68 %
 
-16:48:51 | [b3_player_classifier_train.py] | INFO: New Best Model found at epoch 1
+21:00:30 | [b3_player_classifier_train.py] | INFO: New Best Model found at epoch 1
 
-16:48:51 | [b3_player_classifier_train.py] | INFO: Epoch [2/3] | Step [1/70] | Loss: 1.9360
-16:49:11 | [b3_player_classifier_train.py] | INFO: Train
-16:49:11 | [b3_player_classifier_train.py] | INFO: Loss : 1.8718
-16:49:11 | [b3_player_classifier_train.py] | INFO: ACC  : 68.93 %
-16:49:11 | [b3_player_classifier_train.py] | INFO: F1   : 58.08 %
-16:49:11 | [b3_player_classifier_train.py] | INFO: Validation
-16:49:26 | [b3_player_classifier_train.py] | INFO: Loss : 1.9442
-16:49:26 | [b3_player_classifier_train.py] | INFO: ACC  : 67.69 %
-16:49:26 | [b3_player_classifier_train.py] | INFO: F1   : 57.40 %
+21:00:30 | [b3_player_classifier_train.py] | INFO: Epoch [2/3] | Step [1/70] | Loss: 1.9838
+21:01:05 | [b3_player_classifier_train.py] | INFO: Train
+21:01:05 | [b3_player_classifier_train.py] | INFO: Loss : 1.7413
+21:01:05 | [b3_player_classifier_train.py] | INFO: ACC  : 68.57 %
+21:01:05 | [b3_player_classifier_train.py] | INFO: F1   : 60.75 %
+21:01:05 | [b3_player_classifier_train.py] | INFO: Validation
+21:01:20 | [b3_player_classifier_train.py] | INFO: Loss : 1.8999
+21:01:20 | [b3_player_classifier_train.py] | INFO: ACC  : 61.92 %
+21:01:20 | [b3_player_classifier_train.py] | INFO: F1   : 59.47 %
 
-16:49:26 | [b3_player_classifier_train.py] | INFO: New Best Model found at epoch 2
+21:01:21 | [b3_player_classifier_train.py] | INFO: New Best Model found at epoch 2
 
-16:49:27 | [b3_player_classifier_train.py] | INFO: Epoch [3/3] | Step [1/70] | Loss: 1.8537
-16:49:47 | [b3_player_classifier_train.py] | INFO: Train
-16:49:47 | [b3_player_classifier_train.py] | INFO: Loss : 1.5528
-16:49:47 | [b3_player_classifier_train.py] | INFO: ACC  : 57.86 %
-16:49:47 | [b3_player_classifier_train.py] | INFO: F1   : 58.36 %
-16:49:47 | [b3_player_classifier_train.py] | INFO: Validation
-16:50:02 | [b3_player_classifier_train.py] | INFO: Loss : 1.7844
-16:50:02 | [b3_player_classifier_train.py] | INFO: ACC  : 70.00 %
-16:50:02 | [b3_player_classifier_train.py] | INFO: F1   : 63.21 %
+21:01:21 | [b3_player_classifier_train.py] | INFO: Epoch [3/3] | Step [1/70] | Loss: 1.7633
+21:01:41 | [b3_player_classifier_train.py] | INFO: Train
+21:01:41 | [b3_player_classifier_train.py] | INFO: Loss : 1.2946
+21:01:41 | [b3_player_classifier_train.py] | INFO: ACC  : 64.76 %
+21:01:41 | [b3_player_classifier_train.py] | INFO: F1   : 65.86 %
+21:01:41 | [b3_player_classifier_train.py] | INFO: Validation
+21:01:57 | [b3_player_classifier_train.py] | INFO: Loss : 1.6901
+21:01:57 | [b3_player_classifier_train.py] | INFO: ACC  : 35.83 %
+21:01:57 | [b3_player_classifier_train.py] | INFO: F1   : 39.32 %
 
-16:50:02 | [b3_player_classifier_train.py] | INFO: New Best Model found at epoch 3
+21:01:57 | [b3_player_classifier_train.py] | INFO: New Best Model found at epoch 3
 
-16:50:02 | [b3_player_classifier_train.py] | INFO: Best Model found at epoch 3
+21:01:57 | [b3_player_classifier_train.py] | INFO: Best Model found at epoch 3
 
-16:50:02 | [b3_player_classifier_train.py] | INFO: Test
-16:50:17 | [b3_player_classifier_train.py] | INFO: Loss : 1.7778
-16:50:17 | [b3_player_classifier_train.py] | INFO: ACC  : 70.41 %
-16:50:17 | [b3_player_classifier_train.py] | INFO: F1   : 65.50 %
+21:01:57 | [b3_player_classifier_train.py] | INFO: Test
+21:02:13 | [b3_player_classifier_train.py] | INFO: Loss : 1.7492
+21:02:13 | [b3_player_classifier_train.py] | INFO: ACC  : 35.59 %
+21:02:13 | [b3_player_classifier_train.py] | INFO: F1   : 40.31 %
 
-16:50:17 | [b3_player_classifier_train.py] | INFO: Create Report in outputs/B3_Player_Classifier
-16:50:17 | [b3_player_classifier_train.py] | INFO: Create confusion_matrix in outputs/B3_Player_Classifier
+21:02:13 | [b3_player_classifier_train.py] | INFO: Create Report in outputs/B3_Player_Classifier
+21:02:13 | [b3_player_classifier_train.py] | INFO: Create Confusion Matrix in outputs/B3_Player_Classifier
