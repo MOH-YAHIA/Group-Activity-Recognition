@@ -6,6 +6,9 @@ class B3_Group_Classifier(nn.Module):
         super(B3_Group_Classifier,self).__init__()
         # remove .fc 
         self.backbone=nn.Sequential(*list(backbone.resnet.children())[:-1])
+        for child in list(self.backbone.children())[:7]:
+            for param in child.parameters():
+                param.requires_grad = False
         self.classifier=nn.Sequential(
             nn.Linear(2048,512),
             nn.ReLU(),
