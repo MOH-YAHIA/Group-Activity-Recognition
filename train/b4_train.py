@@ -52,7 +52,7 @@ test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_work
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 backbone=B1(num_group_actions)
-backbone.load_state_dict(torch.load('checkpoints/B1_best_mode_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone.load_state_dict(torch.load('/kaggle/input/notebooks/myahiia/b1-train/Group-Activity-Recognition/checkpoints/b1_best_mode_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 model=B4(backbone,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
@@ -63,7 +63,7 @@ scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict
 # Train
 os.makedirs('checkpoints',exist_ok=True)
 checkpoint_path='checkpoints/b4_best_model_checkpoint.pth'
-train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step=10,early_stop=3,n_frozen_layers=7)
+train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step=20,early_stop=3,n_frozen_layers=7)
 
 
 
