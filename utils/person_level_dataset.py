@@ -55,12 +55,6 @@ class VolleyballPersonDataset(BaseDataset):
             players_category=[]
             # for each player 
             for ind,box in enumerate(frame_boxes):
-                #we take 50% of standing player
-                if box.category == 'standing' and self.train and random.random() > 0.1: 
-                    # SKIP: Add a zero tensor to maintain the 12-player shape
-                    cropped_boxes.append(torch.zeros(3, 224, 224))
-                    players_category.append(-1) # ignore_index
-                    continue
                 x1, y1, x2, y2 = box.box
                 crop=img.crop((x1, y1, x2, y2))
                 # for each player we need the same transormation along the 9 frames

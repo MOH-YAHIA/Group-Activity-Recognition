@@ -1,3 +1,213 @@
-10:12:05 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-10:12:05 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-10:12:06 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+20:38:59 | [volleyball_annot_loader.py] | INFO: 0/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/0
+20:39:00 | [volleyball_annot_loader.py] | INFO: 1/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/1
+20:39:02 | [volleyball_annot_loader.py] | INFO: 2/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/10
+20:39:03 | [volleyball_annot_loader.py] | INFO: 3/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/11
+20:39:04 | [volleyball_annot_loader.py] | INFO: 4/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/12
+20:39:05 | [volleyball_annot_loader.py] | INFO: 5/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/13
+20:39:06 | [volleyball_annot_loader.py] | INFO: 6/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/14
+20:39:07 | [volleyball_annot_loader.py] | INFO: 7/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/15
+20:39:08 | [volleyball_annot_loader.py] | INFO: 8/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/16
+20:39:08 | [volleyball_annot_loader.py] | INFO: 9/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/17
+20:39:09 | [volleyball_annot_loader.py] | INFO: 10/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/18
+20:39:10 | [volleyball_annot_loader.py] | INFO: 11/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/19
+20:39:11 | [volleyball_annot_loader.py] | INFO: 12/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/2
+20:39:12 | [volleyball_annot_loader.py] | INFO: 13/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/20
+20:39:13 | [volleyball_annot_loader.py] | INFO: 14/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/21
+20:39:14 | [volleyball_annot_loader.py] | INFO: 15/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/22
+20:39:14 | [volleyball_annot_loader.py] | INFO: 16/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/23
+20:39:15 | [volleyball_annot_loader.py] | INFO: 17/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/24
+20:39:16 | [volleyball_annot_loader.py] | INFO: 18/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/25
+20:39:17 | [volleyball_annot_loader.py] | INFO: 19/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/26
+20:39:18 | [volleyball_annot_loader.py] | INFO: 20/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/27
+20:39:19 | [volleyball_annot_loader.py] | INFO: 21/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/28
+20:39:19 | [volleyball_annot_loader.py] | INFO: 22/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/29
+20:39:20 | [volleyball_annot_loader.py] | INFO: 23/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/3
+20:39:22 | [volleyball_annot_loader.py] | INFO: 24/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/30
+20:39:23 | [volleyball_annot_loader.py] | INFO: 25/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/31
+20:39:24 | [volleyball_annot_loader.py] | INFO: 26/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/32
+20:39:25 | [volleyball_annot_loader.py] | INFO: 27/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/33
+20:39:25 | [volleyball_annot_loader.py] | INFO: 28/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/34
+20:39:26 | [volleyball_annot_loader.py] | INFO: 29/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/35
+20:39:27 | [volleyball_annot_loader.py] | INFO: 30/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/36
+20:39:28 | [volleyball_annot_loader.py] | INFO: 31/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/37
+20:39:29 | [volleyball_annot_loader.py] | INFO: 32/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/38
+20:39:29 | [volleyball_annot_loader.py] | INFO: 33/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/39
+20:39:30 | [volleyball_annot_loader.py] | INFO: 34/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/4
+20:39:31 | [volleyball_annot_loader.py] | INFO: 35/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/40
+20:39:31 | [volleyball_annot_loader.py] | INFO: 36/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/41
+20:39:32 | [volleyball_annot_loader.py] | INFO: 37/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/42
+20:39:33 | [volleyball_annot_loader.py] | INFO: 38/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/43
+20:39:33 | [volleyball_annot_loader.py] | INFO: 39/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/44
+20:39:34 | [volleyball_annot_loader.py] | INFO: 40/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/45
+20:39:34 | [volleyball_annot_loader.py] | INFO: 41/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/46
+20:39:35 | [volleyball_annot_loader.py] | INFO: 42/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/47
+20:39:36 | [volleyball_annot_loader.py] | INFO: 43/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/48
+20:39:37 | [volleyball_annot_loader.py] | INFO: 44/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/49
+20:39:37 | [volleyball_annot_loader.py] | INFO: 45/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/5
+20:39:38 | [volleyball_annot_loader.py] | INFO: 46/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/50
+20:39:39 | [volleyball_annot_loader.py] | INFO: 47/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/51
+20:39:40 | [volleyball_annot_loader.py] | INFO: 48/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/52
+20:39:41 | [volleyball_annot_loader.py] | INFO: 49/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/53
+20:39:41 | [volleyball_annot_loader.py] | INFO: 50/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/54
+20:39:43 | [volleyball_annot_loader.py] | INFO: 51/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/6
+20:39:43 | [volleyball_annot_loader.py] | INFO: 52/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/7
+20:39:44 | [volleyball_annot_loader.py] | INFO: 53/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/8
+20:39:45 | [volleyball_annot_loader.py] | INFO: 54/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/9
+20:39:46 | [volleyball_annot_loader.py] | INFO: Saving processed annotations to data/video_annot.pth
+20:39:51 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data/video_annot.pth
+20:39:53 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data/video_annot.pth
+20:40:04 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [1/135] | Loss: 2.2034
+20:40:13 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [11/135] | Loss: 2.1857
+20:40:23 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [21/135] | Loss: 2.0693
+20:40:32 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [31/135] | Loss: 2.1173
+20:40:42 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [41/135] | Loss: 1.8641
+20:40:52 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [51/135] | Loss: 1.7241
+20:41:03 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [61/135] | Loss: 1.4169
+20:41:13 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [71/135] | Loss: 1.6992
+20:41:24 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [81/135] | Loss: 1.3978
+20:41:35 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [91/135] | Loss: 1.5379
+20:41:47 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [101/135] | Loss: 1.6100
+20:41:58 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [111/135] | Loss: 1.1385
+20:42:09 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [121/135] | Loss: 1.6090
+20:42:19 | [b3_player_classifier_train.py] | INFO: Epoch [1/10] | Step [131/135] | Loss: 1.2283
+20:42:23 | [b3_player_classifier_train.py] | INFO: Train
+20:42:23 | [b3_player_classifier_train.py] | INFO: Loss : 1.6741
+20:42:23 | [b3_player_classifier_train.py] | INFO: ACC  : 27.78 %
+20:42:23 | [b3_player_classifier_train.py] | INFO: F1   : 30.30 %
+20:42:23 | [b3_player_classifier_train.py] | INFO: Validation
+20:42:55 | [b3_player_classifier_train.py] | INFO: Loss : 1.3153
+20:42:55 | [b3_player_classifier_train.py] | INFO: ACC  : 46.49 %
+20:42:55 | [b3_player_classifier_train.py] | INFO: F1   : 51.49 %
+
+20:42:56 | [b3_player_classifier_train.py] | INFO: New Best Model found at epoch 1
+
+20:42:59 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [1/135] | Loss: 1.0907
+20:43:10 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [11/135] | Loss: 1.2805
+20:43:21 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [21/135] | Loss: 1.0294
+20:43:32 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [31/135] | Loss: 1.3216
+20:43:43 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [41/135] | Loss: 1.0586
+20:43:53 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [51/135] | Loss: 0.9475
+20:44:04 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [61/135] | Loss: 1.0480
+20:44:15 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [71/135] | Loss: 0.9211
+20:44:26 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [81/135] | Loss: 1.0347
+20:44:37 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [91/135] | Loss: 1.1709
+20:44:48 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [101/135] | Loss: 0.8979
+20:44:59 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [111/135] | Loss: 0.8930
+20:45:10 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [121/135] | Loss: 1.1703
+20:45:21 | [b3_player_classifier_train.py] | INFO: Epoch [2/10] | Step [131/135] | Loss: 1.6074
+20:45:25 | [b3_player_classifier_train.py] | INFO: Train
+20:45:25 | [b3_player_classifier_train.py] | INFO: Loss : 1.0783
+20:45:25 | [b3_player_classifier_train.py] | INFO: ACC  : 51.19 %
+20:45:25 | [b3_player_classifier_train.py] | INFO: F1   : 55.50 %
+20:45:25 | [b3_player_classifier_train.py] | INFO: Validation
+20:45:57 | [b3_player_classifier_train.py] | INFO: Loss : 1.1312
+20:45:57 | [b3_player_classifier_train.py] | INFO: ACC  : 49.49 %
+20:45:57 | [b3_player_classifier_train.py] | INFO: F1   : 54.22 %
+
+20:45:57 | [b3_player_classifier_train.py] | INFO: New Best Model found at epoch 2
+
+20:46:00 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [1/135] | Loss: 0.8871
+20:46:11 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [11/135] | Loss: 0.8181
+20:46:22 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [21/135] | Loss: 1.1236
+20:46:33 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [31/135] | Loss: 0.8227
+20:46:44 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [41/135] | Loss: 0.8123
+20:46:55 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [51/135] | Loss: 0.7118
+20:47:06 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [61/135] | Loss: 1.1918
+20:47:17 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [71/135] | Loss: 0.7201
+20:47:28 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [81/135] | Loss: 0.8204
+20:47:39 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [91/135] | Loss: 0.9091
+20:47:49 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [101/135] | Loss: 0.9586
+20:48:00 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [111/135] | Loss: 0.6088
+20:48:11 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [121/135] | Loss: 1.1577
+20:48:22 | [b3_player_classifier_train.py] | INFO: Epoch [3/10] | Step [131/135] | Loss: 0.6367
+20:48:26 | [b3_player_classifier_train.py] | INFO: Train
+20:48:26 | [b3_player_classifier_train.py] | INFO: Loss : 0.8640
+20:48:26 | [b3_player_classifier_train.py] | INFO: ACC  : 57.69 %
+20:48:26 | [b3_player_classifier_train.py] | INFO: F1   : 61.53 %
+20:48:26 | [b3_player_classifier_train.py] | INFO: Validation
+20:48:58 | [b3_player_classifier_train.py] | INFO: Loss : 1.1095
+20:48:58 | [b3_player_classifier_train.py] | INFO: ACC  : 56.26 %
+20:48:58 | [b3_player_classifier_train.py] | INFO: F1   : 60.60 %
+
+20:48:59 | [b3_player_classifier_train.py] | INFO: New Best Model found at epoch 3
+
+20:49:01 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [1/135] | Loss: 0.9915
+20:49:12 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [11/135] | Loss: 0.7902
+20:49:23 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [21/135] | Loss: 0.4839
+20:49:34 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [31/135] | Loss: 0.8491
+20:49:45 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [41/135] | Loss: 0.5122
+20:49:56 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [51/135] | Loss: 0.8648
+20:50:07 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [61/135] | Loss: 0.6879
+20:50:18 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [71/135] | Loss: 0.6325
+20:50:29 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [81/135] | Loss: 1.1042
+20:50:39 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [91/135] | Loss: 0.9301
+20:50:50 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [101/135] | Loss: 0.5653
+20:51:01 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [111/135] | Loss: 0.9238
+20:51:12 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [121/135] | Loss: 0.5761
+20:51:23 | [b3_player_classifier_train.py] | INFO: Epoch [4/10] | Step [131/135] | Loss: 0.5630
+20:51:27 | [b3_player_classifier_train.py] | INFO: Train
+20:51:27 | [b3_player_classifier_train.py] | INFO: Loss : 0.6524
+20:51:27 | [b3_player_classifier_train.py] | INFO: ACC  : 61.90 %
+20:51:27 | [b3_player_classifier_train.py] | INFO: F1   : 65.02 %
+20:51:27 | [b3_player_classifier_train.py] | INFO: Validation
+20:51:58 | [b3_player_classifier_train.py] | INFO: Loss : 1.1570
+20:51:58 | [b3_player_classifier_train.py] | INFO: ACC  : 53.99 %
+20:51:58 | [b3_player_classifier_train.py] | INFO: F1   : 58.71 %
+
+20:52:01 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [1/135] | Loss: 0.5591
+20:52:12 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [11/135] | Loss: 0.4787
+20:52:23 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [21/135] | Loss: 0.3655
+20:52:34 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [31/135] | Loss: 0.4092
+20:52:44 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [41/135] | Loss: 0.5008
+20:52:55 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [51/135] | Loss: 0.4493
+20:53:06 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [61/135] | Loss: 0.4981
+20:53:17 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [71/135] | Loss: 0.4738
+20:53:28 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [81/135] | Loss: 0.5146
+20:53:39 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [91/135] | Loss: 0.5900
+20:53:50 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [101/135] | Loss: 0.4938
+20:54:00 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [111/135] | Loss: 0.3889
+20:54:11 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [121/135] | Loss: 0.4173
+20:54:22 | [b3_player_classifier_train.py] | INFO: Epoch [5/10] | Step [131/135] | Loss: 0.9485
+20:54:26 | [b3_player_classifier_train.py] | INFO: Train
+20:54:26 | [b3_player_classifier_train.py] | INFO: Loss : 0.5238
+20:54:26 | [b3_player_classifier_train.py] | INFO: ACC  : 65.80 %
+20:54:26 | [b3_player_classifier_train.py] | INFO: F1   : 68.21 %
+20:54:26 | [b3_player_classifier_train.py] | INFO: Validation
+20:54:57 | [b3_player_classifier_train.py] | INFO: Loss : 1.3038
+20:54:57 | [b3_player_classifier_train.py] | INFO: ACC  : 52.65 %
+20:54:57 | [b3_player_classifier_train.py] | INFO: F1   : 56.61 %
+
+20:55:00 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [1/135] | Loss: 0.5023
+20:55:11 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [11/135] | Loss: 0.4924
+20:55:22 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [21/135] | Loss: 0.5088
+20:55:33 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [31/135] | Loss: 0.3517
+20:55:44 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [41/135] | Loss: 0.3389
+20:55:54 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [51/135] | Loss: 0.4310
+20:56:05 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [61/135] | Loss: 0.2703
+20:56:16 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [71/135] | Loss: 0.3956
+20:56:27 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [81/135] | Loss: 0.2839
+20:56:38 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [91/135] | Loss: 0.4784
+20:56:48 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [101/135] | Loss: 0.5108
+20:56:59 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [111/135] | Loss: 0.4338
+20:57:10 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [121/135] | Loss: 0.2839
+20:57:21 | [b3_player_classifier_train.py] | INFO: Epoch [6/10] | Step [131/135] | Loss: 0.3907
+20:57:25 | [b3_player_classifier_train.py] | INFO: Train
+20:57:25 | [b3_player_classifier_train.py] | INFO: Loss : 0.4316
+20:57:25 | [b3_player_classifier_train.py] | INFO: ACC  : 68.22 %
+20:57:25 | [b3_player_classifier_train.py] | INFO: F1   : 70.23 %
+20:57:25 | [b3_player_classifier_train.py] | INFO: Validation
+20:57:56 | [b3_player_classifier_train.py] | INFO: Loss : 1.2607
+20:57:56 | [b3_player_classifier_train.py] | INFO: ACC  : 62.65 %
+20:57:56 | [b3_player_classifier_train.py] | INFO: F1   : 65.86 %
+
+20:57:56 | [b3_player_classifier_train.py] | WARNING: Early stopping triggered at epoch 6
+
+20:57:56 | [b3_player_classifier_train.py] | INFO: Best Model found at epoch 3
+
+20:57:56 | [b3_player_classifier_train.py] | INFO: Test
+20:58:28 | [b3_player_classifier_train.py] | INFO: Loss : 1.0451
+20:58:28 | [b3_player_classifier_train.py] | INFO: ACC  : 67.22 %
+20:58:28 | [b3_player_classifier_train.py] | INFO: F1   : 69.83 %
+
+20:58:28 | [b3_player_classifier_train.py] | INFO: Create Report in outputs/B3_Player_Classifier
+20:58:28 | [b3_player_classifier_train.py] | INFO: Create Confusion Matrix in outputs/B3_Player_Classifier

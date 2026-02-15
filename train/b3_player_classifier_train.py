@@ -65,7 +65,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 weights = torch.tensor(weights , dtype=torch.float32).to(device)
 model=B3_Player_Classifier(num_player_actions)
 model=model.to(device)
-criterion = nn.CrossEntropyLoss(ignore_index=-1)
+criterion = nn.CrossEntropyLoss(weight=weights , ignore_index=-1)
 optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
 
