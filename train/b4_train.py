@@ -4,45 +4,19 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import yaml
-from sklearn.metrics import f1_score
-import pandas as pd
+import logging
+from utils.logger import setup_logger
 from utils.image_level_dataset import VolleyballImageDataset
 from models.b4 import B4
 from models.b1 import B1
+from scripts.train import train
+from scripts.eval import evaluate
+from scripts.final_report import Final_Report
 
-def evaluate(model,criterion,loader,device,pred_need,n_classes=-33):
-    '''
-    pred_need (bool): return labels and pred
-    '''
-    all_pred=[]
-    all_labels=[]
-    loss_sum=0
-    model.eval()
-    with torch.no_grad():
-        for imgs,labels in loader:
-            imgs,labels=imgs.to(device),labels.to(device)
-            output=model(imgs)
-            loss=criterion(output,labels)
-            loss_sum+=loss.item()
-            _,index=output.max(dim=1)
-
-            all_pred.extend(index.cpu().numpy())
-            all_labels.extend(labels.cpu().numpy())
-
-    all_pred = np.array(all_pred)
-    all_labels = np.array(all_labels)
-
-    
-    accurecy = np.mean(all_pred==all_labels) *100
-    loss_avg = loss_sum / len(loader)
-    f1Score =  f1_score(all_labels,all_pred,average='weighted')
-
-    if not pred_need:
-        return accurecy,loss_avg,f1Score
-    
-    return accurecy,loss_avg,f1Score,all_labels,all_pred
-
-   
+os.makedirs('logs',exist_ok=True)
+log_path='logs/b4_progress.log'
+setup_logger(log_path)
+logger=logging.getLogger(__name__)
 
 with open('config/b4.yaml','r') as file:
     conf_dict = yaml.safe_load(file)
@@ -66,110 +40,45 @@ batch_size = conf_dict['training']['batch_size']
 num_group_actions = conf_dict['model']['num_group_actions']
 
 # DataLoaders
-#num_workers=4,pin_memory=True
-train_dataset=VolleyballImageDataset(videos_root,annot_root,train_ids,one_frame=False)
+train_dataset=VolleyballImageDataset(videos_root,annot_root,train_ids,one_frame=False,train=True)
 train_loader=DataLoader(train_dataset,batch_size=batch_size,shuffle=True,num_workers=num_workers,pin_memory=pin_memory)
 
-val_dataset=VolleyballImageDataset(videos_root,annot_root,val_ids,one_frame=False)
+val_dataset=VolleyballImageDataset(videos_root,annot_root,val_ids,one_frame=False,train=False)
 val_loader=DataLoader(val_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
-test_dataset=VolleyballImageDataset(videos_root,annot_root,test_ids,one_frame=False)
+test_dataset=VolleyballImageDataset(videos_root,annot_root,test_ids,one_frame=False,train=False)
 test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 backbone=B1(num_group_actions)
-backbone.load_state_dict(torch.load('checkpoints/B1_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone.load_state_dict(torch.load('checkpoints/B1_best_mode_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 model=B4(backbone,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
 
-#  Kaggle use 2 GPU   
-if torch.cuda.device_count() > 1:
-    print(f"🚀 Using {torch.cuda.device_count()} GPUs!")
-    # This is the "Magic" line for T4 x2
-    model = nn.DataParallel(model)
-
-checkpoint={} # best checkpoint
-best_loss=float('inf') 
-def update_checkpint(epoch):
-    global checkpoint
-    checkpoint = {
-    'model_state_dict': model.module.state_dict() if isinstance(model, torch.nn.DataParallel) else model.state_dict(),
-    'optimizer_state_dict': optimizer.state_dict(),
-    'scheduler_state_dict': scheduler.state_dict(),
-    'epoch': epoch,
-    'best_loss': best_loss
-    }
 
 # Train
-for epoch in range(n_epoch):
-    loss_sum_train=0
-    all_pred=[]
-    all_labels=[]
-    model.train()
-    model.backbone.eval()
-    for ind,(imgs,labels) in enumerate(train_loader):
-        imgs,labels=imgs.to(device),labels.to(device)
-        #b*9*3*224*224,  b*1
-        output=model(imgs) #B,8
-        loss=criterion(output,labels)
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-        
-        loss_sum_train+=loss.item()
-        _,index=output.max(dim=1)
-
-        all_pred.extend(index.cpu().numpy())
-        all_labels.extend(labels.cpu().numpy())
-        if ind%10==0:
-            print(f'in step {ind}/{len(train_loader)}, loss: {loss.item()}')
-
-    all_pred = np.array(all_pred)
-    all_labels = np.array(all_labels)
-    accurecy_train = np.mean(all_pred==all_labels) *100
-    loss_avg_train = loss_sum_train/len(train_loader)
-    f1Score_train =  f1_score(all_labels,all_pred,average='weighted')
-
-    # set pred_need to false to not return labels ,pred
-    accurecy_val,loss_avg_val,f1Score_val = evaluate(model,criterion,val_loader,device,False)
-    
-    scheduler.step(loss_avg_val) # step based on avg loss in valdiation data
-
-    print(f"epoch {epoch+1}/{n_epoch}")
-    print("Train Resault")
-    print(f'accurecy ->{accurecy_train}')
-    print(f'loss_avg ->{loss_avg_train}')
-    print(f'f1-score ->{f1Score_train}')
-    print('==========================================')
-    print("Validation Resault")
-    print(f'accurecy ->{accurecy_val}')
-    print(f'loss_avg ->{loss_avg_val}')
-    print(f'f1-score ->{f1Score_val}\n')
-
-    if loss_avg_val < best_loss:
-        update_checkpint(epoch+1)
-        best_loss = loss_avg_val
-        print(f"New Best Model found at epoch {epoch+1}")
-
-print(f"Loading the best model from epoch {checkpoint['epoch']}")
-if isinstance(model, torch.nn.DataParallel):
-    model.module.load_state_dict(checkpoint['model_state_dict']) 
-else:
-    model.load_state_dict(checkpoint['model_state_dict'])
 os.makedirs('checkpoints',exist_ok=True)
-#torch.save(checkpoint,f'checkpoints/b4_best_model_checkpoint.pth')
+checkpoint_path='checkpoints/b4_best_model_checkpoint.pth'
+train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step=10,early_stop=3)
+
 
 
 # Test
-print(f"\n--- Test Results ---")
+logger.info(f"Test")
 # set pred_need = true to get labels,pred
 accurecy_test,loss_avg_test,f1Score_test,all_labels,all_pred = evaluate(model,criterion,test_loader,device,True)
-print('==========================================')
-print(f'accurecy ->{accurecy_test}')
-print(f'loss_avg ->{loss_avg_test}')
-print(f'f1-score ->{f1Score_test}\n')
+logger.info(f'Loss : {loss_avg_test:.4f}')
+logger.info(f'ACC  : {accurecy_test:.2f} %')
+logger.info(f'F1   : {f1Score_test:.2f} %\n')
         
+os.makedirs('outputs/B4',exist_ok=True)
+output_path='outputs/B4'
+final_report = Final_Report(output_path,all_labels,all_pred,for_group=True)
+logger.info(f"Create Report in {output_path}")
+final_report.creat_report()
+logger.info(f"Create Confusion Matrix in {output_path}")
+final_report.create_confusion_matrix()

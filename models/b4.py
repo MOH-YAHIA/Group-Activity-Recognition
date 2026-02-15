@@ -15,7 +15,8 @@ class B4(nn.Module):
         # X -> B,9,3,224,224
         B,F,C,W,H=X.shape
         X=X.view(B*F,C,W,H)
-        X=self.backbone(X) #B*F,2048
+        with torch.no_grad():
+            X=self.backbone(X) #B*F,2048
         X=X.view(B,F,2048) #batch,seq_len,input_size
         out,(h,c)=self.lstm(X) #out -> B,F,512
         out=out[:,-1,:] #B,512
