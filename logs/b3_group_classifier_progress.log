@@ -1,126 +1,237 @@
-18:57:58 | [volleyball_annot_loader.py] | INFO: 0/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/0
-18:57:59 | [volleyball_annot_loader.py] | INFO: 1/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/1
-18:58:00 | [volleyball_annot_loader.py] | INFO: 2/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/10
-18:58:01 | [volleyball_annot_loader.py] | INFO: 3/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/11
-18:58:02 | [volleyball_annot_loader.py] | INFO: 4/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/12
-18:58:02 | [volleyball_annot_loader.py] | INFO: 5/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/13
-18:58:03 | [volleyball_annot_loader.py] | INFO: 6/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/14
-18:58:04 | [volleyball_annot_loader.py] | INFO: 7/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/15
-18:58:04 | [volleyball_annot_loader.py] | INFO: 8/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/16
-18:58:05 | [volleyball_annot_loader.py] | INFO: 9/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/17
-18:58:06 | [volleyball_annot_loader.py] | INFO: 10/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/18
-18:58:06 | [volleyball_annot_loader.py] | INFO: 11/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/19
-18:58:07 | [volleyball_annot_loader.py] | INFO: 12/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/2
-18:58:07 | [volleyball_annot_loader.py] | INFO: 13/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/20
-18:58:08 | [volleyball_annot_loader.py] | INFO: 14/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/21
-18:58:08 | [volleyball_annot_loader.py] | INFO: 15/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/22
-18:58:09 | [volleyball_annot_loader.py] | INFO: 16/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/23
-18:58:10 | [volleyball_annot_loader.py] | INFO: 17/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/24
-18:58:11 | [volleyball_annot_loader.py] | INFO: 18/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/25
-18:58:11 | [volleyball_annot_loader.py] | INFO: 19/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/26
-18:58:12 | [volleyball_annot_loader.py] | INFO: 20/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/27
-18:58:12 | [volleyball_annot_loader.py] | INFO: 21/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/28
-18:58:13 | [volleyball_annot_loader.py] | INFO: 22/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/29
-18:58:14 | [volleyball_annot_loader.py] | INFO: 23/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/3
-18:58:15 | [volleyball_annot_loader.py] | INFO: 24/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/30
-18:58:16 | [volleyball_annot_loader.py] | INFO: 25/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/31
-18:58:16 | [volleyball_annot_loader.py] | INFO: 26/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/32
-18:58:17 | [volleyball_annot_loader.py] | INFO: 27/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/33
-18:58:18 | [volleyball_annot_loader.py] | INFO: 28/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/34
-18:58:18 | [volleyball_annot_loader.py] | INFO: 29/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/35
-18:58:19 | [volleyball_annot_loader.py] | INFO: 30/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/36
-18:58:20 | [volleyball_annot_loader.py] | INFO: 31/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/37
-18:58:20 | [volleyball_annot_loader.py] | INFO: 32/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/38
-18:58:21 | [volleyball_annot_loader.py] | INFO: 33/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/39
-18:58:21 | [volleyball_annot_loader.py] | INFO: 34/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/4
-18:58:22 | [volleyball_annot_loader.py] | INFO: 35/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/40
-18:58:23 | [volleyball_annot_loader.py] | INFO: 36/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/41
-18:58:23 | [volleyball_annot_loader.py] | INFO: 37/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/42
-18:58:24 | [volleyball_annot_loader.py] | INFO: 38/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/43
-18:58:24 | [volleyball_annot_loader.py] | INFO: 39/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/44
-18:58:25 | [volleyball_annot_loader.py] | INFO: 40/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/45
-18:58:25 | [volleyball_annot_loader.py] | INFO: 41/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/46
-18:58:25 | [volleyball_annot_loader.py] | INFO: 42/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/47
-18:58:26 | [volleyball_annot_loader.py] | INFO: 43/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/48
-18:58:26 | [volleyball_annot_loader.py] | INFO: 44/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/49
-18:58:27 | [volleyball_annot_loader.py] | INFO: 45/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/5
-18:58:28 | [volleyball_annot_loader.py] | INFO: 46/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/50
-18:58:28 | [volleyball_annot_loader.py] | INFO: 47/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/51
-18:58:29 | [volleyball_annot_loader.py] | INFO: 48/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/52
-18:58:29 | [volleyball_annot_loader.py] | INFO: 49/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/53
-18:58:29 | [volleyball_annot_loader.py] | INFO: 50/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/54
-18:58:30 | [volleyball_annot_loader.py] | INFO: 51/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/6
-18:58:31 | [volleyball_annot_loader.py] | INFO: 52/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/7
-18:58:32 | [volleyball_annot_loader.py] | INFO: 53/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/8
-18:58:33 | [volleyball_annot_loader.py] | INFO: 54/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/9
-18:58:33 | [volleyball_annot_loader.py] | INFO: Saving processed annotations to data/video_annot.pth
-18:58:38 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data/video_annot.pth
-18:58:40 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data/video_annot.pth
-18:58:53 | [train.py] | INFO: Epoch [1/30] | Step [1/135] | Loss: 2.1003
-18:59:33 | [train.py] | INFO: Epoch [1/30] | Step [101/135] | Loss: 1.4690
-18:59:48 | [train.py] | INFO: Train
-18:59:48 | [train.py] | INFO: Loss : 1.3692
-18:59:48 | [train.py] | INFO: ACC  : 44.01 %
-18:59:48 | [train.py] | INFO: F1   : 43.35 %
-18:59:48 | [train.py] | INFO: Validation
-19:00:18 | [train.py] | INFO: Loss : 1.2036
-19:00:18 | [train.py] | INFO: ACC  : 46.23 %
-19:00:18 | [train.py] | INFO: F1   : 37.33 %
+19:25:21 | [volleyball_annot_loader.py] | INFO: 0/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/0
+19:25:24 | [volleyball_annot_loader.py] | INFO: 1/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/1
+19:25:26 | [volleyball_annot_loader.py] | INFO: 2/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/10
+19:25:28 | [volleyball_annot_loader.py] | INFO: 3/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/11
+19:25:29 | [volleyball_annot_loader.py] | INFO: 4/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/12
+19:25:31 | [volleyball_annot_loader.py] | INFO: 5/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/13
+19:25:33 | [volleyball_annot_loader.py] | INFO: 6/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/14
+19:25:34 | [volleyball_annot_loader.py] | INFO: 7/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/15
+19:25:36 | [volleyball_annot_loader.py] | INFO: 8/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/16
+19:25:37 | [volleyball_annot_loader.py] | INFO: 9/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/17
+19:25:39 | [volleyball_annot_loader.py] | INFO: 10/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/18
+19:25:40 | [volleyball_annot_loader.py] | INFO: 11/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/19
+19:25:41 | [volleyball_annot_loader.py] | INFO: 12/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/2
+19:25:42 | [volleyball_annot_loader.py] | INFO: 13/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/20
+19:25:44 | [volleyball_annot_loader.py] | INFO: 14/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/21
+19:25:45 | [volleyball_annot_loader.py] | INFO: 15/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/22
+19:25:46 | [volleyball_annot_loader.py] | INFO: 16/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/23
+19:25:48 | [volleyball_annot_loader.py] | INFO: 17/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/24
+19:25:49 | [volleyball_annot_loader.py] | INFO: 18/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/25
+19:25:51 | [volleyball_annot_loader.py] | INFO: 19/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/26
+19:25:52 | [volleyball_annot_loader.py] | INFO: 20/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/27
+19:25:54 | [volleyball_annot_loader.py] | INFO: 21/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/28
+19:25:56 | [volleyball_annot_loader.py] | INFO: 22/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/29
+19:25:57 | [volleyball_annot_loader.py] | INFO: 23/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/3
+19:26:00 | [volleyball_annot_loader.py] | INFO: 24/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/30
+19:26:02 | [volleyball_annot_loader.py] | INFO: 25/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/31
+19:26:04 | [volleyball_annot_loader.py] | INFO: 26/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/32
+19:26:06 | [volleyball_annot_loader.py] | INFO: 27/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/33
+19:26:07 | [volleyball_annot_loader.py] | INFO: 28/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/34
+19:26:08 | [volleyball_annot_loader.py] | INFO: 29/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/35
+19:26:10 | [volleyball_annot_loader.py] | INFO: 30/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/36
+19:26:12 | [volleyball_annot_loader.py] | INFO: 31/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/37
+19:26:12 | [volleyball_annot_loader.py] | INFO: 32/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/38
+19:26:14 | [volleyball_annot_loader.py] | INFO: 33/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/39
+19:26:15 | [volleyball_annot_loader.py] | INFO: 34/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/4
+19:26:17 | [volleyball_annot_loader.py] | INFO: 35/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/40
+19:26:18 | [volleyball_annot_loader.py] | INFO: 36/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/41
+19:26:19 | [volleyball_annot_loader.py] | INFO: 37/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/42
+19:26:20 | [volleyball_annot_loader.py] | INFO: 38/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/43
+19:26:21 | [volleyball_annot_loader.py] | INFO: 39/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/44
+19:26:22 | [volleyball_annot_loader.py] | INFO: 40/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/45
+19:26:23 | [volleyball_annot_loader.py] | INFO: 41/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/46
+19:26:24 | [volleyball_annot_loader.py] | INFO: 42/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/47
+19:26:25 | [volleyball_annot_loader.py] | INFO: 43/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/48
+19:26:26 | [volleyball_annot_loader.py] | INFO: 44/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/49
+19:26:27 | [volleyball_annot_loader.py] | INFO: 45/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/5
+19:26:29 | [volleyball_annot_loader.py] | INFO: 46/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/50
+19:26:30 | [volleyball_annot_loader.py] | INFO: 47/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/51
+19:26:31 | [volleyball_annot_loader.py] | INFO: 48/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/52
+19:26:33 | [volleyball_annot_loader.py] | INFO: 49/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/53
+19:26:33 | [volleyball_annot_loader.py] | INFO: 50/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/54
+19:26:35 | [volleyball_annot_loader.py] | INFO: 51/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/6
+19:26:37 | [volleyball_annot_loader.py] | INFO: 52/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/7
+19:26:39 | [volleyball_annot_loader.py] | INFO: 53/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/8
+19:26:41 | [volleyball_annot_loader.py] | INFO: 54/57 - Processing Dir /kaggle/input/volleyball/volleyball_/videos/9
+19:26:42 | [volleyball_annot_loader.py] | INFO: Saving processed annotations to data/video_annot.pth
+19:26:47 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data/video_annot.pth
+19:26:49 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data/video_annot.pth
+19:27:00 | [train.py] | INFO: Epoch [1/30] | Step [1/135] | Loss: 2.2449
+19:27:19 | [train.py] | INFO: Epoch [1/30] | Step [51/135] | Loss: 1.4476
+19:27:39 | [train.py] | INFO: Epoch [1/30] | Step [101/135] | Loss: 1.4576
+19:27:53 | [train.py] | INFO: Train
+19:27:53 | [train.py] | INFO: Loss : 1.3257
+19:27:53 | [train.py] | INFO: ACC  : 45.45 %
+19:27:53 | [train.py] | INFO: F1   : 44.54 %
+19:27:53 | [train.py] | INFO: Validation
+19:28:22 | [train.py] | INFO: Loss : 1.1581
+19:28:22 | [train.py] | INFO: ACC  : 53.77 %
+19:28:22 | [train.py] | INFO: F1   : 49.25 %
 
-19:00:19 | [train.py] | INFO: New Best Model found at epoch 1
+19:28:22 | [train.py] | INFO: New Best Model found at epoch 1
 
-19:00:21 | [train.py] | INFO: Epoch [2/30] | Step [1/135] | Loss: 1.0797
-19:01:09 | [train.py] | INFO: Epoch [2/30] | Step [101/135] | Loss: 0.8330
-19:01:25 | [train.py] | INFO: Train
-19:01:25 | [train.py] | INFO: Loss : 0.9316
-19:01:25 | [train.py] | INFO: ACC  : 59.62 %
-19:01:25 | [train.py] | INFO: F1   : 59.39 %
-19:01:25 | [train.py] | INFO: Validation
-19:01:56 | [train.py] | INFO: Loss : 1.3252
-19:01:56 | [train.py] | INFO: ACC  : 47.65 %
-19:01:56 | [train.py] | INFO: F1   : 41.69 %
+19:28:24 | [train.py] | INFO: Epoch [2/30] | Step [1/135] | Loss: 0.9304
+19:28:47 | [train.py] | INFO: Epoch [2/30] | Step [51/135] | Loss: 0.6051
+19:29:10 | [train.py] | INFO: Epoch [2/30] | Step [101/135] | Loss: 0.6087
+19:29:24 | [train.py] | INFO: Train
+19:29:24 | [train.py] | INFO: Loss : 0.7659
+19:29:24 | [train.py] | INFO: ACC  : 70.12 %
+19:29:24 | [train.py] | INFO: F1   : 69.93 %
+19:29:24 | [train.py] | INFO: Validation
+19:29:55 | [train.py] | INFO: Loss : 0.9989
+19:29:55 | [train.py] | INFO: ACC  : 61.52 %
+19:29:55 | [train.py] | INFO: F1   : 58.30 %
 
-19:01:58 | [train.py] | INFO: Epoch [3/30] | Step [1/135] | Loss: 0.5982
-19:02:45 | [train.py] | INFO: Epoch [3/30] | Step [101/135] | Loss: 0.7939
-19:03:01 | [train.py] | INFO: Train
-19:03:01 | [train.py] | INFO: Loss : 0.6835
-19:03:01 | [train.py] | INFO: ACC  : 71.47 %
-19:03:01 | [train.py] | INFO: F1   : 71.10 %
-19:03:01 | [train.py] | INFO: Validation
-19:03:32 | [train.py] | INFO: Loss : 1.2055
-19:03:32 | [train.py] | INFO: ACC  : 52.05 %
-19:03:32 | [train.py] | INFO: F1   : 52.07 %
+19:29:56 | [train.py] | INFO: New Best Model found at epoch 2
 
-19:03:34 | [train.py] | INFO: Epoch [4/30] | Step [1/135] | Loss: 0.6761
-19:04:22 | [train.py] | INFO: Epoch [4/30] | Step [101/135] | Loss: 0.5178
-19:04:37 | [train.py] | INFO: Train
-19:04:37 | [train.py] | INFO: Loss : 0.5190
-19:04:37 | [train.py] | INFO: ACC  : 78.35 %
-19:04:37 | [train.py] | INFO: F1   : 78.17 %
-19:04:37 | [train.py] | INFO: Validation
-19:05:08 | [train.py] | INFO: Loss : 1.2650
-19:05:08 | [train.py] | INFO: ACC  : 52.35 %
-19:05:08 | [train.py] | INFO: F1   : 51.67 %
+19:29:58 | [train.py] | INFO: Epoch [3/30] | Step [1/135] | Loss: 0.6480
+19:30:21 | [train.py] | INFO: Epoch [3/30] | Step [51/135] | Loss: 0.3339
+19:30:43 | [train.py] | INFO: Epoch [3/30] | Step [101/135] | Loss: 0.5402
+19:30:59 | [train.py] | INFO: Train
+19:30:59 | [train.py] | INFO: Loss : 0.5329
+19:30:59 | [train.py] | INFO: ACC  : 80.30 %
+19:30:59 | [train.py] | INFO: F1   : 80.34 %
+19:30:59 | [train.py] | INFO: Validation
+19:31:29 | [train.py] | INFO: Loss : 0.8859
+19:31:29 | [train.py] | INFO: ACC  : 71.51 %
+19:31:29 | [train.py] | INFO: F1   : 69.28 %
 
-19:05:10 | [train.py] | INFO: Epoch [5/30] | Step [1/135] | Loss: 0.0939
-19:05:57 | [train.py] | INFO: Epoch [5/30] | Step [101/135] | Loss: 0.2594
-19:06:13 | [train.py] | INFO: Train
-19:06:13 | [train.py] | INFO: Loss : 0.3770
-19:06:13 | [train.py] | INFO: ACC  : 85.22 %
-19:06:13 | [train.py] | INFO: F1   : 85.17 %
-19:06:13 | [train.py] | INFO: Validation
-19:06:44 | [train.py] | INFO: Loss : 1.5244
-19:06:44 | [train.py] | INFO: ACC  : 49.52 %
-19:06:44 | [train.py] | INFO: F1   : 47.81 %
+19:31:30 | [train.py] | INFO: New Best Model found at epoch 3
 
-19:06:44 | [train.py] | WARNING: Early stopping triggered at epoch 5
+19:31:32 | [train.py] | INFO: Epoch [4/30] | Step [1/135] | Loss: 0.3936
+19:31:55 | [train.py] | INFO: Epoch [4/30] | Step [51/135] | Loss: 0.1556
+19:32:18 | [train.py] | INFO: Epoch [4/30] | Step [101/135] | Loss: 0.2095
+19:32:33 | [train.py] | INFO: Train
+19:32:33 | [train.py] | INFO: Loss : 0.3717
+19:32:33 | [train.py] | INFO: ACC  : 86.25 %
+19:32:33 | [train.py] | INFO: F1   : 86.09 %
+19:32:33 | [train.py] | INFO: Validation
+19:33:04 | [train.py] | INFO: Loss : 0.8171
+19:33:04 | [train.py] | INFO: ACC  : 75.76 %
+19:33:04 | [train.py] | INFO: F1   : 74.49 %
 
-19:06:44 | [train.py] | INFO: Best Model found at epoch 1
+19:33:04 | [train.py] | INFO: New Best Model found at epoch 4
 
-19:06:44 | [b3_group_classifier_train.py] | INFO: Test
-19:07:44 | [b3_group_classifier_train.py] | INFO: Loss : 1.1405
-19:07:44 | [b3_group_classifier_train.py] | INFO: ACC  : 59.31 %
-19:07:44 | [b3_group_classifier_train.py] | INFO: F1   : 57.66 %
+19:33:06 | [train.py] | INFO: Epoch [5/30] | Step [1/135] | Loss: 0.1717
+19:33:29 | [train.py] | INFO: Epoch [5/30] | Step [51/135] | Loss: 0.2598
+19:33:52 | [train.py] | INFO: Epoch [5/30] | Step [101/135] | Loss: 0.0287
+19:34:07 | [train.py] | INFO: Train
+19:34:07 | [train.py] | INFO: Loss : 0.3012
+19:34:07 | [train.py] | INFO: ACC  : 88.43 %
+19:34:07 | [train.py] | INFO: F1   : 88.29 %
+19:34:07 | [train.py] | INFO: Validation
+19:34:38 | [train.py] | INFO: Loss : 0.7766
+19:34:38 | [train.py] | INFO: ACC  : 75.24 %
+19:34:38 | [train.py] | INFO: F1   : 74.70 %
 
-19:07:44 | [b3_group_classifier_train.py] | INFO: Create Report in outputs/B3_Group_Classifier
-19:07:44 | [b3_group_classifier_train.py] | INFO: Create Confusion Matrix in outputs/B3_Group_Classifier
+19:34:38 | [train.py] | INFO: New Best Model found at epoch 5
+
+19:34:40 | [train.py] | INFO: Epoch [6/30] | Step [1/135] | Loss: 0.1279
+19:35:03 | [train.py] | INFO: Epoch [6/30] | Step [51/135] | Loss: 0.0163
+19:35:26 | [train.py] | INFO: Epoch [6/30] | Step [101/135] | Loss: 0.3689
+19:35:41 | [train.py] | INFO: Train
+19:35:41 | [train.py] | INFO: Loss : 0.1874
+19:35:41 | [train.py] | INFO: ACC  : 91.68 %
+19:35:41 | [train.py] | INFO: F1   : 91.69 %
+19:35:41 | [train.py] | INFO: Validation
+19:36:12 | [train.py] | INFO: Loss : 0.8745
+19:36:12 | [train.py] | INFO: ACC  : 74.20 %
+19:36:12 | [train.py] | INFO: F1   : 73.83 %
+
+19:36:14 | [train.py] | INFO: Epoch [7/30] | Step [1/135] | Loss: 0.2556
+19:36:37 | [train.py] | INFO: Epoch [7/30] | Step [51/135] | Loss: 0.5347
+19:36:59 | [train.py] | INFO: Epoch [7/30] | Step [101/135] | Loss: 0.2500
+19:37:15 | [train.py] | INFO: Train
+19:37:15 | [train.py] | INFO: Loss : 0.1994
+19:37:15 | [train.py] | INFO: ACC  : 91.40 %
+19:37:15 | [train.py] | INFO: F1   : 91.39 %
+19:37:15 | [train.py] | INFO: Validation
+19:37:45 | [train.py] | INFO: Loss : 0.7685
+19:37:45 | [train.py] | INFO: ACC  : 75.24 %
+19:37:45 | [train.py] | INFO: F1   : 74.61 %
+
+19:37:46 | [train.py] | INFO: New Best Model found at epoch 7
+
+19:37:48 | [train.py] | INFO: Epoch [8/30] | Step [1/135] | Loss: 0.1347
+19:38:11 | [train.py] | INFO: Epoch [8/30] | Step [51/135] | Loss: 0.1016
+19:38:33 | [train.py] | INFO: Epoch [8/30] | Step [101/135] | Loss: 0.0075
+19:38:49 | [train.py] | INFO: Train
+19:38:49 | [train.py] | INFO: Loss : 0.1550
+19:38:49 | [train.py] | INFO: ACC  : 93.45 %
+19:38:49 | [train.py] | INFO: F1   : 93.43 %
+19:38:49 | [train.py] | INFO: Validation
+19:39:19 | [train.py] | INFO: Loss : 0.9182
+19:39:19 | [train.py] | INFO: ACC  : 76.44 %
+19:39:19 | [train.py] | INFO: F1   : 76.06 %
+
+19:39:21 | [train.py] | INFO: Epoch [9/30] | Step [1/135] | Loss: 0.1427
+19:39:44 | [train.py] | INFO: Epoch [9/30] | Step [51/135] | Loss: 0.1122
+19:40:07 | [train.py] | INFO: Epoch [9/30] | Step [101/135] | Loss: 0.1310
+19:40:22 | [train.py] | INFO: Train
+19:40:22 | [train.py] | INFO: Loss : 0.1222
+19:40:22 | [train.py] | INFO: ACC  : 95.45 %
+19:40:22 | [train.py] | INFO: F1   : 95.43 %
+19:40:22 | [train.py] | INFO: Validation
+19:40:53 | [train.py] | INFO: Loss : 1.0641
+19:40:53 | [train.py] | INFO: ACC  : 75.02 %
+19:40:53 | [train.py] | INFO: F1   : 73.85 %
+
+19:40:55 | [train.py] | INFO: Epoch [10/30] | Step [1/135] | Loss: 0.1658
+19:41:19 | [train.py] | INFO: Epoch [10/30] | Step [51/135] | Loss: 0.2561
+19:41:41 | [train.py] | INFO: Epoch [10/30] | Step [101/135] | Loss: 0.0343
+19:41:57 | [train.py] | INFO: Train
+19:41:57 | [train.py] | INFO: Loss : 0.1141
+19:41:57 | [train.py] | INFO: ACC  : 95.96 %
+19:41:57 | [train.py] | INFO: F1   : 95.93 %
+19:41:57 | [train.py] | INFO: Validation
+19:42:27 | [train.py] | INFO: Loss : 0.9568
+19:42:27 | [train.py] | INFO: ACC  : 75.69 %
+19:42:27 | [train.py] | INFO: F1   : 75.56 %
+
+19:42:29 | [train.py] | INFO: Epoch [11/30] | Step [1/135] | Loss: 0.0267
+19:42:52 | [train.py] | INFO: Epoch [11/30] | Step [51/135] | Loss: 0.1706
+19:43:15 | [train.py] | INFO: Epoch [11/30] | Step [101/135] | Loss: 0.0554
+19:43:30 | [train.py] | INFO: Train
+19:43:30 | [train.py] | INFO: Loss : 0.1274
+19:43:30 | [train.py] | INFO: ACC  : 95.17 %
+19:43:30 | [train.py] | INFO: F1   : 95.16 %
+19:43:30 | [train.py] | INFO: Validation
+19:44:01 | [train.py] | INFO: Loss : 0.8359
+19:44:01 | [train.py] | INFO: ACC  : 76.44 %
+19:44:01 | [train.py] | INFO: F1   : 76.74 %
+
+19:44:03 | [train.py] | INFO: Epoch [12/30] | Step [1/135] | Loss: 0.0895
+19:44:26 | [train.py] | INFO: Epoch [12/30] | Step [51/135] | Loss: 0.1357
+19:44:49 | [train.py] | INFO: Epoch [12/30] | Step [101/135] | Loss: 0.0335
+19:45:04 | [train.py] | INFO: Train
+19:45:04 | [train.py] | INFO: Loss : 0.0481
+19:45:04 | [train.py] | INFO: ACC  : 99.07 %
+19:45:04 | [train.py] | INFO: F1   : 99.07 %
+19:45:04 | [train.py] | INFO: Validation
+19:45:34 | [train.py] | INFO: Loss : 0.9446
+19:45:34 | [train.py] | INFO: ACC  : 77.63 %
+19:45:34 | [train.py] | INFO: F1   : 77.44 %
+
+19:45:36 | [train.py] | INFO: Epoch [13/30] | Step [1/135] | Loss: 0.0251
+19:45:59 | [train.py] | INFO: Epoch [13/30] | Step [51/135] | Loss: 0.0191
+19:46:22 | [train.py] | INFO: Epoch [13/30] | Step [101/135] | Loss: 0.0452
+19:46:37 | [train.py] | INFO: Train
+19:46:37 | [train.py] | INFO: Loss : 0.0306
+19:46:37 | [train.py] | INFO: ACC  : 99.12 %
+19:46:37 | [train.py] | INFO: F1   : 99.12 %
+19:46:37 | [train.py] | INFO: Validation
+19:47:08 | [train.py] | INFO: Loss : 1.0171
+19:47:08 | [train.py] | INFO: ACC  : 78.45 %
+19:47:08 | [train.py] | INFO: F1   : 78.20 %
+
+19:47:08 | [train.py] | WARNING: Early stopping triggered at epoch 13
+
+19:47:08 | [train.py] | INFO: Best Model found at epoch 7
+
+19:47:08 | [b3_group_classifier_train.py] | INFO: Test
+19:48:04 | [b3_group_classifier_train.py] | INFO: Loss : 0.7540
+19:48:04 | [b3_group_classifier_train.py] | INFO: ACC  : 81.90 %
+19:48:04 | [b3_group_classifier_train.py] | INFO: F1   : 81.61 %
+
+19:48:04 | [b3_group_classifier_train.py] | INFO: Create Report in outputs/B3_Group_Classifier
+19:48:04 | [b3_group_classifier_train.py] | INFO: Create Confusion Matrix in outputs/B3_Group_Classifier
