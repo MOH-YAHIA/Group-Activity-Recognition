@@ -63,7 +63,7 @@ scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict
 # Train
 os.makedirs('checkpoints',exist_ok=True)
 checkpoint_path='checkpoints/b4_best_model_checkpoint.pth'
-train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step=20,early_stop=3,n_frozen_layers=7)
+train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step=20,early_stop=3,n_frozen_layers=8)
 
 
 
