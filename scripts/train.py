@@ -8,7 +8,7 @@ import torch.nn as nn
 
 logger=logging.getLogger(__name__)
 
-def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step,early_stop):
+def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step,early_stop,n_frozen_layers=0):
     #  Kaggle use 2 GPU   
     if torch.cuda.device_count() > 1:
         logger.debug("Using %d GPUs!",torch.cuda.device_count())
@@ -33,6 +33,9 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         all_pred=[]
         all_labels=[]
         model.train()
+        target_model=model.module if isinstance(model, torch.nn.DataParallel) else model
+        for i in range(n_frozen_layers):
+           target_model.backbone[i].eval() 
         for ind,(imgs,labels) in enumerate(train_loader):
             imgs,labels=imgs.to(device),labels.to(device)
             output=model(imgs)
