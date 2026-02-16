@@ -1,22 +1,22 @@
                          --- Classification Report ---
               precision    recall  f1-score   support
 
-     waiting       0.41      0.43      0.42       101
-     setting       0.11      0.67      0.18        24
-     digging       0.08      0.36      0.13        59
-     falling       0.57      0.63      0.60        57
-     spiking       0.20      0.68      0.30        28
-    blocking       0.56      0.74      0.64        65
-     jumping       0.00      0.00      0.00         5
-      moving       0.19      0.53      0.28        96
-    standing       0.83      0.33      0.47       979
+     waiting       0.39      0.62      0.48      1040
+     setting       0.77      0.76      0.76       372
+     digging       0.42      0.42      0.42       659
+     falling       0.85      0.85      0.85       377
+     spiking       0.77      0.63      0.69       372
+    blocking       0.59      0.93      0.72       855
+     jumping       0.11      0.31      0.16        88
+      moving       0.28      0.85      0.42      1352
+    standing       0.93      0.60      0.73     10819
 
-   micro avg       0.39      0.39      0.39      1414
-   macro avg       0.33      0.48      0.34      1414
-weighted avg       0.68      0.39      0.44      1414
+   micro avg       0.64      0.64      0.64     15934
+   macro avg       0.57      0.66      0.58     15934
+weighted avg       0.79      0.64      0.67     15934
 
 
 ----------------------------------------------------------------------------------------------------
                          --- Global Metrics ---   
-Accuracy:39.12 %
-F1_Score:44.12 %
+Accuracy:63.75 %
+F1_Score:66.97 %

@@ -1,44 +1,213 @@
-17:44:07 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-17:44:07 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-17:44:07 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-17:44:11 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/3] | Step [1/70] | Loss: 2.1924
-17:44:22 | [b5_player_classifier_temporal_train.py] | INFO: Train
-17:44:22 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.5509
-17:44:22 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 68.45 %
-17:44:22 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 64.20 %
-17:44:22 | [b5_player_classifier_temporal_train.py] | INFO: Validation
-17:44:37 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.5559
-17:44:37 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 58.27 %
-17:44:37 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 60.00 %
+15:48:06 | [volleyball_annot_loader.py] | INFO: 0/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/0
+15:48:08 | [volleyball_annot_loader.py] | INFO: 1/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/1
+15:48:10 | [volleyball_annot_loader.py] | INFO: 2/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/10
+15:48:10 | [volleyball_annot_loader.py] | INFO: 3/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/11
+15:48:11 | [volleyball_annot_loader.py] | INFO: 4/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/12
+15:48:12 | [volleyball_annot_loader.py] | INFO: 5/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/13
+15:48:13 | [volleyball_annot_loader.py] | INFO: 6/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/14
+15:48:14 | [volleyball_annot_loader.py] | INFO: 7/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/15
+15:48:15 | [volleyball_annot_loader.py] | INFO: 8/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/16
+15:48:16 | [volleyball_annot_loader.py] | INFO: 9/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/17
+15:48:17 | [volleyball_annot_loader.py] | INFO: 10/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/18
+15:48:18 | [volleyball_annot_loader.py] | INFO: 11/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/19
+15:48:18 | [volleyball_annot_loader.py] | INFO: 12/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/2
+15:48:19 | [volleyball_annot_loader.py] | INFO: 13/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/20
+15:48:20 | [volleyball_annot_loader.py] | INFO: 14/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/21
+15:48:21 | [volleyball_annot_loader.py] | INFO: 15/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/22
+15:48:22 | [volleyball_annot_loader.py] | INFO: 16/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/23
+15:48:24 | [volleyball_annot_loader.py] | INFO: 17/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/24
+15:48:25 | [volleyball_annot_loader.py] | INFO: 18/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/25
+15:48:26 | [volleyball_annot_loader.py] | INFO: 19/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/26
+15:48:26 | [volleyball_annot_loader.py] | INFO: 20/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/27
+15:48:27 | [volleyball_annot_loader.py] | INFO: 21/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/28
+15:48:28 | [volleyball_annot_loader.py] | INFO: 22/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/29
+15:48:29 | [volleyball_annot_loader.py] | INFO: 23/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/3
+15:48:30 | [volleyball_annot_loader.py] | INFO: 24/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/30
+15:48:31 | [volleyball_annot_loader.py] | INFO: 25/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/31
+15:48:32 | [volleyball_annot_loader.py] | INFO: 26/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/32
+15:48:33 | [volleyball_annot_loader.py] | INFO: 27/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/33
+15:48:34 | [volleyball_annot_loader.py] | INFO: 28/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/34
+15:48:34 | [volleyball_annot_loader.py] | INFO: 29/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/35
+15:48:35 | [volleyball_annot_loader.py] | INFO: 30/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/36
+15:48:36 | [volleyball_annot_loader.py] | INFO: 31/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/37
+15:48:36 | [volleyball_annot_loader.py] | INFO: 32/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/38
+15:48:37 | [volleyball_annot_loader.py] | INFO: 33/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/39
+15:48:37 | [volleyball_annot_loader.py] | INFO: 34/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/4
+15:48:38 | [volleyball_annot_loader.py] | INFO: 35/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/40
+15:48:39 | [volleyball_annot_loader.py] | INFO: 36/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/41
+15:48:39 | [volleyball_annot_loader.py] | INFO: 37/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/42
+15:48:40 | [volleyball_annot_loader.py] | INFO: 38/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/43
+15:48:41 | [volleyball_annot_loader.py] | INFO: 39/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/44
+15:48:41 | [volleyball_annot_loader.py] | INFO: 40/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/45
+15:48:42 | [volleyball_annot_loader.py] | INFO: 41/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/46
+15:48:42 | [volleyball_annot_loader.py] | INFO: 42/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/47
+15:48:43 | [volleyball_annot_loader.py] | INFO: 43/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/48
+15:48:43 | [volleyball_annot_loader.py] | INFO: 44/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/49
+15:48:44 | [volleyball_annot_loader.py] | INFO: 45/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/5
+15:48:45 | [volleyball_annot_loader.py] | INFO: 46/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/50
+15:48:46 | [volleyball_annot_loader.py] | INFO: 47/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/51
+15:48:47 | [volleyball_annot_loader.py] | INFO: 48/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/52
+15:48:47 | [volleyball_annot_loader.py] | INFO: 49/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/53
+15:48:48 | [volleyball_annot_loader.py] | INFO: 50/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/54
+15:48:49 | [volleyball_annot_loader.py] | INFO: 51/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/6
+15:48:50 | [volleyball_annot_loader.py] | INFO: 52/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/7
+15:48:51 | [volleyball_annot_loader.py] | INFO: 53/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/8
+15:48:52 | [volleyball_annot_loader.py] | INFO: 54/57 - Processing Dir /kaggle/input/datasets/ahmedmohamed365/volleyball/volleyball_/videos/9
+15:48:53 | [volleyball_annot_loader.py] | INFO: Saving processed annotations to data/video_annot.pth
+15:48:57 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data/video_annot.pth
+15:48:59 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data/video_annot.pth
+15:49:12 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [1/1076] | Loss: 2.1679
+15:49:56 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [101/1076] | Loss: 1.3670
+15:50:44 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [201/1076] | Loss: 0.2425
+15:51:35 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [301/1076] | Loss: 0.6420
+15:52:26 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [401/1076] | Loss: 0.3744
+15:53:20 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [501/1076] | Loss: 0.7128
+15:54:12 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [601/1076] | Loss: 0.7533
+15:55:06 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [701/1076] | Loss: 0.4192
+15:55:58 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [801/1076] | Loss: 0.5602
+15:56:52 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [901/1076] | Loss: 2.0943
+15:57:45 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [1/20] | Step [1001/1076] | Loss: 1.2231
+15:58:25 | [b5_player_classifier_temporal_train.py] | INFO: Train
+15:58:25 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 0.8511
+15:58:25 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 60.96 %
+15:58:25 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 64.00 %
+15:58:25 | [b5_player_classifier_temporal_train.py] | INFO: Validation
+16:02:54 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.0476
+16:02:54 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 53.59 %
+16:02:54 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 57.86 %
 
-17:44:37 | [b5_player_classifier_temporal_train.py] | INFO: New Best Model found at epoch 1
+16:02:54 | [b5_player_classifier_temporal_train.py] | INFO: New Best Model found at epoch 1
 
-17:44:38 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/3] | Step [1/70] | Loss: 1.1260
-17:44:49 | [b5_player_classifier_temporal_train.py] | INFO: Train
-17:44:49 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 0.6697
-17:44:49 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 72.02 %
-17:44:49 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 73.25 %
-17:44:49 | [b5_player_classifier_temporal_train.py] | INFO: Validation
-17:45:04 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.7239
-17:45:04 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 54.10 %
-17:45:04 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 58.07 %
+16:02:57 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [1/1076] | Loss: 1.0938
+16:03:50 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [101/1076] | Loss: 0.5015
+16:04:44 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [201/1076] | Loss: 0.2289
+16:05:38 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [301/1076] | Loss: 0.7296
+16:06:31 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [401/1076] | Loss: 0.7885
+16:07:25 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [501/1076] | Loss: 1.1132
+16:08:19 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [601/1076] | Loss: 0.3163
+16:09:12 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [701/1076] | Loss: 0.4934
+16:10:06 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [801/1076] | Loss: 0.3665
+16:10:59 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [901/1076] | Loss: 0.8149
+16:11:53 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [2/20] | Step [1001/1076] | Loss: 1.2520
+16:12:33 | [b5_player_classifier_temporal_train.py] | INFO: Train
+16:12:33 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 0.6199
+16:12:33 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 67.67 %
+16:12:33 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 70.13 %
+16:12:33 | [b5_player_classifier_temporal_train.py] | INFO: Validation
+16:17:03 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.0887
+16:17:03 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 47.15 %
+16:17:03 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 50.68 %
 
-17:45:04 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/3] | Step [1/70] | Loss: 0.6466
-17:45:15 | [b5_player_classifier_temporal_train.py] | INFO: Train
-17:45:15 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 0.5407
-17:45:15 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 73.57 %
-17:45:15 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 75.25 %
-17:45:15 | [b5_player_classifier_temporal_train.py] | INFO: Validation
-17:45:30 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.5595
-17:45:30 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 46.67 %
-17:45:30 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 51.37 %
+16:17:06 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [1/1076] | Loss: 0.5547
+16:17:59 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [101/1076] | Loss: 0.3258
+16:18:53 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [201/1076] | Loss: 1.0470
+16:19:47 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [301/1076] | Loss: 0.3359
+16:20:41 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [401/1076] | Loss: 0.5224
+16:21:34 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [501/1076] | Loss: 0.2002
+16:22:28 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [601/1076] | Loss: 0.2131
+16:23:21 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [701/1076] | Loss: 0.4181
+16:24:14 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [801/1076] | Loss: 0.8096
+16:25:08 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [901/1076] | Loss: 0.3532
+16:26:02 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [3/20] | Step [1001/1076] | Loss: 0.5445
+16:26:42 | [b5_player_classifier_temporal_train.py] | INFO: Train
+16:26:42 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 0.5240
+16:26:42 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 69.25 %
+16:26:42 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 71.46 %
+16:26:42 | [b5_player_classifier_temporal_train.py] | INFO: Validation
+16:31:12 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.1300
+16:31:12 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 56.31 %
+16:31:12 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 61.01 %
 
-17:45:30 | [b5_player_classifier_temporal_train.py] | INFO: Best Model found at epoch 1
+16:31:14 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [1/1076] | Loss: 0.8010
+16:32:08 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [101/1076] | Loss: 1.5570
+16:33:01 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [201/1076] | Loss: 0.2481
+16:33:55 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [301/1076] | Loss: 0.6301
+16:34:48 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [401/1076] | Loss: 0.1596
+16:35:42 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [501/1076] | Loss: 1.2738
+16:36:36 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [601/1076] | Loss: 0.4058
+16:37:29 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [701/1076] | Loss: 0.8168
+16:38:22 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [801/1076] | Loss: 0.4672
+16:39:17 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [901/1076] | Loss: 0.3217
+16:40:10 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [4/20] | Step [1001/1076] | Loss: 0.4779
+16:40:50 | [b5_player_classifier_temporal_train.py] | INFO: Train
+16:40:50 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 0.4404
+16:40:50 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 71.69 %
+16:40:50 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 73.66 %
+16:40:50 | [b5_player_classifier_temporal_train.py] | INFO: Validation
+16:45:20 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.0344
+16:45:20 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 58.01 %
+16:45:20 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 61.09 %
 
-17:45:30 | [b5_player_classifier_temporal_train.py] | INFO: Test
-17:45:45 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.6031
-17:45:45 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 39.12 %
-17:45:45 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 44.12 %
+16:45:21 | [b5_player_classifier_temporal_train.py] | INFO: New Best Model found at epoch 4
 
-17:45:45 | [b5_player_classifier_temporal_train.py] | INFO: Create Report in outputs/B5_Player_Classifier_Temporal
-17:45:45 | [b5_player_classifier_temporal_train.py] | INFO: Create Confusion Matrix in outputs/B5_Player_Classifier_Temporal
+16:45:23 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [1/1076] | Loss: 0.2425
+16:46:17 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [101/1076] | Loss: 0.9433
+16:47:10 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [201/1076] | Loss: 0.1056
+16:48:03 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [301/1076] | Loss: 0.6769
+16:48:56 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [401/1076] | Loss: 0.5478
+16:49:50 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [501/1076] | Loss: 0.1751
+16:50:43 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [601/1076] | Loss: 0.0842
+16:51:37 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [701/1076] | Loss: 0.1998
+16:52:30 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [801/1076] | Loss: 0.2423
+16:53:24 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [901/1076] | Loss: 0.2081
+16:54:17 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [5/20] | Step [1001/1076] | Loss: 1.4830
+16:54:57 | [b5_player_classifier_temporal_train.py] | INFO: Train
+16:54:57 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 0.3691
+16:54:57 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 73.44 %
+16:54:57 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 75.08 %
+16:54:57 | [b5_player_classifier_temporal_train.py] | INFO: Validation
+16:59:31 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.1312
+16:59:31 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 52.53 %
+16:59:31 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 56.62 %
+
+16:59:33 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [1/1076] | Loss: 0.4251
+17:00:27 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [101/1076] | Loss: 0.1317
+17:01:21 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [201/1076] | Loss: 0.2119
+17:02:14 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [301/1076] | Loss: 0.2132
+17:03:08 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [401/1076] | Loss: 0.5238
+17:04:01 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [501/1076] | Loss: 0.3347
+17:04:55 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [601/1076] | Loss: 0.1820
+17:05:49 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [701/1076] | Loss: 0.5069
+17:06:42 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [801/1076] | Loss: 0.5476
+17:07:36 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [901/1076] | Loss: 0.2666
+17:08:29 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [6/20] | Step [1001/1076] | Loss: 0.1146
+17:09:09 | [b5_player_classifier_temporal_train.py] | INFO: Train
+17:09:09 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 0.3218
+17:09:09 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 75.50 %
+17:09:09 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 76.95 %
+17:09:09 | [b5_player_classifier_temporal_train.py] | INFO: Validation
+17:13:40 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.2148
+17:13:40 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 62.34 %
+17:13:40 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 66.01 %
+
+17:13:43 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [1/1076] | Loss: 0.0913
+17:14:36 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [101/1076] | Loss: 0.6586
+17:15:30 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [201/1076] | Loss: 0.1459
+17:16:23 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [301/1076] | Loss: 0.1331
+17:17:16 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [401/1076] | Loss: 0.2088
+17:18:10 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [501/1076] | Loss: 0.2366
+17:19:03 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [601/1076] | Loss: 0.2016
+17:19:56 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [701/1076] | Loss: 0.1735
+17:20:50 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [801/1076] | Loss: 0.2529
+17:21:43 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [901/1076] | Loss: 0.2501
+17:22:36 | [b5_player_classifier_temporal_train.py] | INFO: Epoch [7/20] | Step [1001/1076] | Loss: 0.1926
+17:23:16 | [b5_player_classifier_temporal_train.py] | INFO: Train
+17:23:16 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 0.2768
+17:23:16 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 77.17 %
+17:23:16 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 78.52 %
+17:23:16 | [b5_player_classifier_temporal_train.py] | INFO: Validation
+17:27:46 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.2899
+17:27:46 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 59.14 %
+17:27:46 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 62.62 %
+
+17:27:46 | [b5_player_classifier_temporal_train.py] | WARNING: Early stopping triggered at epoch 7
+
+17:27:46 | [b5_player_classifier_temporal_train.py] | INFO: Best Model found at epoch 4
+
+17:27:46 | [b5_player_classifier_temporal_train.py] | INFO: Test
+17:32:19 | [b5_player_classifier_temporal_train.py] | INFO: Loss : 1.1430
+17:32:19 | [b5_player_classifier_temporal_train.py] | INFO: ACC  : 63.75 %
+17:32:19 | [b5_player_classifier_temporal_train.py] | INFO: F1   : 66.97 %
+
+17:32:19 | [b5_player_classifier_temporal_train.py] | INFO: Create Report in outputs/B5_Player_Classifier_Temporal
+17:32:19 | [b5_player_classifier_temporal_train.py] | INFO: Create Confusion Matrix in outputs/B5_Player_Classifier_Temporal

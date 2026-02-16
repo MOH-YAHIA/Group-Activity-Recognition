@@ -53,20 +53,20 @@ for label,index in player_action_dct.items():
 
 
 # DataLoaders
-train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids,one_frame=True,player_label=True,train=True)
+train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids,one_frame=False,player_label=True,train=True)
 train_loader=DataLoader(train_dataset,batch_size=batch_size,shuffle=True,num_workers=num_workers,pin_memory=pin_memory)
 
-val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids,one_frame=True,player_label=True,train=False)
+val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids,one_frame=False,player_label=True,train=False)
 val_loader=DataLoader(val_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
-test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids,one_frame=True,player_label=True,train=False)
+test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids,one_frame=False,player_label=True,train=False)
 test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 weights = torch.tensor(weights , dtype=torch.float32).to(device)
 backbone=B3_Player_Classifier(num_player_actions)
-backbone.load_state_dict(torch.load('checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone.load_state_dict(torch.load('/kaggle/input/datasets/myahiia/b3-player-classifier-dataset/Group-Activity-Recognition/checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 model=B5_Player_Classifier_Temporal(backbone,num_player_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss(weight=weights, ignore_index=-1)
@@ -93,7 +93,7 @@ def evaluate(model,criterion,loader,device,pred_need):
             #b,f,12,3,w,h   b,f,12,    b,1
             output=model(imgs) #b,p,9
             output=output.reshape(-1,9) #b*12,9
-            labels=players_labels[:,0,:] #middel frame label b,12
+            labels=players_labels[:,4,:] #middel frame label b,12
             labels=labels.reshape(-1) #b*12
             loss=criterion(output,labels)
             loss_sum+=loss.item()
@@ -145,7 +145,7 @@ for epoch in range(n_epoch):
         #b,f,12,3,w,h   b,f,12,    b,1
         output=model(imgs) #b,p,9
         output=output.reshape(-1,9) #b*12,9
-        labels=players_labels[:,0,:] #middel frame label b,12
+        labels=players_labels[:,4,:] #middel frame label b,12
         labels=labels.reshape(-1) #b*12
         loss=criterion(output,labels)
         optimizer.zero_grad()
@@ -214,3 +214,5 @@ logger.info(f"Create Report in {output_path}")
 final_report.creat_report()
 logger.info(f"Create Confusion Matrix in {output_path}")
 final_report.create_confusion_matrix()
+
+        
