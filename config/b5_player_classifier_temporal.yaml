@@ -10,10 +10,9 @@ splits:
   test_ids: ['4','5','9','11','14','20','21','25','29','34','35','37','43','44','45','47']
 
 model:
-  arch: "Resnet50 +  LSTM over players  + classifier to 9 actions"  
-  num_group_actions: 8
+  arch: "B3_Player_classifier +  LSTM for each player  + classifier to 9 actions"  
   num_player_actions: 9
-
+  
 training:
   num_workers : 0
   pin_memory : False
@@ -22,7 +21,9 @@ training:
   batch_size: 1
   optimizer: "AdamW"
   criterion: "CrossEntropyLoss"
-
+  player_labels_weight: {'jumping': 17.83, 'falling': 5.15, 'setting': 4.83, 
+                         'spiking': 4.82, 'digging': 2.69, 'blocking': 2.12, 
+                         'waiting': 1.76, 'moving': 1.24, 'standing': 0.16}
 scheduler:
   type: "ReduceLROnPlateau"
   mode: "min"
