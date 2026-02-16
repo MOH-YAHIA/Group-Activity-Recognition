@@ -207,8 +207,8 @@ logger.info(f'Loss : {loss_avg_test:.4f}')
 logger.info(f'ACC  : {accurecy_test:.2f} %')
 logger.info(f'F1   : {f1Score_test:.2f} %\n')
         
-os.makedirs('outputs/B3_Player_Classifier',exist_ok=True)
-output_path='outputs/B3_Player_Classifier'
+os.makedirs('outputs/B5_Player_Classifier_Temporal',exist_ok=True)
+output_path='outputs/B5_Player_Classifier_Temporal'
 final_report = Final_Report(output_path,all_labels,all_pred,for_group=False)
 logger.info(f"Create Report in {output_path}")
 final_report.creat_report()
