@@ -7,7 +7,7 @@ class B5_Group_Classifier_Temporal(nn.Module):
         super(B5_Group_Classifier_Temporal,self).__init__()
         self.backbone=backbone.backbone
         self.lstm=backbone.lstm
-        for child in list(self.backbone.children())[:7]:
+        for child in list(self.backbone.children())[:8]:
             for param in child.parameters():
                 param.requires_grad = False
         #for param in self.lstm.parameters():
