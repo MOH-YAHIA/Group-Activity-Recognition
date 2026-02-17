@@ -118,6 +118,7 @@ def evaluate(model,criterion,loader,device,pred_need):
 
 
 os.makedirs('checkpoints',exist_ok=True)
+# i made a typo here it should be b5
 checkpoint_path='checkpoints/b3_player_classifier_temporal_best_model_checkpoint.pth'
 best_loss=float('inf') 
 no_update=0

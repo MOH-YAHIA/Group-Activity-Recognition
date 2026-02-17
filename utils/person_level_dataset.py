@@ -12,7 +12,8 @@ class VolleyballPersonDataset(BaseDataset):
         self.train=train
         self.train_transform = transforms.Compose([
             # 1. Flip: A spike is a spike regardless of direction
-            transforms.RandomHorizontalFlip(p=0.5),
+            # comment flip in group classifier
+            # transforms.RandomHorizontalFlip(p=0.5),
             # 2. Color: Handle different jersey colors and gym lighting
             transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.2),
             # 3. Standardization (Invariant)

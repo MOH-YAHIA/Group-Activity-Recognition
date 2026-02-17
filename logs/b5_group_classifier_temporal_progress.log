@@ -1,0 +1,48 @@
+10:56:01 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+10:56:02 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+10:56:02 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+10:56:06 | [train.py] | INFO: Epoch [1/3] | Step [1/70] | Loss: 2.1511
+10:56:20 | [train.py] | INFO: Train
+10:56:20 | [train.py] | INFO: Loss : 2.0891
+10:56:20 | [train.py] | INFO: ACC  : 17.14 %
+10:56:20 | [train.py] | INFO: F1   : 16.45 %
+10:56:20 | [train.py] | INFO: Validation
+10:56:39 | [train.py] | INFO: Loss : 2.0676
+10:56:39 | [train.py] | INFO: ACC  : 14.62 %
+10:56:40 | [train.py] | INFO: F1   : 5.42 %
+
+10:56:40 | [train.py] | INFO: New Best Model found at epoch 1
+
+10:56:40 | [train.py] | INFO: Epoch [2/3] | Step [1/70] | Loss: 1.9139
+10:56:53 | [train.py] | INFO: Train
+10:56:53 | [train.py] | INFO: Loss : 2.0096
+10:56:53 | [train.py] | INFO: ACC  : 21.43 %
+10:56:53 | [train.py] | INFO: F1   : 17.70 %
+10:56:53 | [train.py] | INFO: Validation
+10:57:08 | [train.py] | INFO: Loss : 2.0219
+10:57:08 | [train.py] | INFO: ACC  : 20.00 %
+10:57:08 | [train.py] | INFO: F1   : 13.79 %
+
+10:57:09 | [train.py] | INFO: New Best Model found at epoch 2
+
+10:57:09 | [train.py] | INFO: Epoch [3/3] | Step [1/70] | Loss: 2.0371
+10:57:22 | [train.py] | INFO: Train
+10:57:22 | [train.py] | INFO: Loss : 1.9378
+10:57:22 | [train.py] | INFO: ACC  : 25.71 %
+10:57:22 | [train.py] | INFO: F1   : 24.74 %
+10:57:22 | [train.py] | INFO: Validation
+10:57:38 | [train.py] | INFO: Loss : 1.9706
+10:57:38 | [train.py] | INFO: ACC  : 30.00 %
+10:57:38 | [train.py] | INFO: F1   : 23.98 %
+
+10:57:39 | [train.py] | INFO: New Best Model found at epoch 3
+
+10:57:39 | [train.py] | INFO: Best Model found at epoch 3
+
+10:57:39 | [b5_group_classifier_temporal_train.py] | INFO: Test
+10:57:58 | [b5_group_classifier_temporal_train.py] | INFO: Loss : 1.9773
+10:57:58 | [b5_group_classifier_temporal_train.py] | INFO: ACC  : 27.12 %
+10:57:58 | [b5_group_classifier_temporal_train.py] | INFO: F1   : 19.84 %
+
+10:57:58 | [b5_group_classifier_temporal_train.py] | INFO: Create Report in outputs/B5_Group_Classifier_Temporal
+10:57:58 | [b5_group_classifier_temporal_train.py] | INFO: Create Confusion Matrix in outputs/B5_Group_Classifier_Temporal

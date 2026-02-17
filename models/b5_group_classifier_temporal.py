@@ -7,12 +7,18 @@ class B5_Group_Classifier_Temporal(nn.Module):
         super(B5_Group_Classifier_Temporal,self).__init__()
         self.backbone=backbone.backbone
         self.lstm=backbone.lstm
-        #for param in self.backbone.parameters():
-            #param.requires_grad = False
+        for child in list(self.backbone.children())[:7]:
+            for param in child.parameters():
+                param.requires_grad = False
         #for param in self.lstm.parameters():
             #param.requires_grad = False
 
-        self.classifier=nn.Linear(512,n_group_actions)
+        self.classifier=nn.Sequential(
+            nn.Linear(512,64),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(64,n_group_actions)
+        )
 
 
     def forward(self,X):
@@ -24,8 +30,8 @@ class B5_Group_Classifier_Temporal(nn.Module):
         X=X.view(B,F,P,2048)
         X=X.permute(0,2,1,3).contiguous() #B,P,F,2048
         X=X.view(B*P,F,2048)
-        out,(h,c)=self.lstm(X)
-        out=out[:,-1,:].reshape(B,P,512) #B*P,512
+        out,(h,c)=self.lstm(X) #B*P,F,512
+        out=out[:,-1,:].reshape(B,P,512) 
         out,_=out.max(dim=1) #B,512
         out=self.classifier(out)
         return out #B,8
