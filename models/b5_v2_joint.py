@@ -24,7 +24,7 @@ class B5_Joint(nn.Module):
         X=X.view(B*F*P,C,W,H)
         X=self.backbone(X) #B*F*P,2048,1,1
         X=X.view(B,F,P,2048) 
-        X=X.permute(0,2,1,3).view(B*P,F,2048) #B,P,F,2048
+        X=X.permute(0,2,1,3).reshape(B*P,F,2048) #B,P,F,2048
         #batch,seq_len,input_size
         out,(h,c)=self.lstm(X) #out -> B*P,F,512
         out=out[:,-1,:] #B*P,512

@@ -40,19 +40,19 @@ num_group_actions = conf_dict['model']['num_group_actions']
 num_player_actions = conf_dict['model']['num_player_actions']
 
 # DataLoaders
-train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids,one_frame=True,player_label=False,train=True)
+train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids,one_frame=False,player_label=False,train=True)
 train_loader=DataLoader(train_dataset,batch_size=batch_size,shuffle=True,num_workers=num_workers,pin_memory=pin_memory)
 
-val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids,one_frame=True,player_label=False,train=False)
+val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids,one_frame=False,player_label=False,train=False)
 val_loader=DataLoader(val_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
-test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids,one_frame=True,player_label=False,train=False)
+test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids,one_frame=False,player_label=False,train=False)
 test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 backbone=B3_Player_Classifier(num_player_actions)
-backbone.load_state_dict(torch.load('checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone.load_state_dict(torch.load('/kaggle/input/datasets/myahiia/b3-player-classifier-dataset/Group-Activity-Recognition/checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 model=B5_Joint(backbone,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
