@@ -1,0 +1,9 @@
+22:47:38 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+22:47:38 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+22:47:38 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+22:47:41 | [train.py] | INFO: Epoch [1/3] | Step [1/70] | Loss: 2.0271
+22:48:54 | [train.py] | INFO: Train
+22:48:54 | [train.py] | INFO: Loss : 2.0309
+22:48:54 | [train.py] | INFO: ACC  : 17.14 %
+22:48:54 | [train.py] | INFO: F1   : 12.83 %
+22:48:54 | [train.py] | INFO: Validation

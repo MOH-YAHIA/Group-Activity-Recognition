@@ -3,13 +3,20 @@ import torch.nn as nn
 import torchvision.models as models
 
 class B6(nn.Module):
-    def __init__(self,backbone,num_group_actions):
+    def __init__(self,backbone,n_group_actions):
         super(B6,self).__init__()
         self.backbone=nn.Sequential(*list(backbone.resnet.children())[:-1])
-        for parm in self.backbone.parameters():
-            parm.requires_grad = False
+        # freez all layers in backbone
+        for child in list(self.backbone.children())[:8]:
+            for param in child.parameters():
+                param.requires_grad = False
         self.lstm=nn.LSTM(input_size=2048,hidden_size=512,num_layers=1,batch_first=True)
-        self.classifier=nn.Linear(512,num_group_actions)
+        self.classifier=nn.Sequential(
+            nn.Linear(512,64),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(64,n_group_actions)
+        )
 
     def forward(self,X):
         # X -> B,9,12,3,224,224
