@@ -1,0 +1,48 @@
+17:01:34 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+17:01:34 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+17:01:34 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+17:01:39 | [train.py] | INFO: Epoch [1/3] | Step [1/70] | Loss: 1.9891
+17:01:49 | [train.py] | INFO: Train
+17:01:49 | [train.py] | INFO: Loss : 2.0715
+17:01:49 | [train.py] | INFO: ACC  : 20.00 %
+17:01:49 | [train.py] | INFO: F1   : 10.91 %
+17:01:49 | [train.py] | INFO: Validation
+17:02:05 | [train.py] | INFO: Loss : 2.0404
+17:02:05 | [train.py] | INFO: ACC  : 17.69 %
+17:02:05 | [train.py] | INFO: F1   : 5.32 %
+
+17:02:06 | [train.py] | INFO: New Best Model found at epoch 1
+
+17:02:06 | [train.py] | INFO: Epoch [2/3] | Step [1/70] | Loss: 1.9574
+17:02:15 | [train.py] | INFO: Train
+17:02:15 | [train.py] | INFO: Loss : 1.9861
+17:02:15 | [train.py] | INFO: ACC  : 28.57 %
+17:02:15 | [train.py] | INFO: F1   : 17.44 %
+17:02:15 | [train.py] | INFO: Validation
+17:02:31 | [train.py] | INFO: Loss : 2.0057
+17:02:31 | [train.py] | INFO: ACC  : 24.62 %
+17:02:31 | [train.py] | INFO: F1   : 12.36 %
+
+17:02:32 | [train.py] | INFO: New Best Model found at epoch 2
+
+17:02:32 | [train.py] | INFO: Epoch [3/3] | Step [1/70] | Loss: 2.0053
+17:02:42 | [train.py] | INFO: Train
+17:02:42 | [train.py] | INFO: Loss : 1.9533
+17:02:42 | [train.py] | INFO: ACC  : 21.43 %
+17:02:42 | [train.py] | INFO: F1   : 14.06 %
+17:02:42 | [train.py] | INFO: Validation
+17:02:58 | [train.py] | INFO: Loss : 1.9807
+17:02:58 | [train.py] | INFO: ACC  : 24.62 %
+17:02:58 | [train.py] | INFO: F1   : 12.36 %
+
+17:02:58 | [train.py] | INFO: New Best Model found at epoch 3
+
+17:02:58 | [train.py] | INFO: Best Model found at epoch 3
+
+17:02:58 | [b5_v2_joint_train.py] | INFO: Test
+17:03:14 | [b5_v2_joint_train.py] | INFO: Loss : 1.9660
+17:03:14 | [b5_v2_joint_train.py] | INFO: ACC  : 27.12 %
+17:03:14 | [b5_v2_joint_train.py] | INFO: F1   : 14.37 %
+
+17:03:14 | [b5_v2_joint_train.py] | INFO: Create Report in outputs/B5_V2_Joint
+17:03:14 | [b5_v2_joint_train.py] | INFO: Create Confusion Matrix in outputs/B5_V2_Joint
