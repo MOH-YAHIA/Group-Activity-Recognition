@@ -40,13 +40,13 @@ num_group_actions = conf_dict['model']['num_group_actions']
 num_player_actions = conf_dict['model']['num_player_actions']
 
 # DataLoaders
-train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids,one_frame=True,player_label=False,train=True)
+train_dataset=VolleyballPersonDataset(videos_root,annot_root,train_ids,one_frame=False,player_label=False,train=True)
 train_loader=DataLoader(train_dataset,batch_size=batch_size,shuffle=True,num_workers=num_workers,pin_memory=pin_memory)
 
-val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids,one_frame=True,player_label=False,train=False)
+val_dataset=VolleyballPersonDataset(videos_root,annot_root,val_ids,one_frame=False,player_label=False,train=False)
 val_loader=DataLoader(val_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
-test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids,one_frame=True,player_label=False,train=False)
+test_dataset=VolleyballPersonDataset(videos_root,annot_root,test_ids,one_frame=False,player_label=False,train=False)
 test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
 # Setup
@@ -62,7 +62,7 @@ scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict
 # Train
 os.makedirs('checkpoints',exist_ok=True)
 checkpoint_path='checkpoints/b6_best_model_checkpoint.pth'
-train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,100,2,8)
+train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,100,2,7)
 
 
 # Test

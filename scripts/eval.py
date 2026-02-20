@@ -1,11 +1,16 @@
 import numpy as np
 import torch 
+import torch.nn as nn
 from sklearn.metrics import f1_score
 
 def evaluate(model,criterion,loader,device,pred_need):
     '''
     pred_need (bool): return labels and pred
     '''
+    #  Kaggle use 2 GPU   
+    if torch.cuda.device_count() > 1:
+        model = nn.DataParallel(model)
+        
     all_pred=[]
     all_labels=[]
     loss_sum=0

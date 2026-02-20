@@ -1,9 +1,10 @@
-22:47:38 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-22:47:38 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-22:47:38 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-22:47:41 | [train.py] | INFO: Epoch [1/3] | Step [1/70] | Loss: 2.0271
-22:48:54 | [train.py] | INFO: Train
-22:48:54 | [train.py] | INFO: Loss : 2.0309
-22:48:54 | [train.py] | INFO: ACC  : 17.14 %
-22:48:54 | [train.py] | INFO: F1   : 12.83 %
-22:48:54 | [train.py] | INFO: Validation
+10:50:41 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+10:50:41 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+10:50:42 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+10:50:46 | [b6_train.py] | INFO: Test
+10:53:14 | [b6_train.py] | INFO: Loss : 2.1229
+10:53:14 | [b6_train.py] | INFO: ACC  : 7.63 %
+10:53:14 | [b6_train.py] | INFO: F1   : 3.38 %
+
+10:53:14 | [b6_train.py] | INFO: Create Report in outputs/B6
+10:53:14 | [b6_train.py] | INFO: Create Confusion Matrix in outputs/B6

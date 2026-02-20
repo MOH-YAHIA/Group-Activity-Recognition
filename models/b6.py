@@ -7,7 +7,7 @@ class B6(nn.Module):
         super(B6,self).__init__()
         self.backbone=nn.Sequential(*list(backbone.resnet.children())[:-1])
         # freez all layers in backbone
-        for child in list(self.backbone.children())[:8]:
+        for child in list(self.backbone.children())[:7]:
             for param in child.parameters():
                 param.requires_grad = False
         self.lstm=nn.LSTM(input_size=2048,hidden_size=512,num_layers=1,batch_first=True)
