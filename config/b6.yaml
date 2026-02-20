@@ -17,7 +17,7 @@ training:
   pin_memory : True
   n_epoch: 20
   lr: 0.0001 # 1e-4
-  batch_size: 16
+  batch_size: 4
   optimizer: "AdamW"
   criterion: "CrossEntropyLoss"
 
