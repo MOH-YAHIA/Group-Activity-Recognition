@@ -52,7 +52,7 @@ test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_work
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 backbone=B3_Player_Classifier(num_player_actions)
-backbone.load_state_dict(torch.load('checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone.load_state_dict(torch.load('/kaggle/input/datasets/myahiia/b3-player-classifier-dataset/Group-Activity-Recognition/checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 model=B6(backbone,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
@@ -80,6 +80,4 @@ logger.info(f"Create Report in {output_path}")
 final_report.creat_report()
 logger.info(f"Create Confusion Matrix in {output_path}")
 final_report.create_confusion_matrix()
-        
-
         
