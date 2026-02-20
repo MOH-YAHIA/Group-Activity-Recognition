@@ -9,12 +9,6 @@ import torch.nn as nn
 logger=logging.getLogger(__name__)
 
 def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step,early_stop,n_frozen_layers=0):
-    #  Kaggle use 2 GPU   
-    if torch.cuda.device_count() > 1:
-        logger.debug("Using %d GPUs!",torch.cuda.device_count())
-        # This is the "Magic" line for T4 x2
-        model = nn.DataParallel(model)    
-
     best_loss=float('inf') 
     no_update=0
     choosen_epoch=0
@@ -52,7 +46,7 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
 
             if ind%ind_step==0:
                 logger.info(f'Epoch [{epoch+1}/{n_epoch}] | Step [{ind+1}/{len(train_loader)}] | Loss: {loss.item():0.4f}')
-
+            
         all_pred = np.array(all_pred)
         all_labels = np.array(all_labels)
         loss_avg_train = loss_sum_train/len(train_loader)

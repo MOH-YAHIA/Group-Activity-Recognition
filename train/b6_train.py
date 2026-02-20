@@ -59,6 +59,12 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
 
+#  Kaggle use 2 GPU   
+if torch.cuda.device_count() > 1:
+    logger.debug("Using %d GPUs!",torch.cuda.device_count())
+    # This is the "Magic" line for T4 x2
+    model = nn.DataParallel(model)
+    
 # Train
 os.makedirs('checkpoints',exist_ok=True)
 checkpoint_path='checkpoints/b6_best_model_checkpoint.pth'
