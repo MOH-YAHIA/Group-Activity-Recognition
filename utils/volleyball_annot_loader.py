@@ -82,8 +82,8 @@ def load_volleyball_dataset(videos_root, annot_root):
     # annot_root -> volleyball_tracking_annotation
 
     # check for preloaded annotations
-    # annot_path='/kaggle/input/notebooks/myahiia/dataset-annot-loader/data/video_annot.pth'
-    annot_path = os.path.join('data','video_annot.pth')
+    annot_path='/kaggle/input/notebooks/myahiia/dataset-annot-loader/data/video_annot.pth'
+    #annot_path = os.path.join('data','video_annot.pth')
     if os.path.exists(annot_path):
         logger.info(f"Loading cached annotations from {annot_path}")
         videos_annot=torch.load(annot_path,weights_only=False)
