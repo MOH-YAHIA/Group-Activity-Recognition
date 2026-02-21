@@ -21,7 +21,7 @@ class VolleyballPersonDataset(BaseDataset):
             transforms.ToTensor(),
             # 4. Occlusion: Handle players blocking each other
             # Note: RandomErasing must come AFTER ToTensor
-            transforms.RandomErasing(p=0.3, scale=(0.02, 0.2), ratio=(0.3, 3.3)),
+            # transforms.RandomErasing(p=0.3, scale=(0.02, 0.2), ratio=(0.3, 3.3)),
             # 5. Normalization (Invariant)
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
@@ -48,7 +48,9 @@ class VolleyballPersonDataset(BaseDataset):
         frames=[]
         categories=[]
         seed = random.randint(0,2**16)
-
+        # seed over the whole clip
+        random.seed(seed)
+        torch.manual_seed(seed)
         def crop_fun(video_id,clip_id,frame_id,frame_boxes):
             img_path = os.path.join(self.videos_root,video_id,clip_id,f'{str(frame_id)}.jpg')
             img = Image.open(img_path).convert('RGB')
@@ -60,8 +62,6 @@ class VolleyballPersonDataset(BaseDataset):
                 crop=img.crop((x1, y1, x2, y2))
                 # for each player we need the same transormation along the 9 frames
                 # so we have unique seed for each player
-                random.seed(seed+ind)
-                torch.manual_seed(seed+ind)
                 if self.train:
                     crop=self.train_transform(crop)
                 else:

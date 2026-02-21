@@ -1,127 +1,127 @@
-11:39:56 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from /kaggle/input/notebooks/myahiia/dataset-annot-loader/data/video_annot.pth
-11:39:59 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from /kaggle/input/notebooks/myahiia/dataset-annot-loader/data/video_annot.pth
-11:40:01 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from /kaggle/input/notebooks/myahiia/dataset-annot-loader/data/video_annot.pth
-11:40:17 | [train.py] | INFO: Epoch [1/20] | Step [1/538] | Loss: 2.1365
-11:41:54 | [train.py] | INFO: Epoch [1/20] | Step [101/538] | Loss: 1.9520
-11:43:38 | [train.py] | INFO: Epoch [1/20] | Step [201/538] | Loss: 1.5965
-11:45:21 | [train.py] | INFO: Epoch [1/20] | Step [301/538] | Loss: 1.1993
-11:47:04 | [train.py] | INFO: Epoch [1/20] | Step [401/538] | Loss: 1.5946
-11:48:46 | [train.py] | INFO: Epoch [1/20] | Step [501/538] | Loss: 1.1669
-11:49:24 | [train.py] | INFO: Train
-11:49:24 | [train.py] | INFO: Loss : 1.5536
-11:49:24 | [train.py] | INFO: ACC  : 40.99 %
-11:49:24 | [train.py] | INFO: F1   : 38.67 %
-11:49:24 | [train.py] | INFO: Validation
-11:54:04 | [train.py] | INFO: Loss : 1.1648
-11:54:04 | [train.py] | INFO: ACC  : 56.75 %
-11:54:04 | [train.py] | INFO: F1   : 51.83 %
+11:23:43 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from /kaggle/input/notebooks/myahiia/dataset-annot-loader/data/video_annot.pth
+11:23:45 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from /kaggle/input/notebooks/myahiia/dataset-annot-loader/data/video_annot.pth
+11:23:47 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from /kaggle/input/notebooks/myahiia/dataset-annot-loader/data/video_annot.pth
+11:24:01 | [train.py] | INFO: Epoch [1/20] | Step [1/538] | Loss: 2.1122
+11:25:35 | [train.py] | INFO: Epoch [1/20] | Step [101/538] | Loss: 1.7908
+11:27:22 | [train.py] | INFO: Epoch [1/20] | Step [201/538] | Loss: 1.6312
+11:29:07 | [train.py] | INFO: Epoch [1/20] | Step [301/538] | Loss: 1.4195
+11:30:53 | [train.py] | INFO: Epoch [1/20] | Step [401/538] | Loss: 1.2364
+11:32:38 | [train.py] | INFO: Epoch [1/20] | Step [501/538] | Loss: 1.7569
+11:33:16 | [train.py] | INFO: Train
+11:33:16 | [train.py] | INFO: Loss : 1.6215
+11:33:16 | [train.py] | INFO: ACC  : 35.64 %
+11:33:16 | [train.py] | INFO: F1   : 34.13 %
+11:33:16 | [train.py] | INFO: Validation
+11:37:49 | [train.py] | INFO: Loss : 1.3552
+11:37:49 | [train.py] | INFO: ACC  : 47.87 %
+11:37:49 | [train.py] | INFO: F1   : 45.12 %
 
-11:54:04 | [train.py] | INFO: New Best Model found at epoch 1
+11:37:49 | [train.py] | INFO: New Best Model found at epoch 1
 
-11:54:09 | [train.py] | INFO: Epoch [2/20] | Step [1/538] | Loss: 0.9603
-11:55:53 | [train.py] | INFO: Epoch [2/20] | Step [101/538] | Loss: 1.2262
-11:57:36 | [train.py] | INFO: Epoch [2/20] | Step [201/538] | Loss: 1.7671
-11:59:19 | [train.py] | INFO: Epoch [2/20] | Step [301/538] | Loss: 1.0252
-12:01:02 | [train.py] | INFO: Epoch [2/20] | Step [401/538] | Loss: 0.7223
-12:02:44 | [train.py] | INFO: Epoch [2/20] | Step [501/538] | Loss: 0.6346
-12:03:23 | [train.py] | INFO: Train
-12:03:23 | [train.py] | INFO: Loss : 0.9875
-12:03:23 | [train.py] | INFO: ACC  : 62.87 %
-12:03:23 | [train.py] | INFO: F1   : 62.16 %
-12:03:23 | [train.py] | INFO: Validation
-12:08:01 | [train.py] | INFO: Loss : 0.9200
-12:08:01 | [train.py] | INFO: ACC  : 70.32 %
-12:08:01 | [train.py] | INFO: F1   : 68.86 %
+11:37:54 | [train.py] | INFO: Epoch [2/20] | Step [1/538] | Loss: 1.3629
+11:39:40 | [train.py] | INFO: Epoch [2/20] | Step [101/538] | Loss: 1.2078
+11:41:25 | [train.py] | INFO: Epoch [2/20] | Step [201/538] | Loss: 1.1779
+11:43:10 | [train.py] | INFO: Epoch [2/20] | Step [301/538] | Loss: 1.0888
+11:44:55 | [train.py] | INFO: Epoch [2/20] | Step [401/538] | Loss: 1.2825
+11:46:40 | [train.py] | INFO: Epoch [2/20] | Step [501/538] | Loss: 1.1594
+11:47:19 | [train.py] | INFO: Train
+11:47:19 | [train.py] | INFO: Loss : 1.0763
+11:47:19 | [train.py] | INFO: ACC  : 59.67 %
+11:47:19 | [train.py] | INFO: F1   : 59.09 %
+11:47:19 | [train.py] | INFO: Validation
+11:51:51 | [train.py] | INFO: Loss : 0.9879
+11:51:51 | [train.py] | INFO: ACC  : 67.71 %
+11:51:51 | [train.py] | INFO: F1   : 65.58 %
 
-12:08:01 | [train.py] | INFO: New Best Model found at epoch 2
+11:51:52 | [train.py] | INFO: New Best Model found at epoch 2
 
-12:08:06 | [train.py] | INFO: Epoch [3/20] | Step [1/538] | Loss: 0.7667
-12:09:51 | [train.py] | INFO: Epoch [3/20] | Step [101/538] | Loss: 1.2119
-12:11:34 | [train.py] | INFO: Epoch [3/20] | Step [201/538] | Loss: 1.6186
-12:13:18 | [train.py] | INFO: Epoch [3/20] | Step [301/538] | Loss: 1.0722
-12:15:02 | [train.py] | INFO: Epoch [3/20] | Step [401/538] | Loss: 0.5379
-12:16:46 | [train.py] | INFO: Epoch [3/20] | Step [501/538] | Loss: 0.7599
-12:17:24 | [train.py] | INFO: Train
-12:17:24 | [train.py] | INFO: Loss : 0.7270
-12:17:24 | [train.py] | INFO: ACC  : 74.44 %
-12:17:24 | [train.py] | INFO: F1   : 74.07 %
-12:17:24 | [train.py] | INFO: Validation
-12:21:57 | [train.py] | INFO: Loss : 0.7666
-12:21:57 | [train.py] | INFO: ACC  : 73.30 %
-12:21:57 | [train.py] | INFO: F1   : 72.23 %
+11:51:55 | [train.py] | INFO: Epoch [3/20] | Step [1/538] | Loss: 0.9448
+11:53:42 | [train.py] | INFO: Epoch [3/20] | Step [101/538] | Loss: 0.3991
+11:55:27 | [train.py] | INFO: Epoch [3/20] | Step [201/538] | Loss: 0.5343
+11:57:12 | [train.py] | INFO: Epoch [3/20] | Step [301/538] | Loss: 0.5219
+11:58:57 | [train.py] | INFO: Epoch [3/20] | Step [401/538] | Loss: 1.2333
+12:00:42 | [train.py] | INFO: Epoch [3/20] | Step [501/538] | Loss: 1.4652
+12:01:21 | [train.py] | INFO: Train
+12:01:21 | [train.py] | INFO: Loss : 0.6108
+12:01:21 | [train.py] | INFO: ACC  : 80.25 %
+12:01:21 | [train.py] | INFO: F1   : 79.66 %
+12:01:21 | [train.py] | INFO: Validation
+12:05:54 | [train.py] | INFO: Loss : 0.9181
+12:05:54 | [train.py] | INFO: ACC  : 68.53 %
+12:05:54 | [train.py] | INFO: F1   : 67.89 %
 
-12:21:58 | [train.py] | INFO: New Best Model found at epoch 3
+12:05:54 | [train.py] | INFO: New Best Model found at epoch 3
 
-12:22:03 | [train.py] | INFO: Epoch [4/20] | Step [1/538] | Loss: 0.1671
-12:23:47 | [train.py] | INFO: Epoch [4/20] | Step [101/538] | Loss: 0.5039
-12:25:31 | [train.py] | INFO: Epoch [4/20] | Step [201/538] | Loss: 0.7354
-12:27:14 | [train.py] | INFO: Epoch [4/20] | Step [301/538] | Loss: 0.3863
-12:28:57 | [train.py] | INFO: Epoch [4/20] | Step [401/538] | Loss: 0.2605
-12:30:40 | [train.py] | INFO: Epoch [4/20] | Step [501/538] | Loss: 0.0622
-12:31:18 | [train.py] | INFO: Train
-12:31:18 | [train.py] | INFO: Loss : 0.5195
-12:31:18 | [train.py] | INFO: ACC  : 82.62 %
-12:31:18 | [train.py] | INFO: F1   : 82.39 %
-12:31:18 | [train.py] | INFO: Validation
-12:35:50 | [train.py] | INFO: Loss : 0.6598
-12:35:50 | [train.py] | INFO: ACC  : 78.82 %
-12:35:50 | [train.py] | INFO: F1   : 77.59 %
+12:05:58 | [train.py] | INFO: Epoch [4/20] | Step [1/538] | Loss: 1.3955
+12:07:45 | [train.py] | INFO: Epoch [4/20] | Step [101/538] | Loss: 0.1688
+12:09:30 | [train.py] | INFO: Epoch [4/20] | Step [201/538] | Loss: 0.2122
+12:11:15 | [train.py] | INFO: Epoch [4/20] | Step [301/538] | Loss: 0.2309
+12:13:01 | [train.py] | INFO: Epoch [4/20] | Step [401/538] | Loss: 0.2401
+12:14:46 | [train.py] | INFO: Epoch [4/20] | Step [501/538] | Loss: 0.4322
+12:15:25 | [train.py] | INFO: Train
+12:15:25 | [train.py] | INFO: Loss : 0.4228
+12:15:25 | [train.py] | INFO: ACC  : 86.38 %
+12:15:25 | [train.py] | INFO: F1   : 85.90 %
+12:15:25 | [train.py] | INFO: Validation
+12:19:59 | [train.py] | INFO: Loss : 0.6635
+12:19:59 | [train.py] | INFO: ACC  : 79.05 %
+12:19:59 | [train.py] | INFO: F1   : 77.23 %
 
-12:35:51 | [train.py] | INFO: New Best Model found at epoch 4
+12:19:59 | [train.py] | INFO: New Best Model found at epoch 4
 
-12:35:56 | [train.py] | INFO: Epoch [5/20] | Step [1/538] | Loss: 0.0838
-12:37:40 | [train.py] | INFO: Epoch [5/20] | Step [101/538] | Loss: 0.1948
-12:39:24 | [train.py] | INFO: Epoch [5/20] | Step [201/538] | Loss: 0.2395
-12:41:06 | [train.py] | INFO: Epoch [5/20] | Step [301/538] | Loss: 0.0675
-12:42:50 | [train.py] | INFO: Epoch [5/20] | Step [401/538] | Loss: 0.1053
-12:44:33 | [train.py] | INFO: Epoch [5/20] | Step [501/538] | Loss: 0.6593
-12:45:11 | [train.py] | INFO: Train
-12:45:11 | [train.py] | INFO: Loss : 0.4018
-12:45:11 | [train.py] | INFO: ACC  : 86.66 %
-12:45:11 | [train.py] | INFO: F1   : 86.31 %
-12:45:11 | [train.py] | INFO: Validation
-12:49:52 | [train.py] | INFO: Loss : 0.9200
-12:49:52 | [train.py] | INFO: ACC  : 72.41 %
-12:49:52 | [train.py] | INFO: F1   : 71.42 %
+12:20:04 | [train.py] | INFO: Epoch [5/20] | Step [1/538] | Loss: 0.8071
+12:21:50 | [train.py] | INFO: Epoch [5/20] | Step [101/538] | Loss: 0.1060
+12:23:36 | [train.py] | INFO: Epoch [5/20] | Step [201/538] | Loss: 0.5665
+12:25:21 | [train.py] | INFO: Epoch [5/20] | Step [301/538] | Loss: 0.0477
+12:27:08 | [train.py] | INFO: Epoch [5/20] | Step [401/538] | Loss: 0.1933
+12:28:53 | [train.py] | INFO: Epoch [5/20] | Step [501/538] | Loss: 0.2773
+12:29:32 | [train.py] | INFO: Train
+12:29:32 | [train.py] | INFO: Loss : 0.3356
+12:29:32 | [train.py] | INFO: ACC  : 88.24 %
+12:29:32 | [train.py] | INFO: F1   : 87.80 %
+12:29:32 | [train.py] | INFO: Validation
+12:34:06 | [train.py] | INFO: Loss : 0.7565
+12:34:06 | [train.py] | INFO: ACC  : 76.44 %
+12:34:06 | [train.py] | INFO: F1   : 76.52 %
 
-12:49:57 | [train.py] | INFO: Epoch [6/20] | Step [1/538] | Loss: 0.0810
-12:51:41 | [train.py] | INFO: Epoch [6/20] | Step [101/538] | Loss: 0.1981
-12:53:25 | [train.py] | INFO: Epoch [6/20] | Step [201/538] | Loss: 0.5284
-12:55:08 | [train.py] | INFO: Epoch [6/20] | Step [301/538] | Loss: 0.8029
-12:56:51 | [train.py] | INFO: Epoch [6/20] | Step [401/538] | Loss: 0.2711
-12:58:33 | [train.py] | INFO: Epoch [6/20] | Step [501/538] | Loss: 0.0055
-12:59:11 | [train.py] | INFO: Train
-12:59:11 | [train.py] | INFO: Loss : 0.2864
-12:59:11 | [train.py] | INFO: ACC  : 89.36 %
-12:59:11 | [train.py] | INFO: F1   : 89.23 %
-12:59:11 | [train.py] | INFO: Validation
-13:03:45 | [train.py] | INFO: Loss : 0.8831
-13:03:45 | [train.py] | INFO: ACC  : 71.89 %
-13:03:45 | [train.py] | INFO: F1   : 72.42 %
+12:34:10 | [train.py] | INFO: Epoch [6/20] | Step [1/538] | Loss: 0.2948
+12:35:56 | [train.py] | INFO: Epoch [6/20] | Step [101/538] | Loss: 0.0213
+12:37:41 | [train.py] | INFO: Epoch [6/20] | Step [201/538] | Loss: 0.2781
+12:39:27 | [train.py] | INFO: Epoch [6/20] | Step [301/538] | Loss: 0.0162
+12:41:12 | [train.py] | INFO: Epoch [6/20] | Step [401/538] | Loss: 0.2683
+12:42:57 | [train.py] | INFO: Epoch [6/20] | Step [501/538] | Loss: 0.2342
+12:43:37 | [train.py] | INFO: Train
+12:43:37 | [train.py] | INFO: Loss : 0.2294
+12:43:37 | [train.py] | INFO: ACC  : 91.36 %
+12:43:37 | [train.py] | INFO: F1   : 91.08 %
+12:43:37 | [train.py] | INFO: Validation
+12:48:10 | [train.py] | INFO: Loss : 0.7496
+12:48:10 | [train.py] | INFO: ACC  : 78.15 %
+12:48:10 | [train.py] | INFO: F1   : 76.83 %
 
-13:03:50 | [train.py] | INFO: Epoch [7/20] | Step [1/538] | Loss: 0.4388
-13:05:34 | [train.py] | INFO: Epoch [7/20] | Step [101/538] | Loss: 1.6213
-13:07:17 | [train.py] | INFO: Epoch [7/20] | Step [201/538] | Loss: 0.1730
-13:09:01 | [train.py] | INFO: Epoch [7/20] | Step [301/538] | Loss: 0.1878
-13:10:44 | [train.py] | INFO: Epoch [7/20] | Step [401/538] | Loss: 0.0973
-13:12:27 | [train.py] | INFO: Epoch [7/20] | Step [501/538] | Loss: 0.0268
-13:13:05 | [train.py] | INFO: Train
-13:13:05 | [train.py] | INFO: Loss : 0.2921
-13:13:05 | [train.py] | INFO: ACC  : 88.75 %
-13:13:05 | [train.py] | INFO: F1   : 88.74 %
-13:13:05 | [train.py] | INFO: Validation
-13:17:41 | [train.py] | INFO: Loss : 0.8543
-13:17:41 | [train.py] | INFO: ACC  : 76.29 %
-13:17:41 | [train.py] | INFO: F1   : 74.43 %
+12:48:14 | [train.py] | INFO: Epoch [7/20] | Step [1/538] | Loss: 1.1425
+12:50:00 | [train.py] | INFO: Epoch [7/20] | Step [101/538] | Loss: 0.2765
+12:51:46 | [train.py] | INFO: Epoch [7/20] | Step [201/538] | Loss: 0.0629
+12:53:31 | [train.py] | INFO: Epoch [7/20] | Step [301/538] | Loss: 0.0117
+12:55:16 | [train.py] | INFO: Epoch [7/20] | Step [401/538] | Loss: 0.0225
+12:57:02 | [train.py] | INFO: Epoch [7/20] | Step [501/538] | Loss: 0.8050
+12:57:41 | [train.py] | INFO: Train
+12:57:41 | [train.py] | INFO: Loss : 0.2180
+12:57:41 | [train.py] | INFO: ACC  : 92.05 %
+12:57:41 | [train.py] | INFO: F1   : 91.94 %
+12:57:41 | [train.py] | INFO: Validation
+13:02:15 | [train.py] | INFO: Loss : 0.8497
+13:02:15 | [train.py] | INFO: ACC  : 75.99 %
+13:02:15 | [train.py] | INFO: F1   : 76.19 %
 
-13:17:41 | [train.py] | WARNING: Early stopping triggered at epoch 7
+13:02:15 | [train.py] | WARNING: Early stopping triggered at epoch 7
 
-13:17:41 | [train.py] | INFO: Best Model found at epoch 4
+13:02:15 | [train.py] | INFO: Best Model found at epoch 4
 
-13:17:41 | [b6_train.py] | INFO: Test
-13:22:27 | [b6_train.py] | INFO: Loss : 0.6059
-13:22:27 | [b6_train.py] | INFO: ACC  : 79.66 %
-13:22:27 | [b6_train.py] | INFO: F1   : 77.80 %
+13:02:15 | [b6_train.py] | INFO: Test
+13:06:49 | [b6_train.py] | INFO: Loss : 0.7083
+13:06:49 | [b6_train.py] | INFO: ACC  : 79.96 %
+13:06:49 | [b6_train.py] | INFO: F1   : 79.84 %
 
-13:22:27 | [b6_train.py] | INFO: Create Report in outputs/B6
-13:22:27 | [b6_train.py] | INFO: Create Confusion Matrix in outputs/B6
+13:06:49 | [b6_train.py] | INFO: Create Report in outputs/B6
+13:06:49 | [b6_train.py] | INFO: Create Confusion Matrix in outputs/B6
