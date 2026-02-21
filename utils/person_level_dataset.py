@@ -60,8 +60,7 @@ class VolleyballPersonDataset(BaseDataset):
             for ind,box in enumerate(frame_boxes):
                 x1, y1, x2, y2 = box.box
                 crop=img.crop((x1, y1, x2, y2))
-                # for each player we need the same transormation along the 9 frames
-                # so we have unique seed for each player
+                
                 if self.train:
                     crop=self.train_transform(crop)
                 else:
