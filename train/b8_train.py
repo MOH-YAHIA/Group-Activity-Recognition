@@ -14,14 +14,14 @@ from scripts.eval import evaluate
 from scripts.final_report import Final_Report
 from models.b3_player_classifier import B3_Player_Classifier
 from models.b5_player_classifier_temporal import B5_Player_Classifier_Temporal
-from models.b7 import B7
+from models.b8 import B8
 
 os.makedirs('logs',exist_ok=True)
-log_path='logs/b7_progress.log'
+log_path='logs/b8_progress.log'
 setup_logger(log_path)
 logger = logging.getLogger(__name__)
 
-with open('config/b7.yaml','r') as file:
+with open('config/b8.yaml','r') as file:
     conf_dict = yaml.safe_load(file)
 
 
@@ -62,12 +62,12 @@ backbone_inner=B3_Player_Classifier(num_player_actions)
 backbone_outer=B5_Player_Classifier_Temporal(backbone_inner,num_player_actions)
 backbone_outer.load_state_dict(torch.load('checkpoints/b3_player_classifier_temporal_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 
-model=B7(backbone_outer,num_group_actions)
+model=B8(backbone_outer,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
 
-expert_params = list(model.backbone.parameters()) + list(model.lstm1.parameters())
-new_params = list(model.lstm2.parameters()) + list(model.classifier.parameters())
+expert_params =list(model.lstm1.parameters())
+new_params = list(model.lstm2.parameters()) + list(model.res_vis.parameters()) +list(model.classifier.parameters())
 optimizer = torch.optim.AdamW([
     {'params': filter(lambda p: p.requires_grad, expert_params), 'lr': lr1}, 
     {'params': new_params, 'lr': lr2} 
@@ -83,7 +83,7 @@ if torch.cuda.device_count() > 1:
 
 # Train
 os.makedirs('checkpoints',exist_ok=True)
-checkpoint_path='checkpoints/b7_best_model_checkpoint.pth'
+checkpoint_path='checkpoints/b8_best_model_checkpoint.pth'
 train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,50,2,9)
 
 
@@ -95,7 +95,7 @@ logger.info(f'Loss : {loss_avg_test:.4f}')
 logger.info(f'ACC  : {accurecy_test:.2f} %')
 logger.info(f'F1   : {f1Score_test:.2f} %\n')
 
-output_path='outputs/B7'      
+output_path='outputs/B8'      
 os.makedirs(output_path,exist_ok=True)
 final_report = Final_Report(output_path,all_labels,all_pred,for_group=True)
 logger.info(f"Create Report in {output_path}")

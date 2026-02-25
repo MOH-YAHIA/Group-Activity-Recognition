@@ -6,7 +6,7 @@ def setup_logger(output_path):
     log_format = logging.Formatter('%(asctime)s | [%(filename)s] | %(levelname)s: %(message)s', '%H:%M:%S')
     
     root = logging.getLogger()
-    root.setLevel(logging.INFO)
+    root.setLevel(logging.debug)
 
     # Console Output
     console = logging.StreamHandler()
