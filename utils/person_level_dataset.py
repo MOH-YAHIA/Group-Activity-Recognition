@@ -58,6 +58,7 @@ class VolleyballPersonDataset(BaseDataset):
         frames=[]
         categories=[]
         seed = random.randint(0,2**16)
+
         def crop_fun(video_id,clip_id,frame_id,frame_boxes):
             img_path = os.path.join(self.videos_root,video_id,clip_id,f'{str(frame_id)}.jpg')
             img = Image.open(img_path).convert('RGB')
@@ -67,9 +68,10 @@ class VolleyballPersonDataset(BaseDataset):
             for ind,box in enumerate(frame_boxes):
                 x1, y1, x2, y2 = box.box
                 crop=img.crop((x1, y1, x2, y2))
-                # same seed for each player 
-                random.seed(seed)
-                torch.manual_seed(seed)
+                # for each player we need the same transormation along the 9 frames
+                # so we have unique seed for each player
+                random.seed(seed+ind)
+                torch.manual_seed(seed+ind)
                 if self.train:
                     crop=self.train_transform(crop)
                 else:
@@ -106,5 +108,3 @@ class VolleyballPersonDataset(BaseDataset):
         if not self.player_label:
             return frames,label
         return frames, categories, label
-
-

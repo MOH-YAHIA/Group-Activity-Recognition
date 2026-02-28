@@ -3,14 +3,17 @@ import torch.nn as nn
 import torchvision.models as models
 
 class B5_Player_Classifier_Temporal(nn.Module):
-    def __init__(self,backbone,n_player_actions):
+    def __init__(self,n_player_actions):
         super(B5_Player_Classifier_Temporal,self).__init__()
-        self.backbone=nn.Sequential(*list(backbone.resnet.children())[:-1])
-        for child in list(self.backbone.children())[:7]:
-            for param in child.parameters():
-                param.requires_grad = False
+        self.backbone=nn.Sequential(*list(models.resnet50(weights=torchvision.models.ResNet50_Weights.DEFAULT).children())[:-1])
+
         self.lstm=nn.LSTM(input_size=2048,hidden_size=512,num_layers=1,batch_first=True)
-        self.classifier=nn.Linear(512,n_player_actions)
+        self.classifier=nn.Sequential(
+            nn.Linear(512,128),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(128,n_player_actions)
+        )
 
     def forward(self,X):
         # B,9,12,C,W,H

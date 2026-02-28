@@ -64,12 +64,12 @@ test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_work
 
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-weights = torch.tensor(weights , dtype=torch.float32).to(device)
-backbone=B3_Player_Classifier(num_player_actions)
-backbone.load_state_dict(torch.load('/kaggle/input/datasets/myahiia/b3-player-classifier-dataset/Group-Activity-Recognition/checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
-model=B5_Player_Classifier_Temporal(backbone,num_player_actions)
+#weights = torch.tensor(weights , dtype=torch.float32).to(device)
+#backbone=B3_Player_Classifier(num_player_actions)
+#backbone.load_state_dict(torch.load('/kaggle/input/datasets/myahiia/b3-player-classifier-dataset/Group-Activity-Recognition/checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+model=B5_Player_Classifier_Temporal(num_player_actions)
 model=model.to(device)
-criterion = nn.CrossEntropyLoss(weight=weights, ignore_index=-1)
+criterion = nn.CrossEntropyLoss(label_smoothing=0.02, ignore_index=-1)
 optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
 
@@ -118,8 +118,7 @@ def evaluate(model,criterion,loader,device,pred_need):
 
 
 os.makedirs('checkpoints',exist_ok=True)
-# i made a typo here it should be b5
-checkpoint_path='checkpoints/b3_player_classifier_temporal_best_model_checkpoint.pth'
+checkpoint_path='checkpoints/b5_player_classifier_temporal_best_model_checkpoint.pth'
 best_loss=float('inf') 
 no_update=0
 choosen_epoch=0
@@ -138,9 +137,7 @@ for epoch in range(n_epoch):
     all_pred=[]
     all_labels=[]
     model.train()
-    target_model=model.module if isinstance(model, torch.nn.DataParallel) else model
-    for i in range(7):
-        target_model.backbone[i].eval() 
+
     for ind,(imgs,players_labels,_) in enumerate(train_loader):
         imgs,players_labels=imgs.to(device),players_labels.to(device)
         #b,f,12,3,w,h   b,f,12,    b,1
@@ -192,7 +189,7 @@ for epoch in range(n_epoch):
     else:
         no_update+=1
     
-    if no_update>2:
+    if no_update>=3:
         logger.warning(f"Early stopping triggered at epoch {epoch+1}\n")
         break
 logger.info(f"Best Model found at epoch {choosen_epoch}\n")
