@@ -20,7 +20,7 @@ training:
   n_epoch: 3
   lr1: 0.00001 # 1e-5
   lr2: 0.0001 # 1e-4
-  batch_size: 1
+  batch_size: 2
   optimizer: "AdamW"
   criterion: "CrossEntropyLoss"
 

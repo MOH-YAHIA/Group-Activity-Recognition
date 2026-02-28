@@ -11,18 +11,28 @@ class VolleyballPersonDataset(BaseDataset):
         self.player_label=player_label
         self.train=train
         self.train_transform = transforms.Compose([
-            # 1. Flip: A spike is a spike regardless of direction
+            # 1. Flip(player): A spike is a spike regardless of direction
             # comment flip in group classifier
             # transforms.RandomHorizontalFlip(p=0.5),
+
             # 2. Color: Handle different jersey colors and gym lighting
             transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.2),
-            # 3. Standardization (Invariant)
+            
+            # 3. Perspective: Simulates different viewing angles from the stadium
+            transforms.RandomPerspective(distortion_scale=0.2, p=0.5),
+
+            # 4. Blur: Handle fast motion tracking of the ball/play
+            transforms.GaussianBlur(kernel_size=(3, 3), sigma=(0.1, 2.0)),
+
+            # 5. Standardization (Invariant)
             transforms.Resize((224, 224)),
             transforms.ToTensor(),
-            # 4. Occlusion: Handle players blocking each other
+
+            # 6 Occlusion (player): Handle players blocking each other
             # Note: RandomErasing must come AFTER ToTensor
             # transforms.RandomErasing(p=0.3, scale=(0.02, 0.2), ratio=(0.3, 3.3)),
-            # 5. Normalization (Invariant)
+            
+            # 7. Normalization (Invariant)
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
         self.val_transform = transforms.Compose([
@@ -48,9 +58,6 @@ class VolleyballPersonDataset(BaseDataset):
         frames=[]
         categories=[]
         seed = random.randint(0,2**16)
-        # seed over the whole clip
-        random.seed(seed)
-        torch.manual_seed(seed)
         def crop_fun(video_id,clip_id,frame_id,frame_boxes):
             img_path = os.path.join(self.videos_root,video_id,clip_id,f'{str(frame_id)}.jpg')
             img = Image.open(img_path).convert('RGB')
@@ -60,7 +67,9 @@ class VolleyballPersonDataset(BaseDataset):
             for ind,box in enumerate(frame_boxes):
                 x1, y1, x2, y2 = box.box
                 crop=img.crop((x1, y1, x2, y2))
-                
+                # same seed for each player 
+                random.seed(seed)
+                torch.manual_seed(seed)
                 if self.train:
                     crop=self.train_transform(crop)
                 else:

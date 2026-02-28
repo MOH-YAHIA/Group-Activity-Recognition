@@ -5,19 +5,25 @@ import torchvision.models as models
 class B7(nn.Module):
     def __init__(self,backbone,n_group_actions):
         super(B7,self).__init__()
-        #B3 player
+
         self.backbone=backbone.backbone
-        for child in list(self.backbone.children())[:7]:
-            for param in child.parameters():
-                param.requires_grad = False
         self.lstm1=backbone.lstm
-       
-        self.lstm2=nn.LSTM(input_size=512+512,hidden_size=512,num_layers=1,batch_first=True)
+        for param in self.backbone.parameters():
+            param.requires_grad = False
+        for param in self.lstm1.parameters():
+            param.requires_grad = False
+
+        self.lstm2=nn.LSTM(input_size=512,hidden_size=512,num_layers=1,batch_first=True)
         self.classifier=nn.Sequential(
-            nn.Linear(512,128),
+            nn.Linear(512, 256),
+            nn.BatchNorm1d(256),
             nn.ReLU(),
             nn.Dropout(0.5),
-            nn.Linear(128,n_group_actions)
+            nn.Linear(256, 128),
+            nn.BatchNorm1d(128),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(128, n_group_actions)
         )
 
     def forward(self,X):
@@ -31,10 +37,7 @@ class B7(nn.Module):
         out,(h,c)=self.lstm1(X.view(B*P,F,2048)) #B*P,F,512
         out=out.view(B,P,F,512)
         
-        out_t1,_=out[:,:6,:,:].max(dim=1) #B,F,512
-        out_t2,_=out[:,6:,:,:].max(dim=1) #B,F,512
-
-        out=torch.concat((out_t1,out_t2),dim=2) #B,F,512+512
+        out,_=out.max(dim=1) #B,F,512
 
         out,(h,c)=self.lstm2(out) #B,F,512
         out=out[:,-1,:] #B,512

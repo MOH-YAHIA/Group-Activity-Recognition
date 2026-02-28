@@ -66,12 +66,7 @@ model=B7(backbone_outer,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
 
-expert_params = list(model.backbone.parameters()) + list(model.lstm1.parameters())
-new_params = list(model.lstm2.parameters()) + list(model.classifier.parameters())
-optimizer = torch.optim.AdamW([
-    {'params': filter(lambda p: p.requires_grad, expert_params), 'lr': lr1}, 
-    {'params': new_params, 'lr': lr2} 
-])
+optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()),lr= lr1)
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
 
 #  Kaggle use 2 GPU   
