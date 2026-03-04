@@ -18,21 +18,14 @@ class VolleyballPersonDataset(BaseDataset):
             # 2. Color: Handle different jersey colors and gym lighting
             transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.2),
             
-            # 3. Perspective: Simulates different viewing angles from the stadium
-            transforms.RandomPerspective(distortion_scale=0.2, p=0.5),
-
-            # 4. Blur: Handle fast motion tracking of the ball/play
+            # 3. Blur: Handle fast motion tracking of the ball/play
             transforms.GaussianBlur(kernel_size=(3, 3), sigma=(0.1, 2.0)),
 
-            # 5. Standardization (Invariant)
+            # 4. Standardization (Invariant)
             transforms.Resize((224, 224)),
             transforms.ToTensor(),
 
-            # 6 Occlusion (player): Handle players blocking each other
-            # Note: RandomErasing must come AFTER ToTensor
-            # transforms.RandomErasing(p=0.3, scale=(0.02, 0.2), ratio=(0.3, 3.3)),
-            
-            # 7. Normalization (Invariant)
+            # 5. Normalization (Invariant)
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
         self.val_transform = transforms.Compose([

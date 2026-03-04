@@ -1,44 +1,51 @@
-14:21:57 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-14:21:58 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-14:21:59 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
-14:22:08 | [train.py] | INFO: Epoch [1/3] | Step [1/35] | Loss: 2.7525
-14:22:30 | [train.py] | INFO: Train
-14:22:30 | [train.py] | INFO: Loss : 2.1742
-14:22:30 | [train.py] | INFO: ACC  : 17.14 %
-14:22:30 | [train.py] | INFO: F1   : 10.14 %
-14:22:30 | [train.py] | INFO: Validation
-14:22:57 | [train.py] | INFO: Loss : 2.0603
-14:22:57 | [train.py] | INFO: ACC  : 16.92 %
-14:22:57 | [train.py] | INFO: F1   : 7.04 %
+00:44:03 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+00:44:03 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+00:44:03 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+00:44:08 | [train.py] | INFO: Current Learning Rate: 1e-05
+00:44:09 | [train.py] | INFO: Epoch [1/3] | Step [1/35] | Loss: 2.1210
+00:44:20 | [train.py] | INFO: Train
+00:44:20 | [train.py] | INFO: Loss : 2.0677
+00:44:20 | [train.py] | INFO: ACC  : 12.86 %
+00:44:20 | [train.py] | INFO: F1   : 7.32 %
+00:44:20 | [train.py] | INFO: Validation
+00:44:36 | [train.py] | INFO: Loss : 2.0575
+00:44:36 | [train.py] | INFO: ACC  : 17.69 %
+00:44:36 | [train.py] | INFO: F1   : 5.32 %
 
-14:22:58 | [train.py] | INFO: New Best Model found at epoch 1
+00:44:36 | [train.py] | INFO: New Best Model found at epoch 1
 
-14:22:59 | [train.py] | INFO: Epoch [2/3] | Step [1/35] | Loss: 2.5131
-14:23:19 | [train.py] | INFO: Train
-14:23:19 | [train.py] | INFO: Loss : 2.1629
-14:23:19 | [train.py] | INFO: ACC  : 20.00 %
-14:23:19 | [train.py] | INFO: F1   : 13.65 %
-14:23:19 | [train.py] | INFO: Validation
-14:23:45 | [train.py] | INFO: Loss : 2.0752
-14:23:45 | [train.py] | INFO: ACC  : 14.62 %
-14:23:45 | [train.py] | INFO: F1   : 5.83 %
+00:44:36 | [train.py] | INFO: Current Learning Rate: 1e-05
+00:44:36 | [train.py] | INFO: Epoch [2/3] | Step [1/35] | Loss: 2.0222
+00:44:47 | [train.py] | INFO: Train
+00:44:47 | [train.py] | INFO: Loss : 2.0556
+00:44:47 | [train.py] | INFO: ACC  : 20.00 %
+00:44:47 | [train.py] | INFO: F1   : 15.82 %
+00:44:47 | [train.py] | INFO: Validation
+00:45:03 | [train.py] | INFO: Loss : 2.0485
+00:45:03 | [train.py] | INFO: ACC  : 17.69 %
+00:45:03 | [train.py] | INFO: F1   : 5.32 %
 
-14:23:45 | [train.py] | INFO: Epoch [3/3] | Step [1/35] | Loss: 1.7374
-14:24:05 | [train.py] | INFO: Train
-14:24:05 | [train.py] | INFO: Loss : 2.1766
-14:24:05 | [train.py] | INFO: ACC  : 12.86 %
-14:24:05 | [train.py] | INFO: F1   : 8.68 %
-14:24:05 | [train.py] | INFO: Validation
-14:24:30 | [train.py] | INFO: Loss : 2.1109
-14:24:30 | [train.py] | INFO: ACC  : 13.85 %
-14:24:30 | [train.py] | INFO: F1   : 10.13 %
+00:45:03 | [train.py] | INFO: New Best Model found at epoch 2
 
-14:24:30 | [train.py] | INFO: Best Model found at epoch 1
+00:45:03 | [train.py] | INFO: Current Learning Rate: 1e-05
+00:45:04 | [train.py] | INFO: Epoch [3/3] | Step [1/35] | Loss: 1.9984
+00:45:14 | [train.py] | INFO: Train
+00:45:14 | [train.py] | INFO: Loss : 2.0304
+00:45:14 | [train.py] | INFO: ACC  : 15.71 %
+00:45:14 | [train.py] | INFO: F1   : 9.59 %
+00:45:14 | [train.py] | INFO: Validation
+00:45:31 | [train.py] | INFO: Loss : 2.0384
+00:45:31 | [train.py] | INFO: ACC  : 18.46 %
+00:45:31 | [train.py] | INFO: F1   : 6.88 %
 
-14:24:30 | [b7_train.py] | INFO: Test
-14:25:00 | [b7_train.py] | INFO: Loss : 2.0221
-14:25:00 | [b7_train.py] | INFO: ACC  : 23.73 %
-14:25:00 | [b7_train.py] | INFO: F1   : 16.95 %
+00:45:32 | [train.py] | INFO: New Best Model found at epoch 3
 
-14:25:00 | [b7_train.py] | INFO: Create Report in outputs/B7
-14:25:00 | [b7_train.py] | INFO: Create Confusion Matrix in outputs/B7
+00:45:32 | [train.py] | INFO: Best Model found at epoch 3
+
+00:45:32 | [b7_train.py] | INFO: Test
+00:45:48 | [b7_train.py] | INFO: Loss : 2.0411
+00:45:48 | [b7_train.py] | INFO: ACC  : 17.80 %
+00:45:48 | [b7_train.py] | INFO: F1   : 5.42 %
+
+00:45:48 | [b7_train.py] | INFO: Create Report in outputs/B7
+00:45:48 | [b7_train.py] | INFO: Create Confusion Matrix in outputs/B7

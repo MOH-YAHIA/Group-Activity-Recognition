@@ -8,10 +8,12 @@ import torch.nn as nn
 
 logger=logging.getLogger(__name__)
 
-def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step,early_stop,n_frozen_layers=0):
+def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step,early_stop,n_frozen_layers=0,trained_model=None):
     best_loss=float('inf') 
     no_update=0
     choosen_epoch=0
+    target_model=model.module if isinstance(model, torch.nn.DataParallel) else model
+
     def update_checkpint(epoch):
         checkpoint = {
         'model_state_dict': model.module.state_dict() if isinstance(model, torch.nn.DataParallel) else model.state_dict(),
@@ -22,12 +24,22 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         }
         torch.save(checkpoint,checkpoint_path)
 
-    for epoch in range(n_epoch):
+    if trained_model is not None:
+        loaded_checkpoint=torch.load(trained_model,map_location=device,weights_only=True)
+        target_model.load_state_dict(loaded_checkpoint['model_state_dict'])
+        optimizer.load_state_dict(loaded_checkpoint['optimizer_state_dict'])
+        scheduler.load_state_dict(loaded_checkpoint['scheduler_state_dict'])
+        choosen_epoch=loaded_checkpoint['epoch']
+        best_loss=loaded_checkpoint['best_loss']
+        
+        logger.info(f'Continue learning from epoch {choosen_epoch+1}')
+
+    for epoch in range(choosen_epoch,n_epoch):
+        logger.info(f"Current Learning Rate: {optimizer.param_groups[0]['lr']}")
         loss_sum_train=0
         all_pred=[]
         all_labels=[]
         model.train()
-        target_model=model.module if isinstance(model, torch.nn.DataParallel) else model
         for i in range(n_frozen_layers):
            target_model.backbone[i].eval() 
         for ind,(imgs,labels) in enumerate(train_loader):
@@ -62,7 +74,6 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         # set pred_need to false to not return labels,pred
         accurecy_val,loss_avg_val,f1Score_val = evaluate(model,criterion,val_loader,device,False)
         scheduler.step(loss_avg_val) # step based on avg loss in valdiation data
-
 
         logger.info(f'Loss : {loss_avg_val:.4f}')
         logger.info(f'ACC  : {accurecy_val:.2f} %')

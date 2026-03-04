@@ -1,0 +1,52 @@
+21:06:15 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+21:06:16 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+21:06:16 | [volleyball_annot_loader.py] | INFO: Loading cached annotations from data\video_annot.pth
+21:06:20 | [train.py] | INFO: Continue learning from epoch 1
+21:06:21 | [train.py] | INFO: Epoch [2/4] | Step [1/35] | Loss: 2.2760
+21:06:31 | [train.py] | INFO: Train
+21:06:31 | [train.py] | INFO: Loss : 2.1418
+21:06:31 | [train.py] | INFO: ACC  : 22.86 %
+21:06:31 | [train.py] | INFO: F1   : 19.48 %
+21:06:31 | [train.py] | INFO: Validation
+21:06:46 | [train.py] | INFO: Current Learning Rate: 1e-05
+21:06:46 | [train.py] | INFO: Loss : 2.0996
+21:06:46 | [train.py] | INFO: ACC  : 15.38 %
+21:06:46 | [train.py] | INFO: F1   : 10.40 %
+
+21:06:47 | [train.py] | INFO: New Best Model found at epoch 2
+
+21:06:47 | [train.py] | INFO: Epoch [3/4] | Step [1/35] | Loss: 2.0956
+21:06:57 | [train.py] | INFO: Train
+21:06:57 | [train.py] | INFO: Loss : 2.2284
+21:06:57 | [train.py] | INFO: ACC  : 12.86 %
+21:06:57 | [train.py] | INFO: F1   : 11.01 %
+21:06:57 | [train.py] | INFO: Validation
+21:07:12 | [train.py] | INFO: Current Learning Rate: 1e-05
+21:07:12 | [train.py] | INFO: Loss : 2.0987
+21:07:12 | [train.py] | INFO: ACC  : 14.62 %
+21:07:12 | [train.py] | INFO: F1   : 9.46 %
+
+21:07:12 | [train.py] | INFO: New Best Model found at epoch 3
+
+21:07:13 | [train.py] | INFO: Epoch [4/4] | Step [1/35] | Loss: 2.7891
+21:07:23 | [train.py] | INFO: Train
+21:07:23 | [train.py] | INFO: Loss : 2.1417
+21:07:23 | [train.py] | INFO: ACC  : 21.43 %
+21:07:23 | [train.py] | INFO: F1   : 17.57 %
+21:07:23 | [train.py] | INFO: Validation
+21:07:38 | [train.py] | INFO: Current Learning Rate: 1e-05
+21:07:38 | [train.py] | INFO: Loss : 2.0495
+21:07:38 | [train.py] | INFO: ACC  : 16.92 %
+21:07:38 | [train.py] | INFO: F1   : 13.47 %
+
+21:07:38 | [train.py] | INFO: New Best Model found at epoch 4
+
+21:07:38 | [train.py] | INFO: Best Model found at epoch 4
+
+21:07:38 | [b8_train.py] | INFO: Test
+21:07:54 | [b8_train.py] | INFO: Loss : 2.0798
+21:07:54 | [b8_train.py] | INFO: ACC  : 16.10 %
+21:07:54 | [b8_train.py] | INFO: F1   : 12.45 %
+
+21:07:54 | [b8_train.py] | INFO: Create Report in outputs/B8
+21:07:54 | [b8_train.py] | INFO: Create Confusion Matrix in outputs/B8

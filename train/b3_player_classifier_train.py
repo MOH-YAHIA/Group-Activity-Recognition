@@ -34,6 +34,7 @@ num_workers = conf_dict['training']['num_workers']
 pin_memory = conf_dict['training']['pin_memory']
 n_epoch = conf_dict['training']['n_epoch']
 lr = conf_dict['training']['lr']
+label_smoothing = conf_dict['training']['label_smoothing']
 batch_size = conf_dict['training']['batch_size']
 num_player_actions = conf_dict['model']['num_player_actions']
 player_labels_weight = conf_dict['training']['player_labels_weight']
@@ -65,9 +66,9 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 weights = torch.tensor(weights , dtype=torch.float32).to(device)
 model=B3_Player_Classifier(num_player_actions)
 model=model.to(device)
-criterion = nn.CrossEntropyLoss(weight=weights , ignore_index=-1)
+criterion = nn.CrossEntropyLoss(label_smoothing=label_smoothing, ignore_index=-1)
 optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
-scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'],threshold=conf_dict['scheduler']['threshold'])
 
 #  Kaggle use 2 GPU   
 if torch.cuda.device_count() > 1:
@@ -197,9 +198,9 @@ accurecy_test,loss_avg_test,f1Score_test,all_labels,all_pred = evaluate(model,cr
 logger.info(f'Loss : {loss_avg_test:.4f}')
 logger.info(f'ACC  : {accurecy_test:.2f} %')
 logger.info(f'F1   : {f1Score_test:.2f} %\n')
-        
-os.makedirs('outputs/B3_Player_Classifier',exist_ok=True)
-output_path='outputs/B3_Player_Classifier'
+
+output_path='outputs/B3_Player_Classifier'  
+os.makedirs(output_path,exist_ok=True)
 final_report = Final_Report(output_path,all_labels,all_pred,for_group=False)
 logger.info(f"Create Report in {output_path}")
 final_report.creat_report()

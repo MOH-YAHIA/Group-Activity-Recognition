@@ -59,8 +59,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 backbone_inner=B3_Player_Classifier(num_player_actions)
 
-backbone_outer=B5_Player_Classifier_Temporal(backbone_inner,num_player_actions)
-backbone_outer.load_state_dict(torch.load('checkpoints/b3_player_classifier_temporal_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone_outer=B5_Player_Classifier_Temporal(num_player_actions)
+backbone_outer.load_state_dict(torch.load('checkpoints/b5_player_classifier_temporal_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 
 model=B7(backbone_outer,num_group_actions)
 model=model.to(device)

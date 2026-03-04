@@ -13,9 +13,15 @@ class B8(nn.Module):
         for param in self.lstm1.parameters():
             param.requires_grad = False
         
-        self.vis_norm=nn.LayerNorm(2048)
+        # Projection to reduce 2048 -> 512
+        self.vis_proj = nn.Sequential(
+            nn.Linear(2048, 512),
+            nn.BatchNorm1d(512), # Critical for scale matching with LSTM
+            nn.ReLU(),
+            nn.Dropout(0.3)
+        )
 
-        self.lstm2=nn.LSTM(input_size=5120,hidden_size=512,num_layers=1,batch_first=True)
+        self.lstm2=nn.LSTM(input_size=2048,hidden_size=512,num_layers=1,batch_first=True)
         self.classifier=nn.Sequential(
             nn.Linear(512,128),
             nn.ReLU(),
@@ -36,21 +42,17 @@ class B8(nn.Module):
             out_temp=out_temp.view(B,P,F,512)
             
         # static vis for each person from resnet + temporal 
-        out_vis=self.vis_norm(X.view(-1,2048)).view(B,P,F,2048) #B,P,F,2048
-        # X(B,P,F,2048) out(B,P,F,512) 
-        combined=torch.concat((out_vis,out_temp),dim=-1) #B,P,F,2048+512
+        out_vis=self.vis_proj(X.view(-1,2048)).view(B,P,F,512) #B,P,F,512
+        # X(B,P,F,512) out(B,P,F,512) 
+        combined=torch.concat((out_vis,out_temp),dim=-1) #B,P,F,512+512
 
-        out_t1,_=combined[:,:6,:,:].max(dim=1) #B,F,2560
-        out_t2,_=combined[:,6:,:,:].max(dim=1) #B,F,2560
+        out_t1,_=combined[:,:6,:,:].max(dim=1) #B,F,1024
+        out_t2,_=combined[:,6:,:,:].max(dim=1) #B,F,1024
 
-        out=torch.concat((out_t1,out_t2),dim=2) #B,F,2560+2560
+        out=torch.concat((out_t1,out_t2),dim=2) #B,F,2048
 
         out,(h,c)=self.lstm2(out) #B,F,512
         out=out[:,-1,:] #B,512
 
         out=self.classifier(out)
         return out #B,8
-
-
-
-        

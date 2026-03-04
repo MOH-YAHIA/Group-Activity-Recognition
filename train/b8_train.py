@@ -17,7 +17,7 @@ from models.b5_player_classifier_temporal import B5_Player_Classifier_Temporal
 from models.b8 import B8
 
 os.makedirs('logs',exist_ok=True)
-log_path='logs/b8_progress.log'
+log_path='logs/b8_progress_2.log'
 setup_logger(log_path)
 logger = logging.getLogger(__name__)
 
@@ -57,21 +57,15 @@ test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_work
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-backbone_inner=B3_Player_Classifier(num_player_actions)
-
-backbone_outer=B5_Player_Classifier_Temporal(backbone_inner,num_player_actions)
-backbone_outer.load_state_dict(torch.load('checkpoints/b3_player_classifier_temporal_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone_outer=B5_Player_Classifier_Temporal(num_player_actions)
+backbone_outer.load_state_dict(torch.load('checkpoints/b5_player_classifier_temporal_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 
 model=B8(backbone_outer,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()
 
-#expert_params =list(model.lstm1.parameters())
-new_params = list(model.lstm2.parameters()) + list(model.res_vis.parameters()) +list(model.classifier.parameters())
-optimizer = torch.optim.AdamW([
-  #  {'params': filter(lambda p: p.requires_grad, expert_params), 'lr': lr1}, 
-    {'params': new_params, 'lr': lr2} 
-])
+optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()),lr= lr1)
+
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
 
 #  Kaggle use 2 GPU   
@@ -84,7 +78,7 @@ if torch.cuda.device_count() > 1:
 # Train
 os.makedirs('checkpoints',exist_ok=True)
 checkpoint_path='checkpoints/b8_best_model_checkpoint.pth'
-train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,50,2,9)
+train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,50,2,9,'checkpoints/b8_best_model_checkpoint.pth')
 
 
 # Test
