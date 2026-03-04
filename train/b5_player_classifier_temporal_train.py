@@ -14,7 +14,7 @@ from models.b3_player_classifier import B3_Player_Classifier
 from scripts.final_report import Final_Report
 
 os.makedirs('logs',exist_ok=True)
-log_path='logs/b5_player_classifier_temporal_progress.log'
+log_path='logs/b5_player_classifier_temporal_progress_2.log'
 setup_logger(log_path)
 logger=logging.getLogger(__name__)
 
@@ -36,6 +36,7 @@ num_workers = conf_dict['training']['num_workers']
 pin_memory = conf_dict['training']['pin_memory']
 n_epoch = conf_dict['training']['n_epoch']
 lr = conf_dict['training']['lr']
+label_smoothing = conf_dict['training']['label_smoothing']
 batch_size = conf_dict['training']['batch_size']
 num_player_actions = conf_dict['model']['num_player_actions']
 player_labels_weight = conf_dict['training']['player_labels_weight']
@@ -65,13 +66,13 @@ test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_work
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 #weights = torch.tensor(weights , dtype=torch.float32).to(device)
-#backbone=B3_Player_Classifier(num_player_actions)
+backbone=B3_Player_Classifier(num_player_actions)
 #backbone.load_state_dict(torch.load('/kaggle/input/datasets/myahiia/b3-player-classifier-dataset/Group-Activity-Recognition/checkpoints/b3_player_classifier_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
-model=B5_Player_Classifier_Temporal(num_player_actions)
+model=B5_Player_Classifier_Temporal(backbone,num_player_actions)
 model=model.to(device)
-criterion = nn.CrossEntropyLoss(label_smoothing=0.02, ignore_index=-1)
+criterion = nn.CrossEntropyLoss(label_smoothing=label_smoothing, ignore_index=-1)
 optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
-scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'],threshold=conf_dict['scheduler']['threshold'])
 
 #  Kaggle use 2 GPU   
 if torch.cuda.device_count() > 1:
@@ -205,8 +206,8 @@ logger.info(f'Loss : {loss_avg_test:.4f}')
 logger.info(f'ACC  : {accurecy_test:.2f} %')
 logger.info(f'F1   : {f1Score_test:.2f} %\n')
         
-os.makedirs('outputs/B5_Player_Classifier_Temporal',exist_ok=True)
 output_path='outputs/B5_Player_Classifier_Temporal'
+os.makedirs(output_path,exist_ok=True)
 final_report = Final_Report(output_path,all_labels,all_pred,for_group=False)
 logger.info(f"Create Report in {output_path}")
 final_report.creat_report()

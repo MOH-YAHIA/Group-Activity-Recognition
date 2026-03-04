@@ -29,3 +29,5 @@ scheduler:
   mode: "min"
   factor: 0.1
   patience: 3
+  threshold: 0.01
+

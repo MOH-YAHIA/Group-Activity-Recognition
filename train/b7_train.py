@@ -59,7 +59,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 backbone_inner=B3_Player_Classifier(num_player_actions)
 
-backbone_outer=B5_Player_Classifier_Temporal(num_player_actions)
+backbone_outer=B5_Player_Classifier_Temporal(backbone_inner,num_player_actions)
 backbone_outer.load_state_dict(torch.load('checkpoints/b5_player_classifier_temporal_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 
 model=B7(backbone_outer,num_group_actions)
@@ -67,7 +67,7 @@ model=model.to(device)
 criterion = nn.CrossEntropyLoss()
 
 optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()),lr= lr1)
-scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'])
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=conf_dict['scheduler']['mode'], factor=conf_dict['scheduler']['factor'], patience=conf_dict['scheduler']['patience'],threshold=conf_dict['scheduler']['threshold'])
 
 #  Kaggle use 2 GPU   
 if torch.cuda.device_count() > 1:
