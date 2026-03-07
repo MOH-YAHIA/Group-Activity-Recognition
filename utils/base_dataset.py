@@ -2,9 +2,10 @@ from torch.utils.data import Dataset
 from utils.volleyball_annot_loader import load_volleyball_dataset
 
 class BaseDataset(Dataset):
-    def __init__(self,videos_root,annot_root,allowed_ids,one_frame):
+    def __init__(self,videos_root,annot_root,allowed_ids,one_frame,train):
         self.videos_root=videos_root
         self.one_frame=one_frame
+        self.train=train
         self.team_action_dct = {
         'l-pass': 0,     'r-pass': 1,
         'l-spike': 2,    'r_spike': 3,

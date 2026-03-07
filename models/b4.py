@@ -6,11 +6,16 @@ class B4(nn.Module):
     def __init__(self,backbone,num_group_actions):
         super(B4,self).__init__()
         self.backbone=nn.Sequential(*list(backbone.model.children())[:-1])
-        for child in list(self.backbone.children())[:8]:
-            for param in child.parameters():
-                param.requires_grad = False
+        for param in self.backbone.parameters():
+            param.requires_grad = False
         self.lstm=nn.LSTM(input_size=2048,hidden_size=512,num_layers=1,batch_first=True)
-        self.classifier=nn.Linear(512,num_group_actions)
+        self.classifier=nn.Sequential(
+            nn.Linear(512,128),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(128,num_group_actions)
+        )
+
 
     def forward(self,X):
         # X -> B,9,3,224,224

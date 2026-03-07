@@ -24,4 +24,5 @@ scheduler:
   type: "ReduceLROnPlateau"
   mode: "min"
   factor: 0.1
-  patience: 3
+  patience: 2
+  threshold: 0.01

@@ -1,14 +1,12 @@
 import numpy as np
-import pandas as pd
 import torch
 from sklearn.metrics import f1_score
-from scripts.eval import evaluate
+from scripts.eval_b7_8 import evaluate
 import logging
-import torch.nn as nn
 
 logger=logging.getLogger(__name__)
 
-def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step,early_stop,n_frozen_layers=0,trained_model=None):
+def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,ind_step,early_stop,trained_model=None):
     best_loss=float('inf') 
     no_update=0
     choosen_epoch=0
@@ -40,11 +38,13 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         all_pred=[]
         all_labels=[]
         model.train()
-        for i in range(n_frozen_layers):
-           target_model.backbone[i].eval() 
-        for ind,(imgs,labels) in enumerate(train_loader):
-            imgs,labels=imgs.to(device),labels.to(device)
-            output=model(imgs)
+        target_model.backbone_image.eval()
+        target_model.backbone_player.eval()
+        target_model.lstm1.eval()
+        
+        for ind,(whole_frames, cropped_frames, labels) in enumerate(train_loader):
+            whole_frames,cropped_frames,labels=whole_frames.to(device),cropped_frames.to(device),labels.to(device)
+            output=model(whole_frames,cropped_frames)
             loss=criterion(output,labels)
             optimizer.zero_grad()
             loss.backward()
@@ -88,7 +88,7 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         else:
             no_update+=1
         
-        if no_update>=early_stop:
+        if no_update>early_stop:
             logger.warning(f"Early stopping triggered at epoch {epoch+1}\n")
             break
     logger.info(f"Best Model found at epoch {choosen_epoch}\n")
