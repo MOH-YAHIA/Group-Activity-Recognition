@@ -16,7 +16,7 @@ from models.b1 import B1
 
 
 os.makedirs('logs',exist_ok=True)
-log_path='logs/b7_progress_2.log'
+log_path='logs/b7_progress.log'
 setup_logger(log_path)
 logger = logging.getLogger(__name__)
 
@@ -44,13 +44,13 @@ num_group_actions = conf_dict['model']['num_group_actions']
 num_player_actions = conf_dict['model']['num_player_actions']
 
 # DataLoaders
-train_dataset=VolleyballPersonImageDataset(videos_root,annot_root,train_ids,one_frame=True,train=True)
+train_dataset=VolleyballPersonImageDataset(videos_root,annot_root,train_ids,one_frame=False,train=True)
 train_loader=DataLoader(train_dataset,batch_size=batch_size,shuffle=True,num_workers=num_workers,pin_memory=pin_memory)
 
-val_dataset=VolleyballPersonImageDataset(videos_root,annot_root,val_ids,one_frame=True,train=False)
+val_dataset=VolleyballPersonImageDataset(videos_root,annot_root,val_ids,one_frame=False,train=False)
 val_loader=DataLoader(val_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
-test_dataset=VolleyballPersonImageDataset(videos_root,annot_root,test_ids,one_frame=True,train=False)
+test_dataset=VolleyballPersonImageDataset(videos_root,annot_root,test_ids,one_frame=False,train=False)
 test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_workers=num_workers,pin_memory=pin_memory)
 
 # Setup
@@ -60,8 +60,8 @@ backbone_image=B1(num_group_actions)
 backbone_inner_player=B3_Player_Classifier(num_player_actions)
 backbone_outer_player=B5_Player_Classifier_Temporal(backbone_inner_player,num_player_actions)
 
-backbone_image.load_state_dict(torch.load('checkpoints/b1_best_mode_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
-backbone_outer_player.load_state_dict(torch.load('checkpoints/b5_player_classifier_temporal_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone_image.load_state_dict(torch.load('/kaggle/input/datasets/myahiia/b1-v2-dataset/Group-Activity-Recognition/checkpoints/b1_best_mode_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone_outer_player.load_state_dict(torch.load('/kaggle/input/notebooks/myahiia/b5-player-classifier-temporal-train/Group-Activity-Recognition/checkpoints/b5_player_classifier_temporal_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
 
 model=B7(backbone_image,backbone_outer_player,num_group_actions)
 
@@ -79,9 +79,9 @@ if torch.cuda.device_count() > 1:
     
 
 # Train
-os.makedirs('checkpoints',exist_ok=True)
-checkpoint_path='checkpoints/b7_best_model_checkpoint.pth'
-train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,50,3)
+checkpoint_path='checkpoints/b7'
+os.makedirs(checkpoint_path,exist_ok=True)
+train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,device,checkpoint_path,50,4)
 
 
 # Test
@@ -99,5 +99,3 @@ logger.info(f"Create Report in {output_path}")
 final_report.creat_report()
 logger.info(f"Create Confusion Matrix in {output_path}")
 final_report.create_confusion_matrix()
-        
-        
