@@ -3,6 +3,7 @@ import torch
 from sklearn.metrics import f1_score
 from scripts.eval_b7_8 import evaluate
 import logging
+import os 
 
 logger=logging.getLogger(__name__)
 
@@ -12,7 +13,7 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
     choosen_epoch=0
     target_model=model.module if isinstance(model, torch.nn.DataParallel) else model
 
-    def update_checkpint(epoch):
+    def update_checkpint(epoch,checkpoint_path):
         checkpoint = {
         'model_state_dict': model.module.state_dict() if isinstance(model, torch.nn.DataParallel) else model.state_dict(),
         'optimizer_state_dict': optimizer.state_dict(),
@@ -29,7 +30,7 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         scheduler.load_state_dict(loaded_checkpoint['scheduler_state_dict'])
         choosen_epoch=loaded_checkpoint['epoch']
         best_loss=loaded_checkpoint['best_loss']
-        
+        optimizer.param_groups[0]['lr']/=10
         logger.info(f'Continue learning from epoch {choosen_epoch+1}')
 
     for epoch in range(choosen_epoch,n_epoch):
@@ -41,6 +42,7 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         target_model.backbone_image.eval()
         target_model.backbone_player.eval()
         target_model.lstm1.eval()
+
         
         for ind,(whole_frames, cropped_frames, labels) in enumerate(train_loader):
             whole_frames,cropped_frames,labels=whole_frames.to(device),cropped_frames.to(device),labels.to(device)
@@ -79,8 +81,9 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         logger.info(f'ACC  : {accurecy_val:.2f} %')
         logger.info(f'F1   : {f1Score_val:.2f} %\n')
 
+        update_checkpint(epoch+1,os.path.join(checkpoint_path,'latest_model_checkpoint.pth'))
         if loss_avg_val < best_loss:
-            update_checkpint(epoch+1)
+            update_checkpint(epoch+1,os.path.join(checkpoint_path,'best_model_checkpoint.pth'))
             best_loss = loss_avg_val
             no_update = 0
             choosen_epoch = epoch+1
@@ -88,7 +91,7 @@ def train(model,criterion,optimizer,scheduler,train_loader,val_loader,n_epoch,de
         else:
             no_update+=1
         
-        if no_update>early_stop:
+        if no_update>=early_stop:
             logger.warning(f"Early stopping triggered at epoch {epoch+1}\n")
             break
     logger.info(f"Best Model found at epoch {choosen_epoch}\n")
