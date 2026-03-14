@@ -52,7 +52,7 @@ test_loader=DataLoader(test_dataset,batch_size=batch_size,shuffle=False,num_work
 # Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 backbone=B1(num_group_actions)
-backbone.load_state_dict(torch.load('/kaggle/input/notebooks/myahiia/b1-train/Group-Activity-Recognition/checkpoints/b1_best_mode_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone.load_state_dict(torch.load(conf_dict['paths']['backbone_path'],map_location=device,weights_only=True)['model_state_dict'])
 model=B4(backbone,num_group_actions)
 model=model.to(device)
 criterion = nn.CrossEntropyLoss()

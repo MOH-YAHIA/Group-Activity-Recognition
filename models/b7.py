@@ -1,6 +1,5 @@
-import torch,torchvision
+import torch
 import torch.nn as nn
-import torchvision.models as models
 
 class B7(nn.Module):
     def __init__(self,backbone_image,backbone_player,n_group_actions):
@@ -52,20 +51,20 @@ class B7(nn.Module):
             X_player=X_player.view(B,F,P,2048)
             X_player=X_player.permute(0,2,1,3).contiguous() #B,P,F,2048
             
-            out_temp,(h,c)=self.lstm1(X_player.view(B*P,F,2048)) #B*P,F,512
-            out_temp=out_temp.view(B,P,F,512)
+            out_temp_player,(h,c)=self.lstm1(X_player.view(B*P,F,2048)) #B*P,F,512
+            out_temp_player=out_temp_player.view(B,P,F,512)
         
         # static vis for each frame from resnet B1
         out_vis_image=self.vis_proj_image(X_image.view(-1,2048)).view(B,F,512) #B,F,512
         # static vis for each person from resnet B3 
         out_vis_player=self.vis_proj_player(X_player.view(-1,2048)).view(B,P,F,512) #B,P,F,512
 
-        # X_player(B,P,F,512) out(B,P,F,512) 
-        combined_player=torch.concat((out_vis_player,out_temp),dim=-1) #B,P,F,512+512
+        # out_vis_player(B,P,F,512) out_temp_player(B,P,F,512) 
+        combined_player=torch.concat((out_vis_player,out_temp_player),dim=-1) #B,P,F,512+512
 
         combined_player,_=combined_player.max(dim=1) #B,F,1024
 
-        #description for player+image
+        #description for players + whole frame
         out=torch.concat((combined_player,out_vis_image),dim=2) #B,F,1536
 
         out,(h,c)=self.lstm2(out) #B,F,512

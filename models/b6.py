@@ -1,12 +1,9 @@
-import torch,torchvision
 import torch.nn as nn
-import torchvision.models as models
 
 class B6(nn.Module):
     def __init__(self,backbone,n_group_actions):
         super(B6,self).__init__()
         self.backbone=nn.Sequential(*list(backbone.resnet.children())[:-1])
-        # freez all layers in backbone
         for child in list(self.backbone.children())[:7]:
             for param in child.parameters():
                 param.requires_grad = False

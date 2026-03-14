@@ -60,8 +60,8 @@ backbone_image=B1(num_group_actions)
 backbone_inner_player=B3_Player_Classifier(num_player_actions)
 backbone_outer_player=B5_Player_Classifier_Temporal(backbone_inner_player,num_player_actions)
 
-backbone_image.load_state_dict(torch.load('/kaggle/input/datasets/myahiia/b1-v2-dataset/Group-Activity-Recognition/checkpoints/b1_best_mode_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
-backbone_outer_player.load_state_dict(torch.load('/kaggle/input/notebooks/myahiia/b5-player-classifier-temporal-train/Group-Activity-Recognition/checkpoints/b5_player_classifier_temporal_best_model_checkpoint.pth',map_location=device,weights_only=True)['model_state_dict'])
+backbone_image.load_state_dict(torch.load(conf_dict['paths']['backbone_image'],map_location=device,weights_only=True)['model_state_dict'])
+backbone_outer_player.load_state_dict(torch.load(conf_dict['paths']['backbone_outer_player'],map_location=device,weights_only=True)['model_state_dict'])
 
 model=B7(backbone_image,backbone_outer_player,num_group_actions)
 
